@@ -506,7 +506,7 @@ h1.style2 a:hover, h2.style2 a:hover, h3.style2 a:hover, p.style2 a:hover {
 	-webkit-justify-content: center;
 	-ms-justify-content: center;
 	justify-content: center;
-	background-color: rgba(31, 40, 70, 0.356);
+	background-color: rgba(18, 29, 37, 0.35);
 	box-shadow: 0rem 0.75rem 4.375rem 1rem rgba( 31, 38, 135, 0.37);
 	border-radius: 2.3rem;
 	-webkit-backdrop-filter: blur(20px);

@@ -6,7 +6,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 body {
 	min-width: 320px;
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Nunito Sans', sans-serif;
 	min-height: 100vh;
 	line-height: 1.0;
 	word-wrap: break-word;
@@ -64,10 +64,10 @@ body:before {
 	width: 100vw;
 	height: 100vh;
 	z-index: 0;
-	-moz-poPoppins-events: none;
-	-webkit-poPoppins-events: none;
-	-ms-poPoppins-events: none;
-	poPoppins-events: none;
+	-moz-poNunito Sans-events: none;
+	-webkit-poNunito Sans-events: none;
+	-ms-poNunito Sans-events: none;
+	poNunito Sans-events: none;
 	-moz-transform: scale(1);
 	-webkit-transform: scale(1);
 	-ms-transform: scale(1);
@@ -259,13 +259,13 @@ h1.style1, h2.style1, h3.style1, p.style1 br + br {
 
 h1.style1, h2.style1, h3.style1, p.style1 {
 	color: #FFFFFF;
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Nunito Sans', sans-serif;
 	text-shadow: 1px 3px 10px rgba(0,0,0,0.39);
 	letter-spacing: -0.075rem;
 	width: 100%;
 	font-size: 3.5em;
 	line-height: 1.125;
-	font-weight: 650;
+	font-weight: 750;
 }
 
 h1.style1 a, h2.style1 a, h3.style1 a, p.style1 a {
@@ -283,10 +283,10 @@ h1.style5, h2.style5, h3.style5, p.style5 br + br {
 h1.style5, h2.style5, h3.style5, p.style5 {
 	color: white;
 	text-shadow: 1px 3px 10px rgba(0,0,0,0.39);
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Nunito Sans', sans-serif;
 	font-size: 1.3rem;
 	line-height: 1.575;
-	font-weight: 300;
+	font-weight: 500;
 }
 
 h1.style5 a, h2.style5 a, h3.style5 a, p.style5 a {
@@ -303,9 +303,9 @@ h1.style3, h2.style3, h3.style3, p.style3 br + br {
 
 h1.style3, h2.style3, h3.style3, p.style3 {
 	color: rgba(255, 255, 255, 0.89);
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Nunito Sans', sans-serif;
 	text-shadow: 1px 3px 10px rgba(0,0,0,0.39);
-	font-size: 1.25rem;
+	font-size: 1.34rem;
 	line-height: 1.875;
 	font-weight: 500;
 }
@@ -324,11 +324,11 @@ h1.style2, h2.style2, h3.style2, p.style2 br + br {
 
 h1.style2, h2.style2, h3.style2, p.style2 {
 	text-align: left;
-	color: rgba(255,255,255,0.722);
-	font-family: 'Poppins', sans-serif;
+	color: rgba(255, 255, 255, 0.78);
+	font-family: 'Nunito Sans', sans-serif;
 	font-size: 1.4rem;
 	line-height: 1.65;
-	font-weight: 350;
+	font-weight: 550;
 }
 
 h1.style2 a, h2.style2 a, h3.style2 a, p.style2 a {
@@ -387,8 +387,8 @@ h1.style2 a:hover, h2.style2 a:hover, h3.style2 a:hover, p.style2 a:hover {
 	vertical-align: middle;
 	padding: 0 1.625rem;
 	font-size: 1em;
-	font-family: 'Poppins', sans-serif;
-	font-weight: 500;
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 700;
 	border-radius: 2rem;
 	-moz-justify-content: flex-end;
 	-webkit-justify-content: flex-end;
@@ -506,7 +506,7 @@ h1.style2 a:hover, h2.style2 a:hover, h3.style2 a:hover, p.style2 a:hover {
 	-webkit-justify-content: center;
 	-ms-justify-content: center;
 	justify-content: center;
-	background-color: rgba(35, 84, 246, 0.356);
+	background-color: rgba(31, 40, 70, 0.356);
 	box-shadow: 0rem 0.75rem 4.375rem 1rem rgba( 31, 38, 135, 0.37);
 	border-radius: 2.3rem;
 	-webkit-backdrop-filter: blur(20px);
@@ -1035,4 +1035,7 @@ h1.style2 a:hover, h2.style2 a:hover, h3.style2 a:hover, p.style2 a:hover {
 	.container.style1.columns > .wrapper > .inner > .full {
 		min-height: 15rem;
 	}
+}
+#my-img {
+    width: 185px;
 }

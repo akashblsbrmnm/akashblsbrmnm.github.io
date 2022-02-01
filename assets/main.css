@@ -229,7 +229,6 @@ body:before {
 	background-attachment: scroll;
 	background: rgb(18, 2, 32);
 	background: linear-gradient(90deg, rgba(18, 2, 32, 0.6468385846427318) 5%, rgba(107, 98, 116, 0.6665015059910464) 100%);
-	background-image: url('images/1.jpg');
 	background-position: center;
 	background-repeat: repeat;
 	background-size: cover;

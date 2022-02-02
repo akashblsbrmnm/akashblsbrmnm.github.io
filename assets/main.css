@@ -218,20 +218,11 @@ body:before {
 	width: 100vw;
 	height: 100vh;
 	z-index: 0;
-	-moz-poNunito Sans-events: none;
-	-webkit-poNunito Sans-events: none;
-	-ms-poNunito Sans-events: none;
-	poNunito Sans-events: none;
-	-moz-transform: scale(1);
-	-webkit-transform: scale(1);
-	-ms-transform: scale(1);
-	transform: scale(1);
-	background-attachment: scroll;
-	background: linear-gradient(90deg, #12021f, #190c23, #1f1c21);
+	
 	background-position: center;
 	background-repeat: repeat;
 	background-size: cover;
-	background-color: #120220;
+	background-image: url("images/bg2.jpg");
 }
 
 body:after {
@@ -719,11 +710,11 @@ p.style2 a:hover {
 	-webkit-justify-content: center;
 	-ms-justify-content: center;
 	justify-content: center;
-	background-color: rgba(18, 29, 37, 0.35);
-	box-shadow: 0rem 0.75rem 4.375rem 1rem rgba(22, 22, 22, 0.55);
+	background-color: rgba(42, 42, 42, 0.547);
+	box-shadow: 0rem 0.75rem 4.375rem 1rem rgba(0, 0, 0, 0.479);
 	border-radius: 2.3rem;
-	-webkit-backdrop-filter: blur(20px);
-	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(16px);
+	backdrop-filter: blur(16px);
 }
 
 .container.style1.default>.wrapper>.inner>* {

@@ -712,7 +712,7 @@ p.style2 a:hover {
 	justify-content: center;
 	background-color: rgba(45, 45, 45, 0.67);
 	box-shadow: 0rem 0.75rem 4.375rem 1rem rgba(0, 0, 0, 0.479);
-	border-radius: 2.3rem;
+	border-radius: 1.75rem;
 	-webkit-backdrop-filter: blur(16px);
 	backdrop-filter: blur(16px);
 }

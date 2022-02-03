@@ -522,7 +522,7 @@ h2.style2,
 h3.style2,
 p.style2 {
 	text-align: left;
-	color: rgba(255, 255, 255, 0.78);
+	color: rgba(223, 223, 223, 0.8);
 	font-family: 'Nunito Sans', sans-serif;
 	font-size: 1.4rem;
 	line-height: 1.65;
@@ -710,7 +710,7 @@ p.style2 a:hover {
 	-webkit-justify-content: center;
 	-ms-justify-content: center;
 	justify-content: center;
-	background-color: rgba(42, 42, 42, 0.547);
+	background-color: rgba(45, 45, 45, 0.67);
 	box-shadow: 0rem 0.75rem 4.375rem 1rem rgba(0, 0, 0, 0.479);
 	border-radius: 2.3rem;
 	-webkit-backdrop-filter: blur(16px);

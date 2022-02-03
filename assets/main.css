@@ -600,7 +600,7 @@ p.style2 a:hover {
     padding: 0 1.625rem;
     font-size: 1em;
     font-family: 'Inter', sans-serif;
-    font-weight: 600;
+    font-weight: 400;
     border-radius: 2rem;
     -moz-justify-content: flex-end;
     -webkit-justify-content: flex-end;
@@ -654,12 +654,12 @@ p.style2 a:hover {
 }
 
 .buttons.style1 .button:hover {
-    color: #66EDFF !important;
-    border-color: #66EDFF !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
 }
 
 .buttons.style1 .button:hover svg {
-    fill: #66EDFF !important;
+    fill: #ffffff !important;
 }
 
 .container {

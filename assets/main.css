@@ -1287,3 +1287,6 @@ p.style2 a:hover {
         min-height: 15rem;
     }
 }
+#my-img{
+  width: 50%;
+  height: auto;

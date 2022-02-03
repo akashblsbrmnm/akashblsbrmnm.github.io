@@ -228,7 +228,7 @@ body:before {
     -ms-transform: scale(1);
     transform: scale(1);
     background-attachment: scroll;
-    background-image: url('images/bg.jpg');
+    background-image: url('images/bg2.jpg');
     background-position: center;
     background-repeat: repeat;
     background-size: cover;

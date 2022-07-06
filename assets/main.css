@@ -435,7 +435,7 @@ p.style1 {
     width: 100%;
     font-size: 3.5rem;
     line-height: 1.125;
-    font-weight: 650;
+    font-weight: 400;
 }
 
 h1.style1 a,
@@ -465,7 +465,7 @@ h3.style5,
 p.style5 {
     color: #835231;
     font-family: 'Archivo', sans-serif;
-    font-size: 1em;
+    font-size: 1.1em;
     line-height: 1.875;
     font-weight: 400;
 }
@@ -500,7 +500,7 @@ p.style3 {
   /*  text-shadow: 1px 3px 10px rgba(0, 0, 0, 0.39); */
     font-size: 1.34rem;
     line-height: 1.875;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 h1.style3 a,
@@ -531,7 +531,7 @@ p.style2 {
     text-align: left;
     color: #835231;
     font-family: 'Archivo', sans-serif;
-    font-size: 1em;
+    font-size: 1.1em;
     line-height: 1.75;
     font-weight: 400;
 }
@@ -579,7 +579,7 @@ p.style2 a:hover {
 
 .buttons.style1 li {
     display: block;
-    margin: 1rem 0;
+    margin: 1.2rem 0;
 }
 
 .buttons.style1 li:first-child {
@@ -593,14 +593,14 @@ p.style2 a:hover {
 .buttons.style1 li a {
     display: inline-flex;
     width: 30rem;
-    height: 3.25rem;
+    height: 4.5rem;
     line-height: 3.25rem;
     vertical-align: middle;
     padding: 0 1.625rem;
-    font-size: 1em;
+    font-size: 1.5em;
     font-family: 'Archivo', sans-serif;
     font-weight: 400;
-    border-radius: 2rem;
+    border-radius: 4rem;
     -moz-justify-content: flex-end;
     -webkit-justify-content: flex-end;
     -ms-justify-content: flex-end;
@@ -618,7 +618,7 @@ p.style2 a:hover {
     -ms-transition: fill 0.25s ease;
     transition: fill 0.25s ease;
     width: 1em;
-    min-width: 16px;
+    min-width: 24px;
     height: 100%;
     -moz-flex-grow: 0;
     -webkit-flex-grow: 0;
@@ -648,7 +648,7 @@ p.style2 a:hover {
 
 .buttons.style1 .button {
     color: #835231;
-    border: solid 1px #835231;
+    border: solid 2px #835231;
 }
 
 .buttons.style1 .button:hover {
@@ -1292,4 +1292,24 @@ p.style2 a:hover {
   width: 65%;
   height: auto;
 
+}
+
+
+.socico2 {
+  float: left;
+  margin-left: 10px;
+  align
+}
+
+svg {
+    fill: red;
+}
+
+.social-icons {
+    width: 100px;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }

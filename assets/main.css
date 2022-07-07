@@ -129,7 +129,7 @@ table {
 }
 
 body {
-    -webkit-text-size-adjust: none
+    -webkit-text-size-adjust: none;
 }
 
 mark {
@@ -872,8 +872,9 @@ p.style2 a:hover {
 }
 
 @media (max-width: 1280px) {
-    html {
-        font-size: 10pt;
+    #my-img{
+        width: 50%;
+        height: auto;
     }
 }
 
@@ -883,6 +884,10 @@ p.style2 a:hover {
     }
     h1.style1 {
         font-size: 50pt;
+    }
+    #my-img{
+        width: 50%;
+        height: auto;
     }
 }
 
@@ -961,7 +966,7 @@ p.style2 a:hover {
     }
 
     .buttons.style1 li a {
-        font-size: 1em;
+        font-size: 1.45em;
         letter-spacing: 0rem;
     }
 
@@ -1134,6 +1139,10 @@ p.style2 a:hover {
         min-height: 100% !important;
         text-align: inherit !important;
     }
+    #my-img{
+        width: 50%;
+        height: auto;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1155,6 +1164,10 @@ p.style2 a:hover {
     .container.style1.columns>.wrapper>.inner>*>* {
         margin-top: 1.203125rem;
         margin-bottom: 1.203125rem;
+    }
+    #my-img{
+        width: 50%;
+        height: auto;
     }
 }
 
@@ -1287,13 +1300,15 @@ p.style2 a:hover {
     .container.style1.columns>.wrapper>.inner>.full {
         min-height: 15rem;
     }
+    #my-img{
+        width: 50%;
+        height: auto;
+    }
 }
 #my-img{
-  width: 65%;
+  width: 60%;
   height: auto;
-
 }
-
 
 .socico2 {
   float: left;

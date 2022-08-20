@@ -160,7 +160,7 @@ textarea {
 
 body {
     min-width: 320px;
-    font-family: 'Archivo', sans-serif;
+    font-family: 'Manrope', sans-serif;
     min-height: 100vh;
     line-height: 1.0;
     word-wrap: break-word;
@@ -182,19 +182,19 @@ em {
 }
 
 code {
-    font-family: 'Archivo', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-weight: normal;
     text-indent: 0;
     letter-spacing: 0;
     font-size: 0.9em;
     margin: 0 0.25em;
     padding: 0.25em 0.5em;
-    background-color: #F4EFF3;
+    background-color: #ffffe3;
     border-radius: 0.25em;
 }
 
 mark {
-    background-color: rgba(144, 144, 144, 0.25);
+    background-color: #ffffe3;
 }
 
 a {
@@ -228,7 +228,7 @@ body:before {
     -ms-transform: scale(1);
     transform: scale(1);
     background-attachment: scroll;
-    background-color: #F4EFF3;
+    background-color: #ffffe3;
     background-position: center;
     background-repeat: repeat;
     background-size: cover;
@@ -242,7 +242,7 @@ body:after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #030303;
+    background-color: #10100e;
     z-index: 1;
     opacity: 0;
     visibility: hidden;
@@ -424,18 +424,17 @@ h3.style1,
 p.style1 br+br {
     margin-top: 0.675rem;
 }
-
 h1.style1,
 h2.style1,
 h3.style1,
 p.style1 {
-    color: #835231;
-    font-family: 'Archivo', sans-serif;
+    color: #10100e;
+    font-family: 'Manrope', sans-serif;
     letter-spacing:-0.018em;
     width: 100%;
     font-size: 3.5rem;
     line-height: 1.125;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 h1.style1 a,
@@ -451,20 +450,25 @@ h3.style1 a:hover,
 p.style1 a:hover {
     text-decoration: none;
 }
-
+.nanum {
+    font-size: 1.7rem;
+    font-family: 'Nanum Pen Script', cursive;
+}
 h1.style5,
 h2.style5,
-h3.style5,
-p.style5 br+br {
+h3.style5 {
     margin-top: 1.125rem;
 }
-
+p.style5 {
+    font-family: 'PT Mono', monospace;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+}
 h1.style5,
 h2.style5,
-h3.style5,
-p.style5 {
-    color: #835231;
-    font-family: 'Archivo', sans-serif;
+h3.style5{
+    color: #10100e;
+    font-family: 'Manrope', sans-serif;
     font-size: 1.1em;
     line-height: 1.875;
     font-weight: 400;
@@ -472,8 +476,7 @@ p.style5 {
 
 h1.style5 a,
 h2.style5 a,
-h3.style5 a,
-p.style5 a {
+h3.style5 a{
     text-decoration: underline;
 }
 
@@ -495,8 +498,8 @@ h1.style3,
 h2.style3,
 h3.style3,
 p.style3 {
-    color: #835231;
-    font-family: 'Archivo', sans-serif;
+    color: #10100e;
+    font-family: 'Manrope', sans-serif;
   /*  text-shadow: 1px 3px 10px rgba(0, 0, 0, 0.39); */
     font-size: 1.34rem;
     line-height: 1.875;
@@ -520,7 +523,7 @@ p.style3 a:hover {
 h1.style2,
 h2.style2,
 h3.style2,
-p.style2 br+br {
+p.style2 {
     margin-top: 1.05rem;
 }
 
@@ -529,8 +532,8 @@ h2.style2,
 h3.style2,
 p.style2 {
     text-align: left;
-    color: #835231;
-    font-family: 'Archivo', sans-serif;
+    color: #10100e;
+    font-family: 'Manrope', sans-serif;
     font-size: 1.1em;
     line-height: 1.75;
     font-weight: 400;
@@ -579,7 +582,7 @@ p.style2 a:hover {
 
 .buttons.style1 li {
     display: block;
-    margin: 1.2rem 0;
+    margin: 0rem 0;
 }
 
 .buttons.style1 li:first-child {
@@ -589,7 +592,6 @@ p.style2 a:hover {
 .buttons.style1 li:last-child {
     margin-bottom: 0;
 }
-
 .buttons.style1 li a {
     display: inline-flex;
     width: 30rem;
@@ -598,9 +600,9 @@ p.style2 a:hover {
     vertical-align: middle;
     padding: 0 1.625rem;
     font-size: 1.5em;
-    font-family: 'Archivo', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-weight: 400;
-    border-radius: 4rem;
+
     -moz-justify-content: flex-end;
     -webkit-justify-content: flex-end;
     -ms-justify-content: flex-end;
@@ -647,16 +649,17 @@ p.style2 a:hover {
 }
 
 .buttons.style1 .button {
-    color: #835231;
-    border: solid 2px #835231;
+    color: #10100e;
+    border: solid 0.2px #10100e;
+    border-bottom-width: 0;
 }
 
 .buttons.style1 .button:hover {
     color: #ffffff;
-    background-color: #835231 !important;
+    background-color: #10100e !important;
 }
 .buttons.style1 .button svg {
-    fill:  #835231 !important;
+    fill:  #10100e !important;
 }
 .buttons.style1 .button:hover svg {
     fill:  #ffffff !important;
@@ -717,8 +720,7 @@ p.style2 a:hover {
     -webkit-justify-content: center;
     -ms-justify-content: center;
     justify-content: center;
-    background-color: #F4EFF3;
-    border-radius: 1.75rem;
+    background-color: #ffffe3;
 }
 
 .container.style1>.wrapper {
@@ -927,16 +929,15 @@ p.style2 a:hover {
     h2.style1,
     h3.style1,
     p.style1 {
-        color: #835231;
-        font-family: 'Archivo', sans-serif;
+        color: #10100e;
+        font-family: 'Manrope', sans-serif;
         font-size: 3rem;
         line-height: 1.575;
     }
 
     h1.style5,
     h2.style5,
-    h3.style5,
-    p.style5 {
+    h3.style5 {
         letter-spacing:-0.03em;
         width: 100%;
         font-size: 1em;
@@ -958,8 +959,8 @@ p.style2 a:hover {
     h3.style2,
     p.style2 {
         text-align: left;
-        color: #835231;
-        font-family: 'Archivo', sans-serif;
+        color: #10100e;
+        font-family: 'Manrope', sans-serif;
         font-size: 1.1rem;
         line-height: 1.65;
         font-weight: 450;

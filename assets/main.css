@@ -424,7 +424,6 @@ h3.style1,
 p.style1 br+br {
     margin-top: 0.675rem;
 }
-h1.style1,
 h2.style1,
 h3.style1,
 p.style1 {
@@ -436,7 +435,14 @@ p.style1 {
     line-height: 1.125;
     font-weight: 500;
 }
-
+h1.style1{
+    font-family: 'PT Mono', monospace;
+    color: #10100e;
+    letter-spacing:-0.018em;
+    font-size: 3.5rem !important;
+    line-height: 1.125;
+    font-weight: 500;
+}
 h1.style1 a,
 h2.style1 a,
 h3.style1 a,
@@ -450,10 +456,8 @@ h3.style1 a:hover,
 p.style1 a:hover {
     text-decoration: none;
 }
-.nanum {
-    font-size: 1.7rem;
-    font-family: 'Nanum Pen Script', cursive;
-}
+.nanum {font-family: 'PT Mono', monospace; sans-serif; font-size: 1.2rem;
+    line-height: 1.5rem;}
 h1.style5,
 h2.style5,
 h3.style5 {
@@ -875,7 +879,7 @@ p.style2 a:hover {
 
 @media (max-width: 1280px) {
     #my-img{
-        width: 50%;
+        width: 40%;
         height: auto;
     }
 }
@@ -888,7 +892,7 @@ p.style2 a:hover {
         font-size: 50pt;
     }
     #my-img{
-        width: 50%;
+        width: 40%;
         height: auto;
     }
 }
@@ -930,7 +934,7 @@ p.style2 a:hover {
     h3.style1,
     p.style1 {
         color: #10100e;
-        font-family: 'Inter', sans-serif;
+        font-family: 'PT Mono', monospace;
         font-size: 3rem;
         line-height: 1.575;
     }
@@ -1141,7 +1145,7 @@ p.style2 a:hover {
         text-align: inherit !important;
     }
     #my-img{
-        width: 50%;
+        width: 40%;
         height: auto;
     }
 }
@@ -1167,7 +1171,7 @@ p.style2 a:hover {
         margin-bottom: 1.203125rem;
     }
     #my-img{
-        width: 50%;
+        width: 40%;
         height: auto;
     }
 }
@@ -1302,13 +1306,21 @@ p.style2 a:hover {
         min-height: 15rem;
     }
     #my-img{
-        width: 50%;
+        width: 40%;
         height: auto;
     }
 }
 #my-img{
   width: 60%;
   height: auto;
+  border-radius: 50%;
+  transition: transform .2s;
+    position: relative;
+}
+#my-img:hover{
+   transform: scale(1.2);
+   
+
 }
 
 .socico2 {

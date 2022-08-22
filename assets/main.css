@@ -160,7 +160,7 @@ textarea {
 
 body {
     min-width: 320px;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     min-height: 100vh;
     line-height: 1.0;
     word-wrap: break-word;
@@ -182,7 +182,7 @@ em {
 }
 
 code {
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: normal;
     text-indent: 0;
     letter-spacing: 0;
@@ -429,7 +429,7 @@ h2.style1,
 h3.style1,
 p.style1 {
     color: #10100e;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     letter-spacing:-0.018em;
     width: 100%;
     font-size: 3.5rem;
@@ -468,7 +468,7 @@ h1.style5,
 h2.style5,
 h3.style5{
     color: #10100e;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1.1em;
     line-height: 1.875;
     font-weight: 400;
@@ -499,7 +499,7 @@ h2.style3,
 h3.style3,
 p.style3 {
     color: #10100e;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
   /*  text-shadow: 1px 3px 10px rgba(0, 0, 0, 0.39); */
     font-size: 1.34rem;
     line-height: 1.875;
@@ -533,7 +533,7 @@ h3.style2,
 p.style2 {
     text-align: left;
     color: #10100e;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1.1em;
     line-height: 1.75;
     font-weight: 400;
@@ -600,7 +600,7 @@ p.style2 a:hover {
     vertical-align: middle;
     padding: 0 1.625rem;
     font-size: 1.5em;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
 
     -moz-justify-content: flex-end;
@@ -930,7 +930,7 @@ p.style2 a:hover {
     h3.style1,
     p.style1 {
         color: #10100e;
-        font-family: 'Manrope', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-size: 3rem;
         line-height: 1.575;
     }
@@ -960,7 +960,7 @@ p.style2 a:hover {
     p.style2 {
         text-align: left;
         color: #10100e;
-        font-family: 'Manrope', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-size: 1.1rem;
         line-height: 1.65;
         font-weight: 450;

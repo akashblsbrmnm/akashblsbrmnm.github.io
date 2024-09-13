@@ -1,140 +1,147 @@
-<!DOCTYPE HTML>
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="en" class="light">
 <head>
-	<title>Akash D B</title>
-	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<meta charset="utf-8" />
-	<link rel="icon" type="image/x-icon" href="assets/images/pfp.png">
-	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-	<meta name="description" content="Akash D B &ndash; Software developer, Tech enthusiast" />
-	<meta property="og:site_name" content="Akash D B" />
-	<meta property="og:title" content="Akash D B" />
-	<meta property="og:type" content="website" />
-	<meta property="og:description" content="Akash D B &ndash; Software developer, Tech enthusiast" />
-	<meta property="og:image" content="assets/images/share.png" />
-	<meta name="author" content="Akash D B" />
-	<meta name="keywords" content="software developer,developer,web dev,tech" />
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content="https://akashblsbrmnm.github.io/" />
-	<meta property="twitter:title" content="mydarkstar" />
-	<meta property="twitter:description" content="Akash D B &ndash; Software developer, Tech enthusiast" /><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/main.css" />
-	<noscript>
-		<link rel="stylesheet" href="assets/noscript.css" />
-	</noscript>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akash Balasubhramanyam - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: "#111111",
+                        light: "#fcfbf7",
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=EB+Garamond:ital@0;1&family=Space+Mono&display=swap');
+        .text-shadow-glow-subtle {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        .font-garamond {
+            font-family: 'EB Garamond', serif;
+            font-style: italic;
+        }
+        .hover-underline-animation {
+            display: inline;
+            background-image: linear-gradient(currentColor, currentColor);
+            background-size: 0 1px;
+            background-position: 0 100%;
+            background-repeat: no-repeat;
+            transition: background-size 0.3s ease-in-out;
+        }
+        .bio-container:hover .hover-underline-animation {
+            background-size: 100% 1px;
+        }
+        .nav-link {
+            font-family: 'Inter', sans-serif;
+            transition: color 0.3s ease;
+            position: relative;
+            text-decoration: none;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: currentColor;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .nav-link:hover {
+            color: #000000;
+        }
+        .dark .nav-link:hover {
+            color: #ffffff;
+        }
+        @media (min-width: 640px) {
+            .nav-container {
+                display: grid;
+                grid-template-columns: repeat(6, auto);
+                justify-content: center;
+                gap: 2rem;
+            }
+        }
+        .font-space-mono {
+            font-family: 'Space Mono', monospace;
+        }
+    </style>
 </head>
-<body class="is-loading">
-	<div id="wrapper">
-		<div id="main">
-			<div class="inner">
-				<div id="container01" class="style1 container columns">
-					<div class="wrapper">
-						<div class="inner">
-							<div>
-								<p><img id="my-img" src="assets/images/pfp.png" </p>
-								<h1 id="text02"
-										class="style1">>_ aka.sh</h1>
-									<p id="text04" class="style5">Software Dev<br>Machine Learning Enthusiast<br>and a Photographer too : )</p>
-									<div class="social-icons">
-										<ul id="socico" class="social1">
-											<li class="socico2">
-												<a href="https://github.com/akashblsbrmnm">
-														<i class="fa fa-github" style="font-size:40px"></i>
-												</a>
-											</li>
-											<li class="socico2">
-												<a href="mailto:connectwithakash.expulsion520@simplelogin.fr">
-													<img src="assets/images/gmail.svg" width="40" height="40">
-												</a>
-											</li>
-									</div>
-									<br> <br>
-									<h3 id="text01" class="style3">Find me on the following platforms</h3>
-									<ul id="buttons01" class="style1 buttons">
-										<li>
-											<a href="" class="button n01">
-												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-													fill="currentColor" class="bi bi-file-earmark-text-fill"
-													viewBox="0 0 16 16">
-													<path
-														d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z" />
-												</svg>
-												<span class="label">Resume</span></a>
-										</li>
-										<li>
-											<a target="_blank"
-												href="https://github.com/akashblsbrmnm"
-												class="button n01">
-												<i class="fa fa-github" style="font-size:22px"></i>
-												<span class="label">GitHub</span></a>
-										</li>
-										<li>
-											<a target="_blank"
-												href="https://www.linkedin.com/in/akash-balasubhramanyam/"
-												class="button n01">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-													viewBox="0 0 24 24">
-													<path
-														d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-												</svg>
-												<span class="label">LinkedIn</span></a>
-										</li>
-										<li>
-											<a target="_blank" href="https://twitter.com/akashblsbrmnm"
-												class="button n02">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-													viewBox="0 0 24 24">
-													<path
-														d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-												</svg>
-												<span class="label">Twitter</span></a>
-										</li>
-										<li>
-											<a href="https://medium.com/@akashblsbrmnm" class="button n04">
-												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-													fill="currentColor" class="bi bi-medium" viewBox="0 0 16 16">
-													<path
-														d="M9.025 8c0 2.485-2.02 4.5-4.513 4.5A4.506 4.506 0 0 1 0 8c0-2.486 2.02-4.5 4.512-4.5A4.506 4.506 0 0 1 9.025 8zm4.95 0c0 2.34-1.01 4.236-2.256 4.236-1.246 0-2.256-1.897-2.256-4.236 0-2.34 1.01-4.236 2.256-4.236 1.246 0 2.256 1.897 2.256 4.236zM16 8c0 2.096-.355 3.795-.794 3.795-.438 0-.793-1.7-.793-3.795 0-2.096.355-3.795.794-3.795.438 0 .793 1.699.793 3.795z" />
-												</svg>
-												<span class="label">Medium</span></a>
-										</li>
-										<li>
-											<a href="https://t.me/SpaceEggs"
-												class="button n04">
-												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-													fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
-													<path
-														d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z" />
-												</svg>
-												<span class="label">Telegram</span></a>
-										</li>
-										<li>
-											<a href="https://www.instagram.com/akashblsbrmnm/" class="button n04">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-													viewBox="0 0 24 24">
-													<path
-														d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-												</svg>
-												<span class="label">Instagram</span></a>
-										</li>
-									</ul>
-							</div>
-							<div>
-								<h3 id="text03" class="style3">About my current activities</h3>
-								<p id="text05" class="style2"><span>Currently, working as a Systems Engineer at Infosys. 👨🏻‍💻<br>Skilled in C/Embedded-C, RDK Stack, Pyhton 🐍, and Linux.</span><br /><br /></p>
-								<h3 id="text03" class="style3">What i do</h3>
-								<p id="text05" class="style2">> Software Development<br>> Web Development/ Design<br>> UI/UX/Graphic Designing<br>> Photography</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script src="assets/main.js"></script>
-</body>
+<body class="bg-light dark:bg-dark text-dark dark:text-white min-h-screen flex flex-col font-['Inter'] transition-colors duration-300">
+    <div class="absolute top-8 right-8 z-10">
+        <button id="themeToggle" class="p-2 rounded-lg bg-dark dark:bg-light text-light dark:text-dark w-10 h-10 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+        </button>
+    </div>
+    <main class="flex-grow flex items-center justify-center py-32">
+        <div class="text-center max-w-4xl mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-2 tracking-tighter leading-none text-shadow-glow-subtle">
+                Akash <span class="font-garamond font-normal">Balasubhramanyam</span>
+            </h1>
+            <p class="text-xl md:text-2xl font-semibold mb-8">
+                <span class="text-gray-600 dark:text-[#C9C9C9]">Sometimes i write code &</span>
+                <span class="bg-gradient-to-r from-[#9C83FF] to-[#FF9051] text-transparent bg-clip-text">It just works</span>
+            </p>
+            <div class="bio-container max-w-3xl mx-auto mb-16 text-base md:text-lg font-garamond font-normal italic">
+                <p class="mb-4">
+                    <span class="hover-underline-animation">I am a Software Developer with 1.5+ years of experience with a strong background in feature development and system optimization for RDK-B platforms. Proficient in C/C++, Linux Shell Scripting, Autotools, Python and Java.</span>
+                </p>
+                <p>
+                    <span class="hover-underline-animation">My expertise lies in feature development and integration into RDK-B. I have extensive experience with Bash scripting and autotools to streamline the compilation and build process. This ensures efficient and reliable development workflows, contributing to robust and high-performance systems.</span>
+                </p>
+            </div>
+            <nav class="nav-container flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-8">
+                <a href="https://github.com/akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">Github</a>
+                <a href="/resume" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">Resume</a>
+                <a href="https://www.linkedin.com/in/akash-balasubhramanyam/" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">LinkedIn</a>
+                <a href="https://instagram.com/akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">Instagram</a>
+                <a href="https://x.com/akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">X</a>
+                <a href="https://medium.com/@akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">Blog</a>
+                <a href="mailto:connectwithakash.expulsion520@simplelogin.fr" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">Contact</a>
+            </nav>
+        </div>
+    </main>
+    <footer class="w-full mt-8 py-4 border-t border-gray-300 dark:border-gray-700">
+        <p class="text-center font-space-mono text-sm uppercase cursor-pointer" onclick="rickRoll()">
+            CLICK HERE TO GET OUT OF THE MATRIX :]
+        </p>
+    </footer>
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
 
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            updateIcon();
+        });
+
+        function updateIcon() {
+            const isDark = html.classList.contains('dark');
+            themeToggle.innerHTML = isDark
+                ? '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>'
+                : '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>';
+        }
+
+        function rickRoll() {
+            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        }
+
+        // Initialize icon on page load
+        updateIcon();
+    </script>
+</body>
 </html>

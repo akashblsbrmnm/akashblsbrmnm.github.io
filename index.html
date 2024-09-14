@@ -28,43 +28,30 @@
             font-family: 'EB Garamond', serif;
             font-style: italic;
         }
-        .hover-underline-animation {
-            display: inline;
-            background-image: linear-gradient(currentColor, currentColor);
-            background-size: 0 1px;
-            background-position: 0 100%;
-            background-repeat: no-repeat;
-            transition: background-size 0.3s ease-in-out;
+
+        .nav-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
         }
-        .bio-container:hover .hover-underline-animation {
-            background-size: 100% 1px;
+        
+        @media (min-width: 640px) {
+            .nav-container {
+                gap: 2rem;
+            }
         }
         .nav-link {
-            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             transition: color 0.3s ease;
-            position: relative;
-            text-decoration: none;
-            display: inline-block; /* Change from inline to inline-block */
         }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: currentColor;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease-out;
-        }
-        .nav-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
+        
         .nav-link:hover {
             color: #000000;
         }
+        
         .dark .nav-link:hover {
             color: #ffffff;
         }
@@ -153,6 +140,11 @@
             transform: translateX(-50%);
             animation: bounce 2s infinite;
         }
+        .interests-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {
@@ -194,7 +186,7 @@
                         <span>Github</span>
                         <i data-lucide="github" class="w-5 h-5"></i>
                     </a>
-                    <a href="mailto:connectwithakash.expulsion520@simplelogin.fr" class="button button-outlined flex items-center space-x-2">
+                    <a href="mailto:akashatworkk@gmail.com" class="button button-outlined flex items-center space-x-2">
                         <span>Contact Me</span>
                         <i data-lucide="mail" class="w-5 h-5"></i>
                     </a>
@@ -216,8 +208,15 @@
                     </div>
                     <!-- HIGHLIGHT: Increased max-width for larger content area -->
                     <div class="max-w-2xl text-center md:text-left">
-                        <p class="text-base md:text-lg font-space-mono font-weight-900">
-                            I am a Software Developer with 2+ years of experience with a strong background in feature development and system optimization for RDK-B platforms. I work with C/C++, Linux Shell Scripting, CMake, AutoConf etc.. I'm also familiar with development using Python and Java. Additionally, I'm a Photographer, Editor and Graphic designer who have worked in several indie films and Art projects ^~^
+                        <p class="text-base md:text-lg font-space-mono">
+                        I am a Software Developer with 2+ years of experience with a strong background in feature development and system optimization for RDK-B platforms. I work with C/C++, Linux Shell Scripting, CMake, AutoConf etc..
+                        </p>
+                        <p class="text-base md:text-lg font-space-mono">
+                            Additionally, I do Photography, direct and edit movies and sometimes Graphic designs too :p ^~^
+                        </p>
+                        <p class="text-base md:text-lg interests-container">
+                            <i data-lucide="heart" class="w-5 h-5 text-red-500"></i>
+                            <span><span class="font-bold">Interests: </span> Photography, Movies, Music & Science Fiction</span>
                         </p>
                     </div>
                 </div>
@@ -237,6 +236,43 @@
                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/python.svg" alt="Python" class="tech-icon">
                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/langchain.svg" alt="langchain" class="tech-icon">
                 </div>
+            </div>
+        </section>
+
+        <!-- Navigation Links Section -->
+        <section id="links" class="section py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center font-space-mono">Connect with me</h2>
+                <nav class="nav-container">
+                    <a href="https://github.com/akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
+                        <i data-lucide="github" class="w-6 h-6"></i>
+                        Github
+                    </a>
+                    <a href="/resume" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
+                        <i data-lucide="file-text" class="w-6 h-6"></i>
+                        Resume
+                    </a>
+                    <a href="https://www.linkedin.com/in/akash-balasubhramanyam/" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
+                        <i data-lucide="linkedin" class="w-6 h-6"></i>
+                        LinkedIn
+                    </a>
+                    <a href="https://instagram.com/akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
+                        <i data-lucide="instagram" class="w-6 h-6"></i>
+                        Instagram
+                    </a>
+                    <a href="https://x.com/akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
+                        <i data-lucide="twitter" class="w-6 h-6"></i>
+                        X/Twitter
+                    </a>
+                    <a href="https://medium.com/@akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
+                        <i data-lucide="book-open" class="w-6 h-6"></i>
+                        Blog
+                    </a>
+                    <a href="mailto:akashatworkk@gmail.com" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                        Contact
+                    </a>
+                </nav>
             </div>
         </section>
 

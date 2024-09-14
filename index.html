@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Akash Balasubhramanyam - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -43,6 +44,7 @@
             transition: color 0.3s ease;
             position: relative;
             text-decoration: none;
+            display: inline-block; /* Change from inline to inline-block */
         }
         .nav-link::after {
             content: '';
@@ -76,14 +78,30 @@
         }
         .tech-icon:hover {
             filter: invert(0);
-            transform: scale(1.1);
+            transform: scale(1.5);
         }
         .dark .tech-icon:hover {
             filter: invert(1);
-            transform: scale(1.1);
+            transform: scale(1.5);
         }
         .dark .tech-icon:hover {
             filter: invert(1);
+        }
+        .squircle {
+            width: 350px;
+            height: 350px;
+            border-radius: 100%;
+            overflow: hidden;
+        }
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         @media (min-width: 640px) {
             .nav-container {
@@ -92,13 +110,64 @@
                 justify-content: center;
                 gap: 2rem;
             }
+            .squircle {
+                width: 200px;
+                height: 200px;
+            }
         }
         .font-space-mono {
             font-family: 'Space Mono', monospace;
         }
+        .footer-text {
+            transition: letter-spacing 0.8s ease;
+        }
+        .footer-text:hover {
+            letter-spacing: 4px;
+        }
+        .button {
+            font-size: 17px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 980px;
+            transition: all 0.3s ease;
+        }
+        .button-filled {
+            background-color: #ff8c00;
+            color: #000000;
+        }
+        .button-filled:hover {
+            transform: scale(1.15);
+        }
+        .button-outlined {
+            background-color: #007AFF;
+            border: 2px solid #007AFF;
+            color: #FFFFFF;
+        }
+        .button-outlined:hover {
+            transform: scale(1.15);
+        }
+        .chevron-down {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
     </style>
 </head>
-<body class="bg-light dark:bg-dark text-dark dark:text-white min-h-screen flex flex-col font-['Inter'] transition-colors duration-300">
+<body class="bg-light dark:bg-dark text-dark dark:text-white min-h-screen flex flex-col font-['Inter'] transition-colors duration-300"></body>
     <div class="absolute top-8 right-8 z-10">
         <button id="themeToggle" class="p-2 rounded-lg bg-dark dark:bg-light text-light dark:text-dark w-10 h-10 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
@@ -106,35 +175,60 @@
             </svg>
         </button>
     </div>
-    <main class="flex-grow flex items-center justify-center py-32">
-        <div class="text-center max-w-4xl mx-auto px-4">
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-2 tracking-tighter leading-none text-shadow-glow-subtle">
-                Akash <span class="font-garamond font-normal">Balasubhramanyam</span>
-            </h1>
-            <p class="text-xl md:text-2xl font-semibold mb-8">
-                <span class="text-gray-600 dark:text-[#C9C9C9]">Sometimes i write code &</span>
-                <span class="bg-gradient-to-r from-[#9C83FF] to-[#FF9051] text-transparent bg-clip-text">It just works</span>
-            </p>
-            <div class="bio-container max-w-3xl mx-auto mb-16 text-base md:text-lg font-garamond font-normal italic">
-                <p class="mb-4">
-                    <span class="hover-underline-animation">I am a Software Developer with 2+ years of experience with a strong background in feature development and system optimization for RDK-B platforms. I work with C/C++, Linux Shell Scripting, CMake, AutoConf etc.. I'm also familiar with development using Python and Java.</span>
+
+    <main class="flex-grow flex flex-col">
+        <!-- Hero Section -->
+        <section class="flex items-center justify-center min-h-screen">
+            <div class="text-center max-w-4xl mx-auto px-4">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-2 tracking-tighter leading-none text-shadow-glow-subtle">
+                    Akash <span class="font-garamond font-normal">Balasubhramanyam</span>
+                </h1>
+                <p class="text-xl md:text-2xl font-semibold mb-8">
+                    <span class="text-gray-600 dark:text-[#C9C9C9]">Sometimes i write code &</span>
+                    <span class="bg-gradient-to-r from-[#9C83FF] to-[#FF9051] text-transparent bg-clip-text">It just works</span>
                 </p>
-                <p>
-                    <span class="hover-underline-animation">I'm also a Photographer, Editor and Modern Artist who have worked in several indie films and Art projects. That's a hobby for me ^~^</span>
-                </p>
+
+                <!-- Buttons -->
+                <div class="flex justify-center space-x-4 mb-12">
+                    <a href="https://github.com/akashblsbrmnm/" class="button button-filled flex items-center space-x-2">
+                        <span>Github</span>
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                    </a>
+                    <a href="mailto:connectwithakash.expulsion520@simplelogin.fr" class="button button-outlined flex items-center space-x-2">
+                        <span>Contact Me</span>
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+                </div>
             </div>
-            <nav class="nav-container flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-8">
-                <a href="https://github.com/akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">Github</a>
-                <a href="/resume" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">Resume</a>
-                <a href="https://www.linkedin.com/in/akash-balasubhramanyam/" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">LinkedIn</a>
-                <a href="https://instagram.com/akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">Instagram</a>
-                <a href="https://x.com/akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">X/Twitter</a>
-                <a href="https://medium.com/@akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">Blog</a>
-                <a href="mailto:connectwithakash.expulsion520@simplelogin.fr" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">Contact</a>
-            </nav>
-            <section class="mt-24">
-                <h2 class="text-7xl font-bold mb-12 font-space-mono text-sm uppercase">What I fiddle with....</h2>
-                <div class="grid grid-cols-3 sm:grid-cols-5 gap-12 justify-items-center">
+            <!-- Add the chevron-down icon -->
+            <div class="chevron-down">
+                <i data-lucide="chevron-down" class="w-8 h-8"></i>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="section py-20 bg-gray-100 dark:bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center font-garamond">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center md:items-start justify-center space-y-8 md:space-y-0 md:space-x-12">
+                    <div class="squircle bg-gray-300 dark:bg-gray-700 flex-shrink-0">
+                        <img src="assets/dp.jpeg" alt="Akash Balasubhramanyam" class="w-full h-full object-cover" />
+                    </div>
+                    <!-- HIGHLIGHT: Increased max-width for larger content area -->
+                    <div class="max-w-2xl text-center md:text-left">
+                        <p class="text-base md:text-lg font-space-mono font-weight-900">
+                            I am a Software Developer with 2+ years of experience with a strong background in feature development and system optimization for RDK-B platforms. I work with C/C++, Linux Shell Scripting, CMake, AutoConf etc.. I'm also familiar with development using Python and Java. Additionally, I'm a Photographer, Editor and Graphic designer who have worked in several indie films and Art projects ^~^
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section py-20">
+            <div class="container mx-auto px-8 sm:px-16">
+                <h2 class="text-3xl font-bold mb-12 text-center font-space-mono">What I fiddle with....</h2>
+                <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-8 justify-items-center">
                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/c.svg" alt="C" class="tech-icon">
                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/cplusplus.svg" alt="C++" class="tech-icon">
                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/gnubash.svg" alt="GNU Bash" class="tech-icon">
@@ -143,15 +237,31 @@
                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/python.svg" alt="Python" class="tech-icon">
                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/langchain.svg" alt="langchain" class="tech-icon">
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+
     </main>
     <footer class="w-full mt-8 py-4 border-t border-gray-300 dark:border-gray-700">
-        <p class="text-center font-space-mono text-sm uppercase cursor-pointer" onclick="rickRoll()">
+        <p class="text-center font-space-mono text-sm uppercase cursor-pointer footer-text" onclick="rickRoll()">
             CLICK HERE TO GET OUT OF THE MATRIX :]
         </p>
     </footer>
     <script>
+        lucide.createIcons();
+        // Scroll reveal effect
+        function revealSections() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight * 0.75) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealSections);
+        window.addEventListener('load', revealSections);
         const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
 

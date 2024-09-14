@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: "#111111",
+                        dark: "#0a0a0a",
                         light: "#fcfbf7",
                     },
                 },
@@ -21,7 +21,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=EB+Garamond:ital@0;1&family=Space+Mono&display=swap');
         .text-shadow-glow-subtle {
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.419);
         }
         .font-garamond {
             font-family: 'EB Garamond', serif;
@@ -65,6 +65,25 @@
         }
         .dark .nav-link:hover {
             color: #ffffff;
+        }
+        .tech-icon {
+            width: 64px;
+            height: 64px;
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+        .tech-icon {
+            filter: invert(0.4);
+        }
+        .tech-icon:hover {
+            filter: invert(0);
+            transform: scale(1.1);
+        }
+        .dark .tech-icon:hover {
+            filter: invert(1);
+            transform: scale(1.1);
+        }
+        .dark .tech-icon:hover {
+            filter: invert(1);
         }
         @media (min-width: 640px) {
             .nav-container {
@@ -113,6 +132,18 @@
                 <a href="https://medium.com/@akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">Blog</a>
                 <a href="mailto:connectwithakash.expulsion520@simplelogin.fr" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">Contact</a>
             </nav>
+            <section class="mt-24">
+                <h2 class="text-7xl font-bold mb-12 font-space-mono text-sm uppercase">What I fiddle with....</h2>
+                <div class="grid grid-cols-3 sm:grid-cols-5 gap-12 justify-items-center">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/c.svg" alt="C" class="tech-icon">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/cplusplus.svg" alt="C++" class="tech-icon">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/gnubash.svg" alt="GNU Bash" class="tech-icon">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/linux.svg" alt="Linux" class="tech-icon">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/cmake.svg" alt="CMake" class="tech-icon">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/python.svg" alt="Python" class="tech-icon">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/langchain.svg" alt="langchain" class="tech-icon">
+                </div>
+            </section>
         </div>
     </main>
     <footer class="w-full mt-8 py-4 border-t border-gray-300 dark:border-gray-700">
@@ -124,24 +155,37 @@
         const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
 
-        themeToggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            updateIcon();
-        });
+        // Function to set the theme
+        function setTheme(isDark) {
+            if (isDark) {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+            updateIcon(isDark);
+        }
 
-        function updateIcon() {
-            const isDark = html.classList.contains('dark');
+        // Function to update the icon
+        function updateIcon(isDark) {
             themeToggle.innerHTML = isDark
                 ? '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>'
                 : '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>';
         }
 
-        function rickRoll() {
-            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-        }
+        // Toggle theme when button is clicked
+        themeToggle.addEventListener('click', () => {
+            const isDark = html.classList.toggle('dark');
+            localStorage.setItem('darkMode', isDark);
+            setTheme(isDark);
+        });
 
-        // Initialize icon on page load
-        updateIcon();
+        // Set initial theme based on localStorage or default to dark
+        const savedTheme = localStorage.getItem('darkMode');
+        const initialTheme = savedTheme !== null ? JSON.parse(savedTheme) : true;
+        setTheme(initialTheme);
+        function rickRoll() {
+            window.open("https://www.yout-ube.com/watch?v=dQw4w9WgXcQ", "_blank");
+        }
     </script>
 </body>
 </html>

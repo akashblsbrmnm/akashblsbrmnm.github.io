@@ -21,7 +21,7 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=EB+Garamond:ital@0;1&family=Space+Mono&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=EB+Garamond:ital@0;1&family=Space+Mono&display=swap');
         .text-shadow-glow-subtle {
             text-shadow: 0 0 12px rgba(255, 255, 255, 0.419);
         }
@@ -189,6 +189,90 @@
         .rdk-hover:hover::after {
             opacity: 1;
         }
+        
+        .project-thumbnail {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            aspect-ratio: 2 / 1;
+        }
+        
+        .project-thumbnail:hover {
+            transform: scale(1.05);
+        }
+        
+        .project-thumbnail:hover .redirect-icon {
+            opacity: 1;
+        }
+        
+        .redirect-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .redirect-icon svg {
+            color: white;
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .read-more {
+            font-family: 'Space Mono', monospace;
+            text-transform: uppercase;
+            text-decoration: underline;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        @media (max-width: 640px) {
+            .projects-container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            
+            .project-tile {
+                margin-bottom: 1rem;
+                margin-left: 1rem;
+                margin-right: 1rem;
+
+            }
+        }
+        
+        .repo-actions {
+            display: flex;
+            justify-content: flex-start;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .repo-action {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+            color: #718096;
+            transition: color 0.3s ease;
+        }
+        
+        .repo-action:hover {
+            color: #2d3748;
+        }
+        
+        .dark .repo-action:hover {
+            color: #e2e8f0;
+        }
     </style>
 </head>
 <body class="bg-light dark:bg-dark text-dark dark:text-white min-h-screen flex flex-col font-['Inter'] transition-colors duration-300"></body>
@@ -218,7 +302,7 @@
                         <span>Github</span>
                         <i data-lucide="github" class="w-5 h-5"></i>
                     </a>
-                    <a href="mailto:akashatworkk@gmail.com" class="button button-outlined flex items-center space-x-2">
+                    <a href="mailto:sam@gmail.com" class="button button-outlined flex items-center space-x-2">
                         <span>Contact Me</span>
                         <i data-lucide="mail" class="w-5 h-5"></i>
                     </a>
@@ -240,11 +324,13 @@
                     </div>
                     <div class="max-w-2xl text-center md:text-left">
                         <p class="about-text font-space-mono">
-                            Hi there! 👋 I'm a C Developer from India with 2+ years of experience in feature development and system enhancement for <span class="rdk-hover font-bold">RDK-B</span> platforms. I specialize in integrating and enhancing features for robust, high-performance systems. I'm also skilled in Bash scripting and autotools, streamlining the build process for efficient development workflows.
+                            Hi there! 👋 I'm a C Developer from India with 2+ years of experience in feature development and system enhancement for <span class="rdk-hover font-bold">RDK-B</span> platforms.
+                            <!-- I specialize in integrating and enhancing features for robust, high-performance systems -->
+                            I'm also proficient in Bash scripting and autotools, streamlining the build process for efficient development workflows.
                         </p>
                         <br>
                         <p class="about-text font-space-mono">
-                            I'm also passionate about photography, modern art, and graphic design, and when i'm not coding you'll find me in fiddle with any one of it 📸🎥🎨
+                            I'm also passionate about photography, graphic design and modern arts. When I'm not coding, you'll find me tinkering with one of them.
                         </p>
                         <br>
                         <p class="about-text interests-container">
@@ -307,6 +393,16 @@
                 </nav>
             </div>
         </section>
+       
+        <!-- Projects Section -->
+        <section id="projects" class="section py-20 bg-gray-100 dark:bg-gray-900">
+            <div class="container mx-auto px-4 max-w-6xl projects-container">
+                <h2 class="text-3xl font-bold mb-12 text-center font-space-mono">Projects</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project tiles will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
 
     </main>
     <footer class="w-full mt-8 py-4 border-t border-gray-300 dark:border-gray-700">
@@ -329,8 +425,6 @@
     </script>
 </head>
 <body class="bg-light dark:bg-dark text-dark dark:text-white min-h-screen flex flex-col font-['Inter'] transition-colors duration-300">
-    <!-- ... (body contents remain the same) ... -->
-    
     <script>
         lucide.createIcons();
         
@@ -417,6 +511,76 @@
                 });
             });
         });
+
+        // Project data
+        const projects = [
+            {
+                title: "HLS-Client",
+                description: "This project implements HTTP-Live Streaming Protocol server and player in the client device, using gstreamer multimedia framework",
+                url: "https://github.com/akashblsbrmnm/hlsclient",
+                image: "https://opengraph.githubassets.com/1/akashblsbrmnm/hlsclient"
+            },
+            {
+                title: "Developer Portfolio",
+                description: "This is a developer portfolio made using Tailwind framework, and a little bit of JS",
+                url: "https://github.com/akashblsbrmnm/akashblsbrmnm.github.io",
+                image: "https://opengraph.githubassets.com/1/akashblsbrmnm/akashblsbrmnm.github.io"
+            },
+            {
+                title: "Deep learning : Skin Cancer Classification",
+                description: "This was my project for AI/ML Coursework at the University",
+                url: "https://github.com/akashblsbrmnm/skin-cancer-classifier",
+                image: "https://opengraph.githubassets.com/1/akashblsbrmnm/skin-cancer-classifier"
+            },
+            {
+                title: "Project Y",
+                description: "STILL WORK IN PROGRESS",
+                url: "https://github.com/akashblsbrmnm",
+                image: "https://opengraph.githubassets.com/1/"
+            }
+            
+        ];
+
+        // Function to create project tiles
+        function createProjectTiles() {
+            const projectsContainer = document.querySelector('#projects .grid');
+            projects.forEach(project => {
+                const tile = document.createElement('div');
+                tile.className = 'project-tile';
+                tile.innerHTML = `
+                    <div class="project-thumbnail mb-4">
+                        <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover">
+                        <div class="redirect-icon">
+                            <i data-lucide="external-link"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">${project.title}</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">${project.description}</p>
+                    <a href="${project.url}" target="_blank" class="read-more">
+                        find more   
+                        <i data-lucide="github"></i>
+                    </a>
+                    <div class="repo-actions">
+                        <a href="${project.url}/stargazers" target="_blank" class="repo-action">
+                            <i data-lucide="star"></i>
+                            Star
+                        </a>
+                        <a href="${project.url}/fork" target="_blank" class="repo-action">
+                            <i data-lucide="git-fork"></i>
+                            Fork
+                        </a>
+                    </div>
+                `;
+                const thumbnail = tile.querySelector('.project-thumbnail');
+                thumbnail.addEventListener('click', () => window.open(project.url, '_blank'));
+                projectsContainer.appendChild(tile);
+            });
+            lucide.createIcons();
+        }
+
+        // Call the function to create project tiles
+        createProjectTiles();
+        
     </script>
 </body>
 </html>

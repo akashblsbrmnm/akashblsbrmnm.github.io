@@ -1,585 +1,400 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akash - Portfolio</title>
-    <link rel="icon" href="assets/dp.jpeg" type="image/jpeg">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        dark: "#0a0a0a",
-                        light: "#fcfbf7",
-                    },
-                },
-            },
-        }
-    </script>
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=EB+Garamond:ital@0;1&family=Space+Mono&display=swap');
-        .text-shadow-glow-subtle {
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.419);
-        }
-        .font-garamond {
-            font-family: 'EB Garamond', serif;
-            font-style: italic;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Akash — Embedded & Broadband Software Engineer</title>
 
-        .nav-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        @media (min-width: 640px) {
-            .nav-container {
-                gap: 2rem;
-            }
-        }
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: #000000;
-        }
-        
-        .dark .nav-link:hover {
-            color: #ffffff;
-        }
-        .tech-icon {
-            width: 64px;
-            height: 64px;
-            transition: filter 0.3s ease, transform 0.3s ease;
-        }
-        .tech-icon {
-            filter: invert(0.4);
-        }
-        .tech-icon:hover {
-            filter: invert(0);
-            transform: scale(1.5);
-        }
-        .dark .tech-icon:hover {
-            filter: invert(1);
-            transform: scale(1.5);
-        }
-        .dark .tech-icon:hover {
-            filter: invert(1);
-        }
-        .squircle {
-            width: 256px;
-            height: 260px;
-            border-radius: 100%;
-            overflow: hidden;
-        }
-        .section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Configure Tailwind for dark mode and custom fonts -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Ubuntu', 'system-ui', 'sans-serif'],
+            'mono': ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
+          }
         }
-        @media (min-width: 740px) {
-            .nav-container {
-                display: grid;
-                grid-template-columns: repeat(6, auto);
-                justify-content: center;
-                gap: 2rem;
-            }
-            .squircle {
-                width: 260px;
-                height: 260px;
-            }
-        }
-        .font-space-mono {
-            font-family: 'Space Mono', monospace;
-        }
-        .footer-text {
-            transition: letter-spacing 0.8s ease;
-        }
-        .footer-text:hover {
-            letter-spacing: 4px;
-        }
-        .button {
-            font-size: 17px;
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 980px;
-            transition: all 0.3s ease;
-        }
-        .button-filled {
-            background-color: #ff8c00;
-            color: #000000;
-        }
-        .button-filled:hover {
-            transform: scale(1.15);
-        }
-        .button-outlined {
-            background-color: #007AFF;
-            border: 2px solid #007AFF;
-            color: #FFFFFF;
-        }
-        .button-outlined:hover {
-            transform: scale(1.15);
-        }
-        .chevron-down {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
+      }
+    }
+  </script>
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-20px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-        }
-        .about-text {
-            font-size: 15px; /* Default size for mobile */
-        }
-
-        @media (min-width: 768px) {
-            .about-text {
-                font-size: 19px; /* Larger size for desktop */
-            }
-        }
-
-        .rdk-hover {
-            text-decoration: underline;
-            cursor: pointer;
-            position: relative;
-        }
-        
-        .rdk-hover::after {
-            content: "What is RDK-B?";
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #147eff;
-            color: #282232;
-            padding: 4px 8px;
-            border-radius: 7px;
-            font-size: 16px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-        
-        .rdk-hover:hover::after {
-            opacity: 1;
-        }
-        
-        .project-thumbnail {
-            position: relative;
-            overflow: hidden;
-            border-radius: 0.5rem;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-            aspect-ratio: 2 / 1;
-        }
-        
-        .project-thumbnail:hover {
-            transform: scale(1.05);
-        }
-        
-        .project-thumbnail:hover .redirect-icon {
-            opacity: 1;
-        }
-        
-        .redirect-icon {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .redirect-icon svg {
-            color: white;
-            width: 2rem;
-            height: 2rem;
-        }
-
-        .read-more {
-            font-family: 'Space Mono', monospace;
-            text-transform: uppercase;
-            text-decoration: underline;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-        }
-        @media (max-width: 640px) {
-            .projects-container {
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
-            
-            .project-tile {
-                margin-bottom: 1rem;
-                margin-left: 1rem;
-                margin-right: 1rem;
-
-            }
-        }
-        
-        .repo-actions {
-            display: flex;
-            justify-content: flex-start;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-        
-        .repo-action {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            font-size: 0.875rem;
-            color: #718096;
-            transition: color 0.3s ease;
-        }
-        
-        .repo-action:hover {
-            color: #2d3748;
-        }
-        
-        .dark .repo-action:hover {
-            color: #e2e8f0;
-        }
-    </style>
+  <style>
+    :root {
+      --accent: #0b5dd7;
+      --accent-dark: #3b82f6;
+      --muted: #6b7280;
+    }
+    body { 
+      font-family: 'Ubuntu', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .mono-underline {
+      text-decoration: none; 
+      border-bottom: 2px solid transparent; 
+      transition: border-color .18s, transform .06s; 
+    }
+    .mono-underline:hover { 
+      border-color: var(--accent); 
+      transform: translateY(-1px); 
+    }
+    .dark .mono-underline:hover {
+      border-color: var(--accent-dark);
+    }
+    
+    /* Theme toggle button */
+    .theme-toggle {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .theme-toggle:hover {
+      background: #e2e8f0;
+    }
+    .dark .theme-toggle {
+      border-color: #374151;
+      background: #1f2937;
+    }
+    .dark .theme-toggle:hover {
+      background: #374151;
+    }
+    
+    /* Icon transitions */
+    .theme-icon {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      position: absolute;
+    }
+    .theme-icon.hidden {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    
+    /* subtle router pulsing animation */
+    @keyframes pingOpacity {
+      0% { opacity: .15; transform: scale(1); }
+      70% { opacity: .02; transform: scale(1.6); }
+      100% { opacity: .0; transform: scale(1.9); }
+    }
+    
+    /* Smooth transitions for theme changes */
+    * {
+      transition-property: background-color, border-color, color, fill, stroke;
+      transition-duration: 0.3s;
+      transition-timing-function: ease;
+    }
+  </style>
 </head>
-<body class="bg-light dark:bg-dark text-dark dark:text-white min-h-screen flex flex-col font-['Inter'] transition-colors duration-300"></body>
-    <div class="absolute top-8 right-8 z-10">
-        <button id="themeToggle" class="p-2 rounded-lg bg-dark dark:bg-light text-light dark:text-dark w-10 h-10 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-            </svg>
-        </button>
+<body class="bg-white dark:bg-gray-900 text-slate-900 dark:text-slate-100">
+
+  <!-- Top nav -->
+  <header class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-md bg-gradient-to-tr from-blue-700 to-indigo-600 flex items-center justify-center text-white font-bold">A</div>
+      <div>
+        <div class="text-lg font-semibold">Akash</div>
+      </div>
     </div>
+    <div class="flex items-center gap-4">
+      <nav class="flex items-center gap-4 text-sm">
+        <a href="#projects" class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100">Projects</a>
+        <a href="#experience" class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100">Experience</a>
+        <a href="#contact" class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100">Contact</a>
+        <a href="#" class="mono-underline ml-2 px-3 py-2 bg-slate-100 dark:bg-gray-800 hover:bg-slate-200 dark:hover:bg-gray-700 rounded-md text-sm">Download Resume</a>
+      </nav>
+      <!-- Theme Toggle Button -->
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="theme-icon w-5 h-5 text-slate-600 dark:text-slate-300" id="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+        </svg>
+        <svg class="theme-icon w-5 h-5 text-slate-600 dark:text-slate-300 hidden" id="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
 
-    <main class="flex-grow flex flex-col">
-        <!-- Hero Section -->
-        <section class="flex items-center justify-center min-h-screen">
-            <div class="text-center max-w-4xl mx-auto px-4">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-2 tracking-tighter leading-none text-shadow-glow-subtle">
-                    Akash <span class="font-garamond font-normal">Balasubhramanyam</span>
-                </h1>
-                <p class="text-xl md:text-2xl font-semibold mb-8">
-                    <span class="text-gray-600 dark:text-[#C9C9C9]">Software Developer & </span>
-                    <span class="bg-gradient-to-r from-[#9C83FF] to-[#FF9051] text-transparent bg-clip-text">Designer</span>
-                </p>
-
-                <!-- Buttons -->
-                <div class="flex justify-center space-x-4 mb-12">
-                    <a href="https://github.com/akashblsbrmnm/" class="button button-filled flex items-center space-x-2">
-                        <span>GitHub</span>
-                        <i data-lucide="github" class="w-5 h-5"></i>
-                    </a>
-                    <a href="mailto:akashblsbrmnm@gmail.com" class="button button-outlined flex items-center space-x-2">
-                        <span>Contact Me</span>
-                        <i data-lucide="mail" class="w-5 h-5"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Add the chevron-down icon -->
-            <div class="chevron-down">
-                <i data-lucide="chevron-down" class="w-8 h-8"></i>
-            </div>
-        </section>
-
-        <!-- About Me Section -->
-        <section id="about" class="section py-20 bg-gray-100 dark:bg-gray-900">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-8 text-center font-garamond">About Me</h2>
-                <div class="flex flex-col md:flex-row items-center md:items-start justify-center space-y-8 md:space-y-0 md:space-x-12">
-                    <div class="squircle bg-gray-300 dark:bg-gray-700 flex-shrink-0">
-                        <img src="assets/dp.jpeg" alt="Akash Balasubhramanyam" class="w-full h-full object-cover" />
-                    </div>
-                    <div class="max-w-2xl text-center md:text-left">
-                        <p class="about-text font-space-mono">
-                            Hi there! 👋 I'm a C Developer from India with 2+ years of experience in feature development and system enhancement for <span class="rdk-hover font-bold">RDK-B</span> platforms.
-                            <!-- I specialize in integrating and enhancing features for robust, high-performance systems -->
-                            I'm also proficient in Bash scripting and autotools, streamlining the build process for efficient development workflows.
-                        </p>
-                        <br>
-                        <p class="about-text font-space-mono">
-                            I'm also passionate about photography, graphic design and modern arts. When I'm not coding, you'll find me tinkering with one of them.
-                        </p>
-                        <br>
-                        <p class="about-text interests-container">
-                            <span><span class="font-bold">Interests: </span> Photography, Movies & Science Fiction</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="section py-16">
-            <div class="container mx-auto px-8 sm:px-16">
-                <h2 class="text-3xl font-bold mb-16 text-center font-space-mono">What I fiddle with....</h2>
-                <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-12 place-items-center">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/c.svg" alt="C" class="tech-icon">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/cplusplus.svg" alt="C++" class="tech-icon">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/gnubash.svg" alt="GNU Bash" class="tech-icon">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/linux.svg" alt="Linux" class="tech-icon">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/cmake.svg" alt="CMake" class="tech-icon">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/python.svg" alt="Python" class="tech-icon">
-                </div>
-            </div>
-        </section>
-
-        <!-- Navigation Links Section -->
-        <section id="links" class="section py-16">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-16 text-center font-space-mono">Connect with me</h2>
-                <nav class="nav-container">
-                    <a href="https://github.com/akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
-                        <i data-lucide="github" class="w-6 h-6"></i>
-                        Github
-                    </a>
-                    <a href="/resume" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
-                        <i data-lucide="file-text" class="w-6 h-6"></i>
-                        Resume
-                    </a>
-                    <a href="https://www.linkedin.com/in/akash-balasubhramanyam/" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
-                        <i data-lucide="linkedin" class="w-6 h-6"></i>
-                        LinkedIn
-                    </a>
-                    <a href="https://instagram.com/akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
-                        <i data-lucide="instagram" class="w-6 h-6"></i>
-                        Instagram
-                    </a>
-                    <a href="https://x.com/akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
-                        <i data-lucide="twitter" class="w-6 h-6"></i>
-                        X/Twitter
-                    </a>
-                    <a href="https://medium.com/@akashblsbrmnm" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
-                        <i data-lucide="book-open" class="w-6 h-6"></i>
-                        Blog
-                    </a>
-                    <a href="mailto:akashatworkk@gmail.com" class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
-                        <i data-lucide="mail" class="w-6 h-6"></i>
-                        Contact
-                    </a>
-                </nav>
-            </div>
-        </section>
-       
-        <!-- Projects Section -->
-        <section id="projects" class="section py-20 bg-gray-100 dark:bg-gray-900">
-            <div class="container mx-auto px-4 max-w-6xl projects-container">
-                <h2 class="text-3xl font-bold mb-12 text-center font-space-mono">Projects</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project tiles will be dynamically inserted here -->
-                </div>
-            </div>
-        </section>
-
-    </main>
-    <footer class="w-full py-4 border-t border-gray-300 dark:border-gray-700">
-        <p class="text-center font-space-mono text-sm uppercase cursor-pointer footer-text" onclick="rickRoll()">
-            CLICK HERE TO GET OUT OF THE MATRIX
+  <!-- Hero -->
+  <main class="max-w-6xl mx-auto px-6">
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-[56vh]">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Akash Balasubramaniyam</h1>
+        <h2 class="mt-1 uppercase tracking-wider text-lg text-slate-600 dark:text-slate-300 font-mono">Broadband Software Engineer</h2>
+        <p class="mt-4 text-slate-700 dark:text-slate-300 max-w-xl">
+          I build RDK-B (RDK / RDKB) broadband gateway solutions — middleware in C/C++ on embedded Linux, remote device management (WebPA, WebConfig), networking and Yocto builds. I also explore AI-driven tools for issue triaging and root-cause prediction.
         </p>
-    </footer>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        dark: "#0a0a0a",
-                        light: "#fcfbf7",
-                    },
-                },
-            },
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="resume.pdf" class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-800 text-white rounded-md shadow-sm">
+            Download Resume
+          </a>
+          <a href="#projects" download class="inline-flex items-center gap-2 px-4 py-2 border border-slate-200 dark:border-gray-700 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-gray-800">
+            View projects
+          </a>
+          <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 border border-slate-200 dark:border-gray-700 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-gray-800">
+            Get in touch
+          </a>
+        </div>
+
+        <!-- keywords block -->
+        <div class="mt-6 text-xs text-slate-500 dark:text-slate-400 ">
+          <strong>Keywords:</strong>
+          RDK-B · RDK · RDKB · Broadband · Gateways · WiFi · C · Embedded C · C/C++ · Linux · Yocto · Shell · Networking · WebPA · WebConfig · Gerrit · Git · AI
+        </div>
+      </div>
+
+      <!-- Illustration column -->
+      <div class="relative">
+        <!-- router card -->
+        <div class="bg-gradient-to-br from-slate-50 to-white dark:from-gray-800 dark:to-gray-900 border dark:border-gray-700 rounded-2xl p-6 shadow-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-sm text-slate-400">Featured</div>
+              <div class="text-lg font-semibold dark:text-slate-200">Home Gateway POC</div>
+            </div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 ">RDK-B · Yocto · RBUS</div>
+          </div>
+
+          <div class="mt-6 flex items-center gap-6">
+            <!-- Router SVG with simple waves -->
+            <div class="relative">
+              <svg width="140" height="120" viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- router base -->
+                <rect x="10" y="48" width="120" height="40" rx="8" fill="#0b5dd7" class="dark:fill-blue-500" />
+                <rect x="30" y="28" width="80" height="36" rx="6" fill="#60a5fa" />
+                <!-- lights -->
+                <circle cx="28" cy="68" r="3.5" fill="#fff"/>
+                <circle cx="40" cy="68" r="3.5" fill="#fff"/>
+                <circle cx="52" cy="68" r="3.5" fill="#fff"/>
+                <!-- antenna -->
+                <rect x="72" y="12" width="6" height="20" rx="3" fill="#0b5dd7" class="dark:fill-blue-500" transform="rotate(-12 72 12)"/>
+                <rect x="92" y="14" width="6" height="20" rx="3" fill="#0b5dd7" class="dark:fill-blue-500" transform="rotate(14 92 14)"/>
+                <!-- wifi waves -->
+                <g opacity="0.95" transform="translate(70,44)">
+                  <path d="M0 -22 C18 -22 36 -14 48 -4" stroke="#0ea5e9" stroke-width="3" fill="none" stroke-linecap="round"/>
+                  <path d="M0 -30 C25 -30 50 -18 68 -4" stroke="#7dd3fc" stroke-width="2" fill="none" stroke-linecap="round"/>
+                </g>
+              </svg>
+
+              <!-- pulsing ring -->
+              <div style="position:absolute; left:8px; top:8px; width:140px; height:120px; pointer-events:none;">
+                <svg viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                  <circle cx="70" cy="60" r="36" fill="#0b5dd7" class="dark:fill-blue-500" opacity="0.06" style="animation: pingOpacity 2.6s infinite ease-out;"></circle>
+                </svg>
+              </div>
+            </div>
+
+            <!-- network/cloud icons -->
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 16a4 4 0 010-8 5 5 0 01.72.06" stroke="#0b5dd7" class="dark:stroke-blue-400" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M20 16a4 4 0 00-4-4h-1" stroke="#0b5dd7" class="dark:stroke-blue-400" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 20v-4" stroke="#0b5dd7" class="dark:stroke-blue-400" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div>
+                  <div class="text-sm font-medium dark:text-slate-200">Cloud & Telemetry</div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400 ">RDK telemetry, Parodus</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 5v.01" stroke="#0b5dd7" class="dark:stroke-blue-400" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 12v.01" stroke="#0b5dd7" class="dark:stroke-blue-400" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 19v.01" stroke="#0b5dd7" class="dark:stroke-blue-400" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 8a5 5 0 0110 0" stroke="#0b5dd7" class="dark:stroke-blue-400" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 15a10 10 0 0110 0" stroke="#0b5dd7" class="dark:stroke-blue-400" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div>
+                  <div class="text-sm font-medium dark:text-slate-200">Wi-Fi Diagnostics</div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400">Root cause & triage</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="mt-6 text-xs text-slate-500 dark:text-slate-400 ">
+            RDK-B POC — gateway middleware, RBUS methods, Yocto image, and cloud eventing.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Skills / Icons -->
+    <section class="mt-12 bg-slate-50 dark:bg-gray-800 rounded-2xl p-6">
+      <h3 class="text-xl font-semibold dark:text-slate-200">Core skills</h3>
+      <div class="mt-4 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4">
+        <!-- small icon cards -->
+        <div class="p-3 bg-white dark:bg-gray-700 rounded-lg flex items-center gap-3 border dark:border-gray-600">
+          <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none"><path d="M4 12h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <div class="text-sm dark:text-slate-200">C / C++</div>
+        </div>
+        <div class="p-3 bg-white dark:bg-gray-700 rounded-lg flex items-center gap-3 border dark:border-gray-600">
+          <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none"><path d="M3 12h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <div class="text-sm dark:text-slate-200">Embedded Linux</div>
+        </div>
+        <div class="p-3 bg-white dark:bg-gray-700 rounded-lg flex items-center gap-3 border dark:border-gray-600">
+          <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none"><path d="M5 12h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <div class="text-sm dark:text-slate-200">Yocto</div>
+        </div>
+        <div class="p-3 bg-white dark:bg-gray-700 rounded-lg flex items-center gap-3 border dark:border-gray-600">
+          <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <div class="text-sm dark:text-slate-200">Networking</div>
+        </div>
+        <div class="p-3 bg-white dark:bg-gray-700 rounded-lg flex items-center gap-3 border dark:border-gray-600">
+          <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
+          <div class="text-sm dark:text-slate-200">WebPA / WebConfig</div>
+        </div>
+        <div class="p-3 bg-white dark:bg-gray-700 rounded-lg flex items-center gap-3 border dark:border-gray-600">
+          <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M9 17h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <div class="text-sm dark:text-slate-200">Git / Gerrit</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="mt-10">
+      <h3 class="text-2xl font-semibold dark:text-slate-200">Selected projects</h3>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        <article class="border dark:border-gray-700 rounded-lg p-5 bg-white dark:bg-gray-800 shadow-sm">
+          <div class="flex items-start justify-between">
+            <div>
+              <h4 class="font-semibold dark:text-slate-200">RDK-B Remote Method Invocation (POC)</h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 ">RBUS · Parodus · Cloud → Device</p>
+            </div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 ">2025</div>
+          </div>
+          <p class="mt-3 text-slate-700 dark:text-slate-300 text-sm">Implemented cloud-initiated RBUS method invocation via Parodus to invoke device methods (e.g., reboot, diagnostics). Designed JSON method payload parsing and RBUS routing logic.</p>
+        </article>
+
+        <article class="border dark:border-gray-700 rounded-lg p-5 bg-white dark:bg-gray-800 shadow-sm">
+          <div class="flex items-start justify-between">
+            <div>
+              <h4 class="font-semibold dark:text-slate-200">Custom Yocto Router Image</h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 ">Yocto · Bitbake · QEMU</p>
+            </div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 ">2024</div>
+          </div>
+          <p class="mt-3 text-slate-700 dark:text-slate-300 text-sm">Built a minimal Yocto distribution for an ARM router target, integrated custom packages and created recipes for embedded network utilities.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="mt-10">
+      <h3 class="text-2xl font-semibold dark:text-slate-200">Experience</h3>
+      <div class="mt-4 space-y-4">
+        <div class="p-4 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-lg">
+          <div class="flex justify-between items-start">
+            <div>
+              <h4 class="font-semibold dark:text-slate-200">C Developer — RDK-Broadband</h4>
+              <div class="text-xs text-slate-500 dark:text-slate-400 ">2023 — Present</div>
+            </div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 ">Full-time</div>
+          </div>
+          <ul class="mt-3 text-sm text-slate-700 dark:text-slate-300 list-disc pl-5">
+            <li>Developed and maintained middleware for remote device management (WebPA, WebConfig).</li>
+            <li>Implemented RBUS method handlers, cloud event parsing, and telemetry flows.</li>
+            <li>Workflows: Yocto builds, Gerrit code review, debugging kernel/user-space networking issues.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mt-10 mb-16 p-6 bg-slate-50 dark:bg-gray-800 rounded-2xl">
+      <h3 class="text-2xl font-semibold dark:text-slate-200">Contact</h3>
+      <div class="mt-4 md:flex md:items-center md:justify-between">
+        <div>
+          <p class="text-sm text-slate-700 dark:text-slate-300">Email: <a href="mailto:youremail@example.com" class="text-blue-600 dark:text-blue-400 ">youremail@example.com</a></p>
+          <p class="text-sm text-slate-700 dark:text-slate-300 mt-1">GitHub: <a href="https://github.com/yourgithub" class="text-blue-600 dark:text-blue-400 ">github.com/yourgithub</a></p>
+          <p class="text-sm text-slate-700 dark:text-slate-300 mt-1">LinkedIn: <a href="https://linkedin.com/in/yourlinkedin" class="text-blue-600 dark:text-blue-400 ">linkedin.com/in/yourlinkedin</a></p>
+        </div>
+        <div class="mt-4 md:mt-0">
+          <a class="inline-block px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md" href="#">Download CV</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t dark:border-gray-700 text-xs text-slate-500 dark:text-slate-400 py-6 mt-8">
+    <div class="max-w-6xl mx-auto px-6 ">Made with more bugs than caffeine ☕🐛.</div>
+  </footer>
+
+  <script>
+    // Theme toggle functionality
+    function toggleTheme() {
+      const html = document.documentElement;
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+      
+      if (html.classList.contains('dark')) {
+        // Switch to light mode
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        // Switch to dark mode
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    }
+    
+    // Initialize theme on page load
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+      
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      } else {
+        document.documentElement.classList.remove('dark');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      }
+    }
+    
+    // Run on page load
+    initTheme();
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addListener((e) => {
+      if (!localStorage.getItem('theme')) {
+        if (e.matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
         }
-    </script>
-</head>
-<body class="bg-light dark:bg-dark text-dark dark:text-white min-h-screen flex flex-col font-['Inter'] transition-colors duration-300">
-    <script>
-        lucide.createIcons();
-        
-        // Scroll reveal effect
-        function revealSections() {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (sectionTop < windowHeight * 0.75) {
-                    section.classList.add('visible');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', revealSections);
-        window.addEventListener('load', revealSections);
-
-        const themeToggle = document.getElementById('themeToggle');
-        const html = document.documentElement;
-
-        // Function to set the theme
-        function setTheme(isDark) {
-            if (isDark) {
-                html.classList.add('dark');
-            } else {
-                html.classList.remove('dark');
-            }
-            updateIcon(isDark);
-            localStorage.setItem('darkMode', isDark);
-        }
-
-        // Function to update the icon
-        function updateIcon(isDark) {
-            themeToggle.innerHTML = isDark
-                ? '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>'
-                : '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>';
-        }
-
-        // Function to get system preference
-        function getSystemPreference() {
-            return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        }
-
-        // Function to set initial theme
-        function setInitialTheme() {
-            const savedTheme = localStorage.getItem('darkMode');
-            if (savedTheme !== null) {
-                setTheme(JSON.parse(savedTheme));
-            } else {
-                setTheme(getSystemPreference());
-            }
-        }
-
-        // Toggle theme when button is clicked
-        themeToggle.addEventListener('click', () => {
-            const isDark = !html.classList.contains('dark');
-            setTheme(isDark);
-        });
-
-        // Listen for system preference changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            if (localStorage.getItem('darkMode') === null) {
-                setTheme(e.matches);
-            }
-        });
-
-        // Set initial theme
-        setInitialTheme();
-
-        function rickRoll() {
-            window.open("https://www.youtube.com/watch?v=xvFZjo5PgG0", "_blank");
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const rdkElements = document.querySelectorAll('.rdk-hover');
-            rdkElements.forEach(element => {
-                element.addEventListener('click', function() {
-                    if (this.textContent === 'RDK-B') {
-                        window.open('https://wiki.rdkcentral.com/display/RDK/RDK-Broadband', '_blank');
-                    } else if (this.textContent === 'RDK') {
-                        window.open('https://en.wikipedia.org/wiki/Reference_Design_Kit', '_blank');
-                    }
-                });
-            });
-        });
-
-        // Project data
-        const projects = [
-            {
-                title: "HLS-Client",
-                description: "This project implements HTTP-Live Streaming Protocol server and player in the client device, using gstreamer multimedia framework",
-                url: "https://github.com/akashblsbrmnm/hlsclient",
-                image: "https://opengraph.githubassets.com/1/akashblsbrmnm/hlsclient"
-            },
-            {
-                title: "Developer Portfolio",
-                description: "This is a developer portfolio made using Tailwind framework, and a little bit of JS",
-                url: "https://github.com/akashblsbrmnm/akashblsbrmnm.github.io",
-                image: "https://opengraph.githubassets.com/1/akashblsbrmnm/akashblsbrmnm.github.io"
-            },
-            {
-                title: "Deep learning : Skin Cancer Classification",
-                description: "This was my project for AI/ML Coursework at the University",
-                url: "https://github.com/akashblsbrmnm/skin-cancer-classifier",
-                image: "https://opengraph.githubassets.com/1/akashblsbrmnm/skin-cancer-classifier"
-            },
-            {
-                title: "Project Y",
-                description: "STILL WORK IN PROGRESS",
-                url: "https://github.com/akashblsbrmnm",
-                image: "https://opengraph.githubassets.com/1/"
-            }
-            
-        ];
-
-        // Function to create project tiles
-        function createProjectTiles() {
-            const projectsContainer = document.querySelector('#projects .grid');
-            projects.forEach(project => {
-                const tile = document.createElement('div');
-                tile.className = 'project-tile';
-                tile.innerHTML = `
-                    <div class="project-thumbnail mb-4">
-                        <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover">
-                        <div class="redirect-icon">
-                            <i data-lucide="external-link"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">${project.title}</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">${project.description}</p>
-                    <a href="${project.url}" target="_blank" class="read-more">
-                        find more   
-                        <i data-lucide="github"></i>
-                    </a>
-                    <div class="repo-actions">
-                        <a href="${project.url}/stargazers" target="_blank" class="repo-action">
-                            <i data-lucide="star"></i>
-                            Star
-                        </a>
-                        <a href="${project.url}/fork" target="_blank" class="repo-action">
-                            <i data-lucide="git-fork"></i>
-                            Fork
-                        </a>
-                    </div>
-                `;
-                const thumbnail = tile.querySelector('.project-thumbnail');
-                thumbnail.addEventListener('click', () => window.open(project.url, '_blank'));
-                projectsContainer.appendChild(tile);
-            });
-            lucide.createIcons();
-        }
-
-        // Call the function to create project tiles
-        createProjectTiles();
-        
-    </script>
+      }
+    });
+  </script>
 </body>
 </html>

@@ -115,7 +115,7 @@
 }
 
 .connect-title {
-  font-family: var(--font-grotesk);
+  font-family: var(--font-display);
   font-size: 3.5rem;
   font-weight: 700;
   color: var(--color-text);

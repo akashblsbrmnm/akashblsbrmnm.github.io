@@ -74,7 +74,7 @@
 }
 
 .hero-title {
-  font-family: var(--font-grotesk);
+  font-family: var(--font-display);
   font-size: 4rem;
   font-weight: 800;
   line-height: 1.1;
@@ -89,7 +89,7 @@
 }
 
 .hero-subtitle {
-  font-family: var(--font-grotesk);
+  font-family: var(--font-display);
   font-size: 1.8rem;
   font-weight: 500;
   color: var(--color-text-secondary);

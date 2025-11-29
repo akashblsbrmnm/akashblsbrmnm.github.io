@@ -101,7 +101,7 @@
 }
 
 .company-name {
-  font-family: var(--font-grotesk);
+  font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 700;
   color: var(--color-accent);

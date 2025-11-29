@@ -5,10 +5,10 @@
         <a href="#" class="logo">A.</a>
         
         <div class="nav-links" :class="{ 'active': mobileMenuOpen }">
-          <a href="#about" @click="closeMobileMenu">About</a>
-          <a href="#skills" @click="closeMobileMenu">Skills</a>
-          <a href="#work" @click="closeMobileMenu">Work</a>
-          <a href="#connect" @click="closeMobileMenu">Connect</a>
+          <a href="#about" @click="(e) => handleNavClick(e, '#about')">About</a>
+          <a href="#skills" @click="(e) => handleNavClick(e, '#skills')">Skills</a>
+          <a href="#work" @click="(e) => handleNavClick(e, '#work')">Work</a>
+          <a href="#connect" @click="(e) => handleNavClick(e, '#connect')">Connect</a>
           
           <!-- Theme Toggle Button -->
           <button class="theme-toggle" @click="toggleTheme" aria-label="Toggle theme">
@@ -55,6 +55,21 @@ const toggleMobileMenu = () => {
 
 const closeMobileMenu = () => {
   mobileMenuOpen.value = false
+}
+
+const handleNavClick = (e, target) => {
+  e.preventDefault()
+  closeMobileMenu()
+  
+  // Wait for next tick to ensure Lenis is available
+  setTimeout(() => {
+    if (window.lenis) {
+      window.lenis.scrollTo(target, {
+        offset: -100,
+        duration: 1.5
+      })
+    }
+  }, 100)
 }
 
 const toggleTheme = () => {
@@ -132,7 +147,7 @@ onMounted(() => {
 }
 
 .logo {
-  font-family: var(--font-grotesk);
+  font-family: var(--font-display);
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--color-accent);

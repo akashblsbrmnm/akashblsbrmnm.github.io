@@ -54,80 +54,102 @@ import { ChevronRight } from 'lucide-vue-next'
 <style scoped>
 .section-container {
   padding: 5rem 0;
+  border-bottom: var(--border-width) solid var(--border-color);
 }
 
 .work-card {
   position: relative;
-  padding-left: 2rem;
-  border-left: 1px solid var(--glass-border);
-  transition: border-color 0.3s ease;
+  padding: 2rem;
+  border: var(--border-width) solid var(--border-color);
+  background: var(--bg-color);
+  box-shadow: 8px 8px 0px var(--border-color);
+  transition: all 0.1s;
 }
 
 .work-card:hover {
-  border-color: var(--accent-color);
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0px var(--border-color);
 }
 
+.timeline-line,
 .timeline-dot {
-  position: absolute;
-  left: -0.35rem; /* -5.5px */
-  top: 0;
-  width: 0.75rem;
-  height: 0.75rem;
-  background-color: var(--accent-color);
-  border-radius: 50%;
+  display: none;
 }
 
 .company-logo {
-  height: 3rem;
+  height: 4rem;
   width: auto;
-  margin-bottom: 1.5rem;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
+  margin-bottom: 2rem;
+  filter: grayscale(100%) contrast(1.2);
+}
+
+/* Invert logo in light mode if it's a white logo */
+:root.light .company-logo {
+  filter: grayscale(100%) invert(1);
 }
 
 .work-card:hover .company-logo {
-  opacity: 1;
+  filter: grayscale(0%) contrast(1);
+}
+
+:root.light .work-card:hover .company-logo {
+  filter: grayscale(0%) invert(1);
 }
 
 .job-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
-  transition: color 0.3s ease;
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -1px;
 }
 
 .work-card:hover .job-title {
-  color: var(--accent-color);
+  color: var(--text-color);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
 }
 
 .job-meta {
   color: var(--text-muted);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1rem;
+  border-bottom: 2px solid var(--text-muted);
+  display: inline-block;
+  padding-bottom: 0.25rem;
 }
 
 .job-details {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   color: var(--text-color);
 }
 
 .detail-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .detail-item span {
-  font-size: 1.25rem; /* Match About section text size */
-  line-height: 1.8;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  font-family: var(--font-mono);
 }
 
 .detail-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: var(--accent-color);
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--text-color);
   flex-shrink: 0;
-  margin-top: 0.125rem;
+  margin-top: 0.25rem;
+  background: var(--text-color);
+  color: var(--bg-color);
+  padding: 2px;
 }
 </style>

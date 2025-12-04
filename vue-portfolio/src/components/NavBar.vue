@@ -108,11 +108,11 @@ const closeMobileMenu = () => {
             :class="{ 'active': activeSection === 'about' }"
           >About</a>
           <a 
-            href="#skills" 
-            @click.prevent="scrollToSection('#skills')" 
+            href="#tools" 
+            @click.prevent="scrollToSection('#tools')" 
             class="nav-link" 
-            :class="{ 'active': activeSection === 'skills' }"
-          >Skills</a>
+            :class="{ 'active': activeSection === 'tools' }"
+          >Tools</a>
           <a 
             href="#work" 
             @click.prevent="scrollToSection('#work')" 
@@ -153,7 +153,7 @@ const closeMobileMenu = () => {
     <Transition name="dropdown">
       <div v-if="isMobileMenuOpen" class="mobile-menu">
         <a href="#about" @click.prevent="scrollToSection('#about')" class="mobile-nav-link" :class="{ 'active': activeSection === 'about' }">About</a>
-        <a href="#skills" @click.prevent="scrollToSection('#skills')" class="mobile-nav-link" :class="{ 'active': activeSection === 'skills' }">Skills</a>
+        <a href="#tools" @click.prevent="scrollToSection('#tools')" class="mobile-nav-link" :class="{ 'active': activeSection === 'tools' }">Tools</a>
         <a href="#work" @click.prevent="scrollToSection('#work')" class="mobile-nav-link" :class="{ 'active': activeSection === 'work' }">Work</a>
         <a href="#connect" @click.prevent="scrollToSection('#connect')" class="mobile-nav-link" :class="{ 'active': activeSection === 'connect' }">Connect</a>
       </div>
@@ -170,8 +170,16 @@ const closeMobileMenu = () => {
   z-index: 100;
   display: flex;
   justify-content: center;
-  padding: 1.5rem 1rem 0;
+  padding: 0;
   pointer-events: none;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+:root.dark .navbar {
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .glass-panel {
@@ -180,35 +188,30 @@ const closeMobileMenu = () => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 2rem;
-  border-radius: 9999px;
+  padding: 1rem 2rem;
   width: 100%;
-  max-width: 42rem;
-  
-  background: rgba(20, 20, 20, 0.65);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 
-    0 8px 32px 0 rgba(0, 0, 0, 0.5),
-    0 0 35px rgba(249, 115, 22, 0.25),
-    0 0 60px rgba(255, 255, 255, 0.2), /* Enhanced white glow */
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-}
-
-/* Light mode navbar */
-:root.light .glass-panel {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 
-    0 4px 24px 0 rgba(0, 0, 0, 0.12),
-    0 2px 8px 0 rgba(0, 0, 0, 0.08);
+  max-width: 1200px;
+  background: transparent;
+  border-left: var(--border-width) solid var(--border-color);
+  border-right: var(--border-width) solid var(--border-color);
 }
 
 .logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.05em;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  font-family: var(--font-display);
+  text-decoration: none;
+  border: var(--border-width) solid var(--border-color);
+  padding: 0.25rem 0.5rem;
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+
+.logo:hover {
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 /* Right side container */
@@ -220,66 +223,67 @@ const closeMobileMenu = () => {
 
 .nav-links {
   display: flex;
-  gap: 0.5rem;
-  font-size: 0.95rem;
-  font-weight: 500;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 0.25rem;
-  border-radius: 9999px;
+  gap: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
 }
 
 .nav-link {
-  color: var(--text-muted);
+  color: var(--text-color);
   position: relative;
-  transition: all 0.3s ease;
-  padding: 0.5rem 1.25rem;
-  border-radius: 9999px;
+  transition: all 0.1s;
+  padding: 0.5rem 1rem;
+  border: var(--border-width) solid transparent;
+  text-decoration: none;
 }
 
 .nav-link:hover {
-  color: var(--text-color);
+  border-color: var(--border-color);
+  background: var(--text-color);
+  color: var(--bg-color);
 }
 
 .nav-link.active {
-  color: #ffffff;
-  background-color: var(--accent-color);
-  box-shadow: 0 2px 10px rgba(249, 115, 22, 0.3);
+  background: var(--text-color);
+  color: var(--bg-color);
+  border-color: var(--border-color);
 }
 
-/* Remove old underline styles */
-.nav-link::after {
-  display: none;
-}
-
-/* Theme Toggle - now part of nav-right */
+/* Theme Toggle */
 .theme-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 3rem;
+  height: 3rem;
+  background: transparent;
+  border: var(--border-width) solid var(--border-color);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.1s;
+  box-shadow: 4px 4px 0px var(--border-color);
 }
 
 .theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--accent-color);
-  transform: rotate(15deg);
-}
-
-.icon-theme {
-  width: 1.125rem;
-  height: 1.125rem;
-  color: var(--accent-color);
-  transition: transform 0.3s ease;
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--border-color);
+  background: var(--text-color);
 }
 
 .theme-toggle:hover .icon-theme {
-  transform: scale(1.1);
+  color: var(--bg-color);
+}
+
+.theme-toggle:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px var(--border-color);
+}
+
+.icon-theme {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--text-color);
 }
 
 /* Mobile Menu Button */
@@ -287,23 +291,28 @@ const closeMobileMenu = () => {
   display: none;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 3rem;
+  height: 3rem;
+  background: transparent;
+  border: var(--border-width) solid var(--border-color);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.1s;
+  box-shadow: 4px 4px 0px var(--border-color);
 }
 
 .mobile-menu-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--accent-color);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--border-color);
+  background: var(--text-color);
+}
+
+.mobile-menu-btn:hover .icon-menu {
+  color: var(--bg-color);
 }
 
 .icon-menu {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
   color: var(--text-color);
 }
 
@@ -313,46 +322,38 @@ const closeMobileMenu = () => {
   top: 100%;
   left: 0;
   right: 0;
-  margin: 0.5rem 1rem;
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: 1rem;
+  background: var(--bg-color);
+  border-bottom: var(--border-width) solid var(--border-color);
+  border-left: var(--border-width) solid var(--border-color);
+  border-right: var(--border-width) solid var(--border-color);
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0;
   pointer-events: auto;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 .mobile-nav-link {
   color: var(--text-color);
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
-  text-align: left;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.1s;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  text-decoration: none;
+}
+
+.mobile-nav-link:last-child {
+  border-bottom: none;
 }
 
 .mobile-nav-link:hover,
 .mobile-nav-link.active {
-  background: rgba(249, 115, 22, 0.15);
-  color: var(--accent-color);
-}
-
-/* Dropdown Transitions */
-.dropdown-enter-active,
-.dropdown-leave-active {
-  transition: all 0.3s ease;
-}
-
-.dropdown-enter-from,
-.dropdown-leave-to {
-  opacity: 0;
-  transform: translateY(-10px);
+  background: var(--text-color);
+  color: var(--bg-color);
 }
 
 /* Responsive */
@@ -366,13 +367,7 @@ const closeMobileMenu = () => {
   }
 
   .glass-panel {
-    padding: 0.875rem 1.5rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .glass-panel {
-    padding: 0.75rem 1.25rem;
+    padding: 1rem;
   }
 }
 </style>

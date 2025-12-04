@@ -4,7 +4,9 @@ import NavBar from './components/NavBar.vue'
 import HeroSection from './components/HeroSection.vue'
 import AboutSection from './components/AboutSection.vue'
 import SkillsSection from './components/SkillsSection.vue'
+import TechSkillsSection from './components/TechSkillsSection.vue'
 import WorkSection from './components/WorkSection.vue'
+import UsesSection from './components/UsesSection.vue'
 import ConnectSection from './components/ConnectSection.vue'
 import Lenis from 'lenis'
 
@@ -81,8 +83,10 @@ onUnmounted(() => {
     <main class="main-content">
       <HeroSection />
       <AboutSection />
+      <TechSkillsSection />
       <SkillsSection />
       <WorkSection />
+      <UsesSection />
       <ConnectSection />
     </main>
     
@@ -102,17 +106,23 @@ onUnmounted(() => {
 .main-content {
   flex: 1;
   width: 100%;
-  max-width: 1152px; /* max-w-6xl */
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 8rem 1.5rem 5rem; /* pt-32 pb-20 px-6 */
+  padding: 8rem 2rem 5rem;
+  border-left: var(--border-width) solid var(--border-color);
+  border-right: var(--border-width) solid var(--border-color);
 }
 
 .footer {
   text-align: center;
   padding: 2rem 0;
-  color: var(--text-muted);
-  font-size: 0.875rem;
-  border-top: 1px solid var(--glass-border);
+  color: var(--text-color);
+  font-size: 1rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  border-top: var(--border-width) solid var(--border-color);
+  background: var(--bg-color);
   margin-top: auto;
 }
 </style>

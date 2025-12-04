@@ -34,8 +34,8 @@ const getAnimationDuration = (index) => {
 </script>
 
 <template>
-  <section id="skills" class="section-container">
-    <h2 class="section-title">skills & fun.</h2>
+  <section id="tools" class="section-container">
+    <h2 class="section-title">Tools.</h2>
     
     <div class="skills-playground">
       <div 
@@ -66,102 +66,99 @@ const getAnimationDuration = (index) => {
 <style scoped>
 .section-container {
   padding: 5rem 0;
-  overflow: hidden; /* Keep bubbles contained */
+  border-bottom: var(--border-width) solid var(--border-color);
 }
 
 .skills-playground {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  padding: 2rem;
-  perspective: 1000px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
 }
 
 .skill-bubble {
   position: relative;
-  width: 7rem;
-  height: 7rem;
-  border-radius: 50%;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(8px);
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--bg-color);
+  border: var(--border-width) solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  animation: float ease-in-out infinite;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.1s;
+  box-shadow: 6px 6px 0px var(--border-color);
 }
 
-/* Category specific tints */
-.skill-bubble.language { border-color: rgba(249, 115, 22, 0.3); }
-.skill-bubble.core { border-color: rgba(59, 130, 246, 0.3); }
-.skill-bubble.tool { border-color: rgba(16, 185, 129, 0.3); }
-.skill-bubble.domain { border-color: rgba(139, 92, 246, 0.3); }
+/* Category specific tints - removed for monochrome/brutalist consistency */
+.skill-bubble.language,
+.skill-bubble.core,
+.skill-bubble.tool,
+.skill-bubble.domain { 
+  border-color: var(--border-color); 
+}
 
 .skill-bubble:hover {
-  transform: scale(1.2) translateY(-10px) !important; /* Override animation transform */
-  z-index: 10;
-  border-color: var(--accent-color);
-  box-shadow: 0 0 40px rgba(249, 115, 22, 0.5); /* Increased glow */
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0px var(--border-color);
+  background: var(--text-color);
+}
+
+.skill-bubble:hover .skill-text {
+  color: var(--bg-color);
+}
+
+.skill-bubble:hover .skill-icon {
+  filter: invert(1) grayscale(100%);
 }
 
 .bubble-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   z-index: 2;
+  width: 100%;
 }
 
 .skill-icon {
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.skill-bubble:hover .skill-icon {
-  transform: rotate(10deg) scale(1.1);
+  transition: filter 0.1s;
+  filter: grayscale(100%) contrast(1.2); /* Force monochrome */
 }
 
 .skill-text {
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: var(--text-color);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
 }
-
-/* Removed caption styles */
 
 .bubble-glow {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1), transparent);
-  opacity: 0.5;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+  display: none;
 }
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
+  .skills-playground {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  
   .skill-bubble {
-    width: 5.5rem;
-    height: 5.5rem;
+    box-shadow: 4px 4px 0px var(--border-color);
   }
   
   .skill-icon {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 3rem;
+    height: 3rem;
   }
   
-  .skill-name {
-    display: none; /* Hide text on mobile to keep it clean */
+  .skill-text {
+    font-size: 1rem;
   }
 }
 </style>

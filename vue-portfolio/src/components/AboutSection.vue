@@ -13,12 +13,14 @@
 <style scoped>
 .section-container {
   padding: 5rem 0;
+  border-bottom: var(--border-width) solid var(--border-color);
 }
 
 .about-text {
   font-size: 1.25rem;
   color: var(--text-muted);
   line-height: 1.8;
-  max-width: 48rem; /* max-w-3xl */
+  max-width: 100%;
+  font-family: var(--font-mono);
 }
 </style>

@@ -60,6 +60,8 @@ import { Download, ArrowUpRight, ArrowDown } from 'lucide-vue-next'
             src="@/assets/dp0.jpg" 
             alt="Akash" 
             class="profile-image"
+            loading="eager"
+            fetchpriority="high"
           />
         </div>
       </div>
@@ -78,6 +80,7 @@ import { Download, ArrowUpRight, ArrowDown } from 'lucide-vue-next'
   display: flex;
   align-items: center;
   padding: 4rem 0;
+  border-bottom: var(--border-width) solid var(--border-color);
 }
 
 .hero-grid {
@@ -97,16 +100,18 @@ import { Download, ArrowUpRight, ArrowDown } from 'lucide-vue-next'
 }
 
 .hero-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.02em;
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 1rem;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  font-family: var(--font-display);
 }
 
 @media (min-width: 768px) {
   .hero-title {
-    font-size: 3.5rem;
+    font-size: 5rem;
   }
 }
 
@@ -115,85 +120,109 @@ import { Download, ArrowUpRight, ArrowDown } from 'lucide-vue-next'
 }
 
 .hero-subtitle {
-  font-size: 1.125rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  border-left: 5px solid var(--accent-color);
+  padding-left: 1rem;
 }
 
 @media (min-width: 768px) {
   .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
 
 .hero-details {
-  color: var(--text-color); /* Changed from text-muted to text-color */
-  font-size: 1.125rem;
-  margin-bottom: 2rem;
+  color: var(--text-color);
+  font-size: 1.25rem;
+  margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
 }
 
 .label {
   display: block;
-  font-size: 0.875rem;
+  font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-  margin-bottom: 0.25rem;
+  font-weight: 900;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  text-decoration: underline;
 }
 
 .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: var(--accent-color);
-  color: #ffffff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 500;
-  transition: all 0.3s ease;
+  background-color: transparent;
+  color: var(--text-color);
+  padding: 1rem 2rem;
+  border: var(--border-width) solid var(--border-color);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  transition: all 0.1s;
+  box-shadow: 6px 6px 0px var(--border-color);
+  text-decoration: none;
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-hover);
-  transform: translateY(-2px);
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0px var(--border-color);
 }
 
-/* Removed light mode color override - text should always be white */
+.btn-primary:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0px 0px 0px var(--border-color);
+}
 
 .hero-connect {
-  margin-top: 2rem;
+  margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--glass-border);
+  border-top: var(--border-width) solid var(--border-color);
 }
 
 .social-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .social-link {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  color: var(--text-muted);
-  font-size: 1.25rem; /* Increased size */
+  gap: 0.5rem;
+  color: var(--text-color);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  text-decoration: none;
+  border: 2px solid transparent;
+  padding: 0.25rem;
 }
 
 .social-link:hover {
-  color: var(--accent-color);
+  background: var(--text-color);
+  color: var(--bg-color);
+  border: 2px solid var(--text-color);
 }
 
 .icon-sm {
-  width: 1rem;
-  height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .icon-xs {
-  width: 1rem; /* Increased icon size slightly to match text */
-  height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 /* Image Styles */
@@ -214,25 +243,19 @@ import { Download, ArrowUpRight, ArrowDown } from 'lucide-vue-next'
 
 .image-wrapper {
   position: relative;
-  width: 16rem;
-  height: 16rem;
+  width: 18rem;
+  height: 18rem;
 }
 
 @media (min-width: 768px) {
   .image-wrapper {
-    width: 20rem;
-    height: 20rem;
+    width: 24rem;
+    height: 24rem;
   }
 }
 
 .glow-effect {
-  position: absolute;
-  inset: 0;
-  background-color: var(--accent-color);
-  opacity: 0.2;
-  border-radius: 9999px;
-  filter: blur(40px);
-  animation: pulse 4s infinite;
+  display: none; /* Remove glow for brutalist */
 }
 
 .profile-image {
@@ -240,20 +263,16 @@ import { Download, ArrowUpRight, ArrowDown } from 'lucide-vue-next'
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 9999px;
-  border: 2px solid var(--glass-border);
-  box-shadow: 0 0 25px rgba(249, 115, 22, 0.4); /* Added glow ring */
-  transition: all 0.5s ease;
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 15px 15px 0px var(--border-color);
+  filter: grayscale(100%) contrast(1.2);
+  transition: all 0.2s;
 }
 
 .profile-image:hover {
-  border-color: var(--accent-color);
-  box-shadow: 0 0 40px rgba(249, 115, 22, 0.6); /* Enhanced glow on hover */
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(1.05); }
+  transform: translate(-5px, -5px);
+  box-shadow: 20px 20px 0px var(--border-color);
+  filter: grayscale(0%) contrast(1);
 }
 
 .scroll-indicator {
@@ -273,9 +292,12 @@ import { Download, ArrowUpRight, ArrowDown } from 'lucide-vue-next'
 }
 
 .icon-scroll {
-  width: 2rem;
-  height: 2rem;
-  color: var(--text-muted);
+  width: 3rem;
+  height: 3rem;
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  padding: 0.5rem;
+  background: var(--bg-color);
 }
 
 @keyframes bounce {

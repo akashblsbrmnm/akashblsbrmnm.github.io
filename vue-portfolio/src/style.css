@@ -1,70 +1,76 @@
-/* Dark Theme (Default) */
-:root,
-:root.dark {
-  --bg-color: #050505;
-  --text-color: #ffffff;
-  --text-muted: #9ca3af;
-  --accent-color: #f97316;
-  --accent-hover: #ea580c;
-  --glass-bg: rgba(20, 20, 20, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.08);
+/* Brutalist Theme */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --text-muted: #444444;
+  --accent-color: #000000;
+  --accent-hover: #333333;
+  --border-color: #000000;
+  --border-width: 3px;
 
-  --font-sans: 'Inter', sans-serif;
-  --font-mono: 'Geist Mono', monospace;
-  --font-display: 'Space Grotesk', sans-serif;
+  --font-sans: 'Space Mono', monospace;
+  --font-mono: 'Space Mono', monospace;
+  --font-display: 'Archivo Black', sans-serif;
 }
 
-/* Light Theme */
-:root.light {
-  --bg-color: #ffffff;
-  --text-color: #1a1a1a;
-  --text-muted: #4b5563;
-  --accent-color: #f97316;
-  --accent-hover: #ea580c;
-  --glass-bg: rgba(255, 255, 255, 0.85);
-  --glass-border: rgba(0, 0, 0, 0.12);
+:root.dark {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --text-muted: #bbbbbb;
+  --accent-color: #ffffff;
+  --accent-hover: #cccccc;
+  --border-color: #ffffff;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html {
-  /* scroll-behavior: smooth; - Removed for Lenis */
+  border-radius: 0 !important;
+  /* GLOBAL BRUTALIST RESET */
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: var(--font-display);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: none;
+  /* Raw look */
+  transition: background-color 0.0s, color 0.0s;
+  /* Instant transition */
   overflow-x: hidden;
 }
 
 a {
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
   color: inherit;
-  transition: color 0.3s ease;
+}
+
+a:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  text-decoration: none;
 }
 
 ul {
-  list-style: none;
+  list-style: square;
 }
 
 /* Utility Classes */
 .container {
-  max-width: 1152px;
-  /* max-w-6xl */
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
+  border-left: var(--border-width) solid var(--border-color);
+  border-right: var(--border-width) solid var(--border-color);
+  min-height: 100vh;
 }
 
 .text-accent {
   color: var(--accent-color);
+  font-weight: bold;
 }
 
 .flex-center {
@@ -74,30 +80,55 @@ ul {
 }
 
 .section-title {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 2rem;
-  letter-spacing: -0.05em;
-  position: relative;
+  font-family: var(--font-display);
+  font-size: 4rem;
+  text-transform: uppercase;
+  border-bottom: var(--border-width) solid var(--border-color);
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  display: block;
+  letter-spacing: -2px;
+}
+
+/* Brutalist Button */
+.btn-brutal {
   display: inline-block;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: var(--text-color);
+  border: var(--border-width) solid var(--border-color);
+  font-family: var(--font-mono);
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.1s;
+  box-shadow: 5px 5px 0px var(--border-color);
+  text-decoration: none;
 }
 
-.section-title::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 150%;
-  height: 200%;
-  background: radial-gradient(ellipse, rgba(249, 115, 22, 0.5) 0%, rgba(249, 115, 22, 0.2) 40%, transparent 70%);
-  filter: blur(30px);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+.btn-brutal:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0px var(--border-color);
+  background-color: var(--text-color);
+  color: var(--bg-color);
 }
 
-.section-title.active::before,
-.section-title:hover::before {
-  opacity: 0.6;
+.btn-brutal:active {
+  transform: translate(5px, 5px);
+  box-shadow: 0px 0px 0px var(--border-color);
+}
+
+/* Card Style */
+.card-brutal {
+  border: var(--border-width) solid var(--border-color);
+  padding: 1.5rem;
+  background: var(--bg-color);
+  box-shadow: 8px 8px 0px var(--border-color);
+  transition: transform 0.1s;
+}
+
+.card-brutal:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0px var(--border-color);
 }

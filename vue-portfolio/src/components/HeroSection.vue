@@ -265,14 +265,14 @@ import { Download, ArrowUpRight, ArrowDown } from 'lucide-vue-next'
   object-fit: cover;
   border: var(--border-width) solid var(--border-color);
   box-shadow: 15px 15px 0px var(--border-color);
-  filter: grayscale(100%) contrast(1.2);
+  /* No greyscale filter - show full color */
   transition: all 0.2s;
 }
 
 .profile-image:hover {
   transform: translate(-5px, -5px);
   box-shadow: 20px 20px 0px var(--border-color);
-  filter: grayscale(0%) contrast(1);
+  /* No filter change needed */
 }
 
 .scroll-indicator {

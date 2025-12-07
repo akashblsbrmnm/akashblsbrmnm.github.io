@@ -30,6 +30,11 @@
   /* GLOBAL BRUTALIST RESET */
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -39,7 +44,6 @@ body {
   /* Raw look */
   transition: background-color 0.0s, color 0.0s;
   /* Instant transition */
-  overflow-x: hidden;
 }
 
 a {

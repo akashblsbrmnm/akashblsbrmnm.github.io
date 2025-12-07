@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, onUnmounted, provide, ref } from 'vue'
+import { ArrowUp } from 'lucide-vue-next'
 import NavBar from './components/NavBar.vue'
 import HeroSection from './components/HeroSection.vue'
 import AboutSection from './components/AboutSection.vue'
@@ -12,9 +13,16 @@ import Lenis from 'lenis'
 
 const lenis = ref(null)
 let observer = null
+const showScrollTop = ref(false)
 
 // Provide Lenis at top level
 provide('lenis', lenis)
+
+const scrollToTop = () => {
+  if (lenis.value) {
+    lenis.value.scrollTo(0, { duration: 1.2 })
+  }
+}
 
 onMounted(() => {
   // Lenis initialization
@@ -35,6 +43,11 @@ onMounted(() => {
   }
 
   requestAnimationFrame(raf)
+
+  // Listen to scroll for scroll-to-top button visibility
+  lenis.value.on('scroll', ({ scroll }) => {
+    showScrollTop.value = scroll > 400
+  })
 
   // Intersection Observer for active section highlighting
   const options = {
@@ -93,6 +106,18 @@ onUnmounted(() => {
     <footer class="footer">
       made with more bugs than caffeine ☕🐛 — © 2025 akash
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <Transition name="fade">
+      <button 
+        v-if="showScrollTop" 
+        class="scroll-to-top" 
+        @click="scrollToTop"
+        aria-label="Scroll to top"
+      >
+        <ArrowUp class="icon-scroll" />
+      </button>
+    </Transition>
   </div>
 </template>
 
@@ -124,5 +149,56 @@ onUnmounted(() => {
   border-top: var(--border-width) solid var(--border-color);
   background: var(--bg-color);
   margin-top: auto;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: var(--bg-color);
+  border: var(--border-width) solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.1s;
+  box-shadow: 6px 6px 0px var(--border-color);
+}
+
+.scroll-to-top:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0px var(--border-color);
+  background: var(--text-color);
+}
+
+.scroll-to-top:hover .icon-scroll {
+  color: var(--bg-color);
+}
+
+.scroll-to-top:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0px 0px 0px var(--border-color);
+}
+
+.icon-scroll {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--text-color);
+}
+
+/* Fade transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
 }
 </style>

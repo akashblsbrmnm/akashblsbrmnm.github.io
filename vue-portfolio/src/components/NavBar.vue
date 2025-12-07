@@ -5,7 +5,7 @@ import { Moon, Sun, Menu, X } from 'lucide-vue-next'
 const lenis = inject('lenis', null)
 
 // Theme state
-const isDark = ref(true)
+const isDark = ref(false)
 
 // Mobile menu state
 const isMobileMenuOpen = ref(false)

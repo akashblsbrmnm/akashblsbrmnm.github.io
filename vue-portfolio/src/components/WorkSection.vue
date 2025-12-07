@@ -48,6 +48,14 @@ import { ChevronRight } from 'lucide-vue-next'
         </ul>
       </div>
     </div>
+
+    <a 
+      href="https://drive.google.com/file/d/1vrpjhZ1SqOpC-9l7nXMaJNRX5oTl28Vh/view?usp=drive_link" 
+      target="_blank"
+      class="read-more-link"
+    >
+      Read More →
+    </a>
   </section>
 </template>
 
@@ -151,5 +159,32 @@ import { ChevronRight } from 'lucide-vue-next'
   background: var(--text-color);
   color: var(--bg-color);
   padding: 2px;
+}
+
+.read-more-link {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  font-weight: 900;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 6px 6px 0px var(--border-color);
+  transition: all 0.1s;
+}
+
+.read-more-link:hover {
+  background: var(--text-color);
+  color: var(--bg-color);
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0px var(--border-color);
+}
+
+.read-more-link:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0px 0px 0px var(--border-color);
 }
 </style>

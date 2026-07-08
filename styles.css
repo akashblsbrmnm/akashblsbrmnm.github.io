@@ -44,6 +44,23 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Lenis Scroll Rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 .font-mono {
   font-family: var(--font-mono);
   font-size: 0.9em;
@@ -456,6 +473,138 @@ a:hover {
 .timeline-item p {
     font-size: 0.95rem;
 }
+
+/* Contact Form */
+.contact-header {
+  margin-bottom: 32px;
+}
+
+.contact-title {
+  font-size: clamp(2.8rem, 6vw, 4rem);
+  text-align: left;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.contact-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.contact-card {
+  max-width: 100%;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 600px) {
+  .form-row {
+    flex-direction: row;
+  }
+  .form-row > .form-group {
+    flex: 1;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.form-control {
+  width: 100%;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 12px 16px;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-size: 0.95rem;
+}
+
+textarea.form-control {
+  resize: none;
+}
+
+.form-control:focus {
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 1px var(--text-primary);
+}
+
+.form-control::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.form-submit-btn {
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 1.4rem;
+  margin-top: 8px;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-headings);
+}
+
+.form-submit-btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.form-submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: rgba(128, 128, 128, 0.4);
+  transition: width 0s ease;
+  z-index: 0;
+}
+
+.form-submit-btn:hover::before {
+  width: 100%;
+  transition: width 1.5s ease-in-out;
+}
+
+.form-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.form-result {
+  margin-top: 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.form-result.success {
+  color: #27c93f;
+}
+.form-result.error {
+  color: #ff5f56;
+}
+
 
 /* Footer Section */
 .site-footer {

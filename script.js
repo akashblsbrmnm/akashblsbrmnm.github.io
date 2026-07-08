@@ -8,7 +8,7 @@ const html = htm.bind(h);
 function ContactForm() {
     // Check localStorage to see if they already submitted before
     const [status, setStatus] = useState(() => localStorage.getItem('formSubmitted') ? "success" : "");
-    const [result, setResult] = useState(() => localStorage.getItem('formSubmitted') ? "Message Sent Successfully! I'll get back to you soon." : "");
+    const [result, setResult] = useState(() => localStorage.getItem('formSubmitted') ? "Thank you for messaging! I'll get back to you soon :)" : "");
 
     useEffect(() => {
         lucide.createIcons();
@@ -34,7 +34,7 @@ function ContactForm() {
             console.log("Form submission error hidden from user:", error);
         } finally {
             // Always display a success message to the user, regardless of backend result
-            setResult("Message Sent Successfully! I'll get back to you soon.");
+            setResult("Thank you for messaging! I'll get back to you soon :)");
             setStatus("success");
             localStorage.setItem('formSubmitted', 'true');
             event.target.reset();
@@ -55,22 +55,20 @@ function ContactForm() {
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Full Name <span style="color: #ff5f56; font-weight: bold;">*</span></label>
-                            <input type="text" id="name" name="name" required class="form-control font-mono" placeholder="John Doe" maxlength="50" />
+                            <input type="text" id="name" name="name" required class="form-control" placeholder="John Doe" maxlength="50" />
                         </div>
                         <div class="form-group">
                             <label for="email">E-mail <span style="color: #ff5f56; font-weight: bold;">*</span></label>
-                            <input type="email" id="email" name="email" required class="form-control font-mono" placeholder="john@example.com" maxlength="100" />
+                            <input type="email" id="email" name="email" required class="form-control" placeholder="john@example.com" maxlength="100" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" name="message" required class="form-control font-mono" rows="5" placeholder="Hello Akash, ..." maxlength="1000"></textarea>
+                        <textarea id="message" name="message" required class="form-control" rows="5" placeholder="Hello Akash, ..." maxlength="1000"></textarea>
                     </div>
                     <button type="submit" class="terminal-btn active form-submit-btn" disabled=${status === 'sending' || status === 'success'}>
-                        <span>${status === 'sending' ? 'Submitting...' : (status === 'success' ? 'Submitted' : 'Submit')}</span>
-                        <i key=${status} data-lucide=${status === 'success' ? 'check' : 'send'}></i>
+                        <span>${status === 'sending' ? 'Submitting...' : (status === 'success' ? "Thank you for messaging! I'll get back to you soon :)" : 'Submit')}</span>
                     </button>
-                    ${result ? html`<p class=${"form-result " + status}>${result}</p>` : ''}
                 </form>
             </div>
         </section>
@@ -227,32 +225,36 @@ function App() {
                 </div>
                 
                 <div class="terminal-block">
-                    <div class="terminal-comment font-mono">// Currently works @ <a href="https://in.linkedin.com/company/tataelxsi" target="_blank" class="tata-link">Tata Elxsi</a></div>
-                    <p class="terminal-text font-mono">C/C++, prplMesh, RDK-B, Wi-Fi, Routers & Gateways, Linux</p>
+                    <div class="terminal-comment">// Currently works @ <a href="https://in.linkedin.com/company/tataelxsi" target="_blank" class="tata-link">Tata Elxsi</a></div>
+                    <p class="terminal-text">C/C++, prplMesh, RDK-B, Wi-Fi, Routers & Gateways, Linux</p>
                 </div>
 
-                <div class="terminal-actions font-mono">
-                    <a href="/resume" class="terminal-btn active">
-                        <i data-lucide="file-text"></i> Resume
-                    </a>
-                    <a href="https://github.com/akashblsbrmnm/" class="terminal-btn">
-                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/github.svg" class="social-icon-img" alt="GitHub" /> GitHub
-                    </a>
-                    <a href="https://www.linkedin.com/in/akash-balasubhramanyam/" class="terminal-btn-icon" aria-label="LinkedIn">
-                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/linkedin.svg" class="social-icon-img" alt="LinkedIn" />
-                    </a>
-                    <a href="https://x.com/akashblsbrmnm" class="terminal-btn-icon" aria-label="X">
-                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/x.svg" class="social-icon-img" alt="X" />
-                    </a>
-                    <a href="https://medium.com/@akashblsbrmnm" class="terminal-btn-icon" aria-label="Medium">
-                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/medium.svg" class="social-icon-img" alt="Medium" />
-                    </a>
-                    <a href="https://instagram.com/akashblsbrmnm" class="terminal-btn-icon" aria-label="Instagram">
-                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/instagram.svg" class="social-icon-img" alt="Instagram" />
-                    </a>
-                    <a href="mailto:akashblsbrmnm@gmail.com" class="terminal-btn-icon" aria-label="Email">
-                        <i data-lucide="mail"></i>
-                    </a>
+                <div class="terminal-actions-wrapper">
+                    <div class="terminal-actions-primary">
+                        <a href="/resume" class="terminal-btn active">
+                            <i data-lucide="file-text"></i> Resume
+                        </a>
+                        <a href="#contact" class="terminal-btn">
+                            <i data-lucide="mail"></i> Email Me
+                        </a>
+                    </div>
+                    <div class="terminal-actions-social">
+                        <a href="https://github.com/akashblsbrmnm/" class="terminal-btn-icon" aria-label="GitHub">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/github.svg" class="social-icon-img" alt="GitHub" />
+                        </a>
+                        <a href="https://www.linkedin.com/in/akash-balasubhramanyam/" class="terminal-btn-icon" aria-label="LinkedIn">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/linkedin.svg" class="social-icon-img" alt="LinkedIn" />
+                        </a>
+                        <a href="https://x.com/akashblsbrmnm" class="terminal-btn-icon" aria-label="X">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/x.svg" class="social-icon-img" alt="X" />
+                        </a>
+                        <a href="https://medium.com/@akashblsbrmnm" class="terminal-btn-icon" aria-label="Medium">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/medium.svg" class="social-icon-img" alt="Medium" />
+                        </a>
+                        <a href="https://instagram.com/akashblsbrmnm" class="terminal-btn-icon" aria-label="Instagram">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/instagram.svg" class="social-icon-img" alt="Instagram" />
+                        </a>
+                    </div>
                 </div>
             </section>
 

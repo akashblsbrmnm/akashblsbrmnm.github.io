@@ -245,10 +245,30 @@ a:hover {
   margin-bottom: 0;
 }
 
-.terminal-actions {
+.terminal-actions-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.terminal-actions-primary {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.terminal-actions-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (min-width: 600px) {
+  .terminal-actions-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 }
 
 .terminal-btn {
@@ -261,7 +281,8 @@ a:hover {
   background: var(--surface-color);
   color: var(--text-secondary);
   transition: all 0.2s ease;
-  font-size: 0.85rem;
+  font-family: var(--font-headings);
+  font-size: 1.15rem;
 }
 
 .terminal-btn svg {
@@ -538,8 +559,9 @@ a:hover {
   padding: 12px 16px;
   border-radius: 8px;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
   font-size: 0.95rem;
+  font-family: var(--font-sans);
 }
 
 textarea.form-control {
@@ -548,7 +570,7 @@ textarea.form-control {
 
 .form-control:focus {
   border-color: var(--text-primary);
-  box-shadow: 0 0 0 1px var(--text-primary);
+  box-shadow: 0 0 10px 0 rgba(128, 128, 128, 0.15), 0 0 0 1px var(--text-primary);
 }
 
 .form-control::placeholder {
@@ -597,6 +619,7 @@ textarea.form-control {
   margin-top: 16px;
   font-size: 0.95rem;
   font-weight: 500;
+  text-align: center;
 }
 .form-result.success {
   color: #27c93f;
@@ -685,6 +708,9 @@ textarea.form-control {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 20px;
+  border-bottom: 2px solid var(--text-primary);
+  display: inline-block;
+  padding-bottom: 4px;
 }
 
 .footer-links {

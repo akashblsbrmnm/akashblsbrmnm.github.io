@@ -277,8 +277,15 @@ a:hover {
 }
 
 .terminal-btn.active {
+  background-color: var(--text-primary);
+  color: var(--bg-color);
   border-color: var(--text-primary);
-  color: var(--text-primary);
+}
+
+.terminal-btn.active:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-color);
+  opacity: 0.9;
 }
 
 /* Skill Icons (Shared between Pill and Terminal designs) */

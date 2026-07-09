@@ -6,9 +6,23 @@ const { useState, useEffect } = preactHooks;
 const html = htm.bind(h);
 
 function ContactForm() {
-    // Check localStorage to see if they already submitted before
-    const [status, setStatus] = useState(() => localStorage.getItem('formSubmitted') ? "success" : "");
-    const [result, setResult] = useState(() => localStorage.getItem('formSubmitted') ? "Thank you for messaging! I'll get back to you soon :)" : "");
+    const getSubmissionData = () => {
+        let data = { count: 0, time: 0 };
+        try {
+            const stored = localStorage.getItem('formSubmissions');
+            if (stored) data = JSON.parse(stored);
+        } catch (e) {}
+
+        const twoHours = 2 * 60 * 60 * 1000;
+        if (data.time && (Date.now() - data.time > twoHours)) {
+            data = { count: 0, time: 0 };
+            localStorage.removeItem('formSubmissions');
+        }
+        return data;
+    };
+
+    const [submissionData, setSubmissionData] = useState(() => getSubmissionData());
+    const [status, setStatus] = useState("");
 
     useEffect(() => {
         lucide.createIcons();
@@ -16,11 +30,11 @@ function ContactForm() {
 
     const onSubmit = async (event) => {
         event.preventDefault();
+        if (submissionData.count >= 2 || status === 'sending') return;
+
         setStatus("sending");
-        setResult("Sending....");
         
         const formData = new FormData(event.target);
-        // User will replace this string below
         formData.append("access_key", "c32b4dd4-8a76-4c3b-a55b-b8ce15f7cfaf");
 
         try {
@@ -28,16 +42,25 @@ function ContactForm() {
                 method: "POST",
                 body: formData
             });
-            // We await the response but ignore failures to always show success to the user
             await response.json();
         } catch (error) {
             console.log("Form submission error hidden from user:", error);
         } finally {
-            // Always display a success message to the user, regardless of backend result
-            setResult("Thank you for messaging! I'll get back to you soon :)");
+            const newData = {
+                count: submissionData.count + 1,
+                time: submissionData.time || Date.now()
+            };
+            setSubmissionData(newData);
+            localStorage.setItem('formSubmissions', JSON.stringify(newData));
             setStatus("success");
-            localStorage.setItem('formSubmitted', 'true');
             event.target.reset();
+            
+            // If they still have messages left, reset the button after 4 seconds so they can use it
+            if (newData.count < 2) {
+                setTimeout(() => {
+                    setStatus("");
+                }, 4000);
+            }
         }
     };
 
@@ -66,9 +89,13 @@ function ContactForm() {
                         <label for="message">Message</label>
                         <textarea id="message" name="message" required class="form-control" rows="5" placeholder="Hello Akash, ..." maxlength="1000"></textarea>
                     </div>
-                    <button type="submit" class="terminal-btn active form-submit-btn" disabled=${status === 'sending' || status === 'success'}>
-                        <span>${status === 'sending' ? 'Submitting...' : (status === 'success' ? "Thank you for messaging! I'll get back to you soon :)" : 'Submit')}</span>
+
+                    <button type="submit" class="terminal-btn active form-submit-btn" disabled=${status === 'sending' || status === 'success' || submissionData.count >= 2}>
+                        <span>${status === 'sending' ? 'Submitting...' : (status === 'success' ? "Thank you for messaging! I'll get back to you soon :)" : (submissionData.count >= 2 ? 'Limit Reached' : 'Submit'))}</span>
                     </button>
+                    <p style="text-align: center; font-size: 0.85rem; color: var(--text-secondary); margin-top: 12px;">
+                        ${submissionData.count >= 2 ? "You've reached the message limit. Please try again later." : `${2 - submissionData.count} message${2 - submissionData.count === 1 ? '' : 's'} remaining per session.`}
+                    </p>
                 </form>
             </div>
         </section>
@@ -95,9 +122,23 @@ function App() {
             gestureDirection: 'vertical',
             smooth: true,
             mouseMultiplier: 1,
-            smoothTouch: false,
+            smoothTouch: true,
             touchMultiplier: 2,
             infinite: false,
+        });
+
+        // Handle anchor links for smooth scrolling via Lenis
+        const handleAnchorClick = (e) => {
+            const href = e.currentTarget.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                lenis.scrollTo(href, { duration: 1.5 }); // slightly slower for dramatic effect
+            }
+        };
+
+        const anchors = document.querySelectorAll('a[href^="#"]');
+        anchors.forEach(anchor => {
+            anchor.addEventListener('click', handleAnchorClick);
         });
 
         function raf(time) {
@@ -107,7 +148,12 @@ function App() {
 
         requestAnimationFrame(raf);
 
-        return () => lenis.destroy();
+        return () => {
+            anchors.forEach(anchor => {
+                anchor.removeEventListener('click', handleAnchorClick);
+            });
+            lenis.destroy();
+        };
     }, []);
 
     const toggleTheme = () => {
@@ -231,7 +277,7 @@ function App() {
 
                 <div class="terminal-actions-wrapper">
                     <div class="terminal-actions-primary">
-                        <a href="/resume" class="terminal-btn active">
+                        <a href="https://drive.google.com/file/d/1JQ_sxohbVq2iGNKqFh5sbqfYn3E58xPC/view?usp=sharing" target="_blank" class="terminal-btn active">
                             <i data-lucide="file-text"></i> Resume
                         </a>
                         <a href="#contact" class="terminal-btn">
@@ -239,19 +285,19 @@ function App() {
                         </a>
                     </div>
                     <div class="terminal-actions-social">
-                        <a href="https://github.com/akashblsbrmnm/" class="terminal-btn-icon" aria-label="GitHub">
+                        <a href="https://github.com/akashblsbrmnm/" target="_blank" class="terminal-btn-icon" aria-label="GitHub">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/github.svg" class="social-icon-img" alt="GitHub" />
                         </a>
-                        <a href="https://www.linkedin.com/in/akash-balasubhramanyam/" class="terminal-btn-icon" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/in/akashblsbrmnm/" target="_blank" class="terminal-btn-icon" aria-label="LinkedIn">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/linkedin.svg" class="social-icon-img" alt="LinkedIn" />
                         </a>
-                        <a href="https://x.com/akashblsbrmnm" class="terminal-btn-icon" aria-label="X">
+                        <a href="https://x.com/akashblsbrmnm" target="_blank" class="terminal-btn-icon" aria-label="X">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/x.svg" class="social-icon-img" alt="X" />
                         </a>
-                        <a href="https://medium.com/@akashblsbrmnm" class="terminal-btn-icon" aria-label="Medium">
+                        <a href="https://medium.com/@akashblsbrmnm" target="_blank" class="terminal-btn-icon" aria-label="Medium">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/medium.svg" class="social-icon-img" alt="Medium" />
                         </a>
-                        <a href="https://instagram.com/akashblsbrmnm" class="terminal-btn-icon" aria-label="Instagram">
+                        <a href="https://instagram.com/akashblsbrmnm" target="_blank" class="terminal-btn-icon" aria-label="Instagram">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/instagram.svg" class="social-icon-img" alt="Instagram" />
                         </a>
                     </div>

@@ -1,9 +1,23 @@
 // Get Preact and HTM from global window object
 const { h, render } = preact;
-const { useState, useEffect } = preactHooks;
+const { useState, useEffect, useRef } = preactHooks;
 
 // Bind HTM to Preact's h function
 const html = htm.bind(h);
+
+function LucideIcon({ name, class: className = '' }) {
+    const iconRef = useRef(null);
+    
+    useEffect(() => {
+        if (iconRef.current) {
+            // Give Lucide a fresh unmanaged <i> tag to replace on every render
+            iconRef.current.innerHTML = `<i data-lucide="${name}" class="${className}"></i>`;
+            lucide.createIcons({ root: iconRef.current });
+        }
+    }, [name, className]);
+    
+    return html`<span ref=${iconRef} style="display: inline-flex; align-items: center; justify-content: center;"></span>`;
+}
 
 function ContactForm() {
     const getSubmissionData = () => {
@@ -23,10 +37,6 @@ function ContactForm() {
 
     const [submissionData, setSubmissionData] = useState(() => getSubmissionData());
     const [status, setStatus] = useState("");
-
-    useEffect(() => {
-        lucide.createIcons();
-    });
 
     const onSubmit = async (event) => {
         event.preventDefault();
@@ -102,6 +112,35 @@ function ContactForm() {
     `;
 }
 
+function LinksSection() {
+    const links = [
+        { name: "GitHub", url: "https://github.com/akashblsbrmnm", icon: "github" },
+        { name: "GitLab", url: "https://gitlab.com/akash_balasubramaniyam", icon: "gitlab" },
+        { name: "X (Twitter)", url: "https://x.com/akashblsbrmnm", icon: "x" },
+        { name: "Medium", url: "https://medium.com/@akashblsbrmnm", icon: "medium" },
+        { name: "Substack", url: "https://akashblsbrmnm.substack.com", icon: "substack" },
+        { name: "LinkedIn", url: "https://www.linkedin.com/in/akashblsbrmnm/", icon: "linkedin" },
+        { name: "HackerRank", url: "https://www.hackerrank.com/profile/akashblsbrmnm", icon: "hackerrank" },
+        { name: "LeetCode", url: "https://leetcode.com/u/akashblsbrmnmX", icon: "leetcode" },
+        { name: "Instagram", url: "https://instagram.com/akashblsbrmnm", icon: "instagram" }
+    ];
+
+    return html`
+        <section id="links" class="reveal">
+            <h2 class="section-title">Links</h2>
+            <div class="links-grid">
+                ${links.map(link => html`
+                    <a href=${link.url} target="_blank" rel="noopener noreferrer" class="link-card glass-card">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/${link.icon}.svg" class="link-card-icon" alt=${link.name} />
+                        <span class="link-card-name">${link.name}</span>
+                        <${LucideIcon} name="external-link" class="link-card-arrow" />
+                    </a>
+                `)}
+            </div>
+        </section>
+    `;
+}
+
 function App() {
     // Theme state
     const [theme, setTheme] = useState(() => {
@@ -160,11 +199,6 @@ function App() {
         setTheme(t => t === 'dark' ? 'light' : 'dark');
     };
 
-    // Run Lucide icons after every render to ensure they aren't lost
-    useEffect(() => {
-        lucide.createIcons();
-    });
-
     // Scroll Observer hook
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
@@ -218,7 +252,7 @@ function App() {
                     <div class="skill-pill">
                         ${skill.type === 'simple' 
                             ? html`<img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/${skill.icon}.svg" alt=${skill.name} class="skill-icon" />` 
-                            : html`<i data-lucide=${skill.icon} class="skill-icon"></i>`}
+                            : html`<${LucideIcon} name=${skill.icon} class="skill-icon" />`}
                         <span>${skill.name}</span>
                     </div>
                 `)}
@@ -245,7 +279,7 @@ function App() {
                             <div class="terminal-file">
                                 ${skill.type === 'simple' 
                                     ? html`<img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/${skill.icon}.svg" alt=${skill.name} class="skill-icon" />` 
-                                    : html`<i data-lucide=${skill.icon} class="skill-icon"></i>`}
+                                    : html`<${LucideIcon} name=${skill.icon} class="skill-icon" />`}
                                 <span>${skill.name}</span>
                             </div>
                         `)}
@@ -257,7 +291,7 @@ function App() {
 
     return html`
         <button class="theme-toggle" onClick=${toggleTheme} aria-label="Toggle dark mode">
-            <i data-lucide=${theme === 'dark' ? 'sun' : 'moon'}></i>
+            <${LucideIcon} name=${theme === 'dark' ? 'sun' : 'moon'} />
         </button>
 
         <main class="container">
@@ -271,17 +305,20 @@ function App() {
                 </div>
                 
                 <div class="terminal-block">
-                    <div class="terminal-comment">// Currently works @ <a href="https://in.linkedin.com/company/tataelxsi" target="_blank" class="tata-link">Tata Elxsi</a></div>
+                    <div class="terminal-comment">
+                        <span>Senior Engineer at</span>
+                        <a href="https://in.linkedin.com/company/tataelxsi" target="_blank" class="tata-link"><img src="./assets/tata-elxsi.svg" alt="Tata Elxsi" class="tata-logo" /></a>
+                    </div>
                     <p class="terminal-text">C/C++, prplMesh, RDK-B, Wi-Fi, Routers & Gateways, Linux</p>
                 </div>
 
                 <div class="terminal-actions-wrapper">
                     <div class="terminal-actions-primary">
-                        <a href="https://drive.google.com/file/d/1JQ_sxohbVq2iGNKqFh5sbqfYn3E58xPC/view?usp=sharing" target="_blank" class="terminal-btn active">
-                            <i data-lucide="file-text"></i> Resume
+                        <a href="./assets/resume.pdf" target="_blank" class="terminal-btn active">
+                            <${LucideIcon} name="file-text" /> Resume
                         </a>
                         <a href="#contact" class="terminal-btn">
-                            <i data-lucide="mail"></i> Email Me
+                            <${LucideIcon} name="mail" /> Email Me
                         </a>
                     </div>
                     <div class="terminal-actions-social">
@@ -294,25 +331,24 @@ function App() {
                         <a href="https://x.com/akashblsbrmnm" target="_blank" class="terminal-btn-icon" aria-label="X">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/x.svg" class="social-icon-img" alt="X" />
                         </a>
-                        <a href="https://medium.com/@akashblsbrmnm" target="_blank" class="terminal-btn-icon" aria-label="Medium">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/medium.svg" class="social-icon-img" alt="Medium" />
-                        </a>
-                        <a href="https://instagram.com/akashblsbrmnm" target="_blank" class="terminal-btn-icon" aria-label="Instagram">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/instagram.svg" class="social-icon-img" alt="Instagram" />
-                        </a>
                     </div>
                 </div>
             </section>
 
             <section id="about" class="reveal">
-                <h2>About Me</h2>
-                <div class="glass-card">
+                <h2 class="section-title">About Me</h2>
+                <div class="glass-card about-card">
                     <div style="text-align: center; margin-bottom: 24px;">
                         <img src="./assets/profile.jpg" alt="Akash" class="about-avatar" />
                     </div>
-                    <p>Hi there! 👋 I'm a C Developer from India with 2+ years of experience in feature development and system enhancement for <strong>RDK-B</strong> platforms.</p>
-                    <p>I'm proficient in Bash scripting and autotools, streamlining the build process for efficient development workflows. I specialize in integrating and enhancing features for robust, high-performance systems.</p>
-                    <p>Beyond coding, I'm passionate about photography, graphic design, and modern arts. When I'm not tinkering with systems, you'll find me exploring movies and science fiction.</p>
+                    <div class="about-content">
+                        <p class="font-sans about-text" style="margin-bottom: 12px;">
+                            I'm a Senior Engineer passionate about embedded Linux, networking, and broadband technologies. Currently, I work on prplOS and prplMesh, developing Wi-Fi 7 features, Device Provisioning Protocol (DPP) onboarding, and next-generation connectivity solutions for carrier-grade broadband gateways. My work focuses on building reliable, high-performance networking software in C/C++ on Linux, with an emphasis on system-level development and wireless technologies.
+                        </p>
+                        <p class="font-sans about-text">
+                            Building on four years of industry experience, my background includes extensive work developing and integrating networking and middleware components for RDK-B based broadband gateways. I am highly proficient with C/C++, Yocto, Linux, and protocols such as TCP/IP, DHCP, TR-069, USP, and WebPA. I enjoy tackling complex engineering challenges, optimizing system performance, and building software that powers millions of connected devices.
+                        </p>
+                    </div>
                 </div>
             </section>
 
@@ -339,7 +375,7 @@ function App() {
                 </div>
             </section>
 
-            <section id="projects" class="reveal">
+            <!-- <section id="projects" class="reveal">
                 <h2>Selected Projects</h2>
                 <div class="timeline">
                     <div class="timeline-item">
@@ -347,7 +383,7 @@ function App() {
                         <div class="timeline-company">Multimedia Framework</div>
                         <p>Implements HTTP-Live Streaming Protocol server and player in the client device, using gstreamer multimedia framework.</p>
                         <a href="https://github.com/akashblsbrmnm/hlsclient" class="terminal-btn" style="margin-top: 12px;">
-                            <i data-lucide="external-link"></i> View Project
+                            <${LucideIcon} name="external-link" /> View Project
                         </a>
                     </div>
                     <div class="timeline-item">
@@ -355,13 +391,14 @@ function App() {
                         <div class="timeline-company">Deep Learning</div>
                         <p>AI/ML Coursework project at the University focusing on image classification using deep neural networks.</p>
                         <a href="https://github.com/akashblsbrmnm/skin-cancer-classifier" class="terminal-btn" style="margin-top: 12px;">
-                            <i data-lucide="external-link"></i> View Project
+                            <${LucideIcon} name="external-link" /> View Project
                         </a>
                     </div>
                 </div>
-            </section>
+            </section> -->
             
             <${ContactForm} />
+            <${LinksSection} />
 
         </main>
 
@@ -386,7 +423,7 @@ function App() {
                         <div class="footer-links">
                             <a href="#">Home</a>
                             <a href="#about">About</a>
-                            <a href="#projects">Projects</a>
+                            <!-- <a href="#projects">Projects</a> -->
                             <a href="#contact">Contact</a>
                             <a href="https://github.com/akashblsbrmnm/">GitHub</a>
                         </div>
@@ -397,7 +434,7 @@ function App() {
                             <a href="https://github.com/akashblsbrmnm" class="footer-social-btn" aria-label="GitHub">
                                 <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/github.svg" class="social-icon-img" alt="GitHub" />
                             </a>
-                            <a href="https://www.linkedin.com/in/akash-balasubhramanyam/" class="footer-social-btn" aria-label="LinkedIn">
+                            <a href="https://www.linkedin.com/in/akashblsbrmnm/" class="footer-social-btn" aria-label="LinkedIn">
                                 <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/linkedin.svg" class="social-icon-img" alt="LinkedIn" />
                             </a>
                             <a href="https://x.com/akashblsbrmnm" class="footer-social-btn" aria-label="X">
@@ -407,7 +444,7 @@ function App() {
                                 <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/medium.svg" class="social-icon-img" alt="Medium" />
                             </a>
                             <a href="mailto:akashblsbrmnm@gmail.com" class="footer-social-btn" aria-label="Email">
-                                <i data-lucide="mail"></i>
+                                <${LucideIcon} name="mail" />
                             </a>
                         </div>
                     </div>

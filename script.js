@@ -7,7 +7,7 @@ const html = htm.bind(h);
 
 function LucideIcon({ name, class: className = '' }) {
     const iconRef = useRef(null);
-    
+
     useEffect(() => {
         if (iconRef.current) {
             // Give Lucide a fresh unmanaged <i> tag to replace on every render
@@ -15,7 +15,7 @@ function LucideIcon({ name, class: className = '' }) {
             lucide.createIcons({ root: iconRef.current });
         }
     }, [name, className]);
-    
+
     return html`<span ref=${iconRef} style="display: inline-flex; align-items: center; justify-content: center;"></span>`;
 }
 
@@ -25,7 +25,7 @@ function ContactForm() {
         try {
             const stored = localStorage.getItem('formSubmissions');
             if (stored) data = JSON.parse(stored);
-        } catch (e) {}
+        } catch (e) { }
 
         const twoHours = 2 * 60 * 60 * 1000;
         if (data.time && (Date.now() - data.time > twoHours)) {
@@ -43,7 +43,7 @@ function ContactForm() {
         if (submissionData.count >= 2 || status === 'sending') return;
 
         setStatus("sending");
-        
+
         const formData = new FormData(event.target);
         formData.append("access_key", "c32b4dd4-8a76-4c3b-a55b-b8ce15f7cfaf");
 
@@ -64,7 +64,7 @@ function ContactForm() {
             localStorage.setItem('formSubmissions', JSON.stringify(newData));
             setStatus("success");
             event.target.reset();
-            
+
             // If they still have messages left, reset the button after 4 seconds so they can use it
             if (newData.count < 2) {
                 setTimeout(() => {
@@ -156,7 +156,7 @@ function App() {
     useEffect(() => {
         const lenis = new window.Lenis({
             duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             direction: 'vertical',
             gestureDirection: 'vertical',
             smooth: true,
@@ -218,7 +218,7 @@ function App() {
                 el.classList.add('active');
             }
         });
-        
+
         return () => observer.disconnect();
     }, []);
 
@@ -277,9 +277,9 @@ function App() {
                     <div class="terminal-output">
                         ${skillsData.map(skill => html`
                             <div class="terminal-file">
-                                ${skill.type === 'simple' 
-                                    ? html`<img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/${skill.icon}.svg" alt=${skill.name} class="skill-icon" />` 
-                                    : html`<${LucideIcon} name=${skill.icon} class="skill-icon" />`}
+                                ${skill.type === 'simple'
+            ? html`<img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/${skill.icon}.svg" alt=${skill.name} class="skill-icon" />`
+            : html`<${LucideIcon} name=${skill.icon} class="skill-icon" />`}
                                 <span>${skill.name}</span>
                             </div>
                         `)}
@@ -314,7 +314,7 @@ function App() {
 
                 <div class="terminal-actions-wrapper">
                     <div class="terminal-actions-primary">
-                        <a href="./assets/resume.pdf" target="_blank" class="terminal-btn active">
+                        <a href="https://drive.google.com/file/d/1WMK23RWA-sSLJ6pu8h7EdwePOA19Tk5m/view?usp=sharing" target="_blank" class="terminal-btn active">
                             <${LucideIcon} name="file-text" /> Resume
                         </a>
                         <a href="#contact" class="terminal-btn">

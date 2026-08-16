@@ -19,6 +19,16 @@ function LucideIcon({ name, class: className = '' }) {
     return html`<span ref=${iconRef} style="display: inline-flex; align-items: center; justify-content: center;"></span>`;
 }
 
+function SolidLinkedInIcon({ class: className = '' }) {
+    return html`
+        <span style="display: inline-flex; align-items: center; justify-content: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="${className}" style="width: 1em; height: 1em;">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+        </span>
+    `;
+}
+
 function ContactForm() {
     const getSubmissionData = () => {
         let data = { count: 0, time: 0 };
@@ -314,23 +324,34 @@ function App() {
                 </div>
 
                 <div class="terminal-actions-wrapper">
-                    <div class="terminal-actions-primary">
-                        <a href="https://drive.google.com/file/d/1WMK23RWA-sSLJ6pu8h7EdwePOA19Tk5m/view?usp=sharing" target="_blank" class="terminal-btn active">
-                            <${LucideIcon} name="file-text" /> Resume
+                    <div class="terminal-actions-social" style="flex-wrap: wrap;">
+                        <a href="https://drive.google.com/file/d/1WMK23RWA-sSLJ6pu8h7EdwePOA19Tk5m/view?usp=sharing" target="_blank" class="terminal-btn-icon expandable" aria-label="Resume">
+                            <${LucideIcon} name="file-text" class="social-icon-img" />
+                            <span class="expandable-text">Resume</span>
                         </a>
-                        <a href="#contact" class="terminal-btn">
-                            <${LucideIcon} name="mail" /> Email Me
+                        <a href="#contact" class="terminal-btn-icon expandable" aria-label="Email Me">
+                            <${LucideIcon} name="mail" class="social-icon-img" />
+                            <span class="expandable-text">Email</span>
                         </a>
-                    </div>
-                    <div class="terminal-actions-social">
-                        <a href="https://github.com/akashblsbrmnm/" target="_blank" class="terminal-btn-icon" aria-label="GitHub">
+                        <a href="https://github.com/akashblsbrmnm/" target="_blank" class="terminal-btn-icon expandable" aria-label="GitHub">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/github.svg" class="social-icon-img" alt="GitHub" />
+                            <span class="expandable-text">GitHub</span>
                         </a>
-                        <a href="https://www.linkedin.com/in/akashblsbrmnm/" target="_blank" class="terminal-btn-icon" aria-label="LinkedIn">
+                        <a href="https://gitlab.com/akash_balasubramaniyam" target="_blank" class="terminal-btn-icon expandable" aria-label="GitLab">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/gitlab.svg" class="social-icon-img" alt="GitLab" />
+                            <span class="expandable-text">GitLab</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/akashblsbrmnm/" target="_blank" class="terminal-btn-icon expandable" aria-label="LinkedIn">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/linkedin.svg" class="social-icon-img" alt="LinkedIn" />
+                            <span class="expandable-text">LinkedIn</span>
                         </a>
-                        <a href="https://x.com/akashblsbrmnm" target="_blank" class="terminal-btn-icon" aria-label="X">
+                        <a href="https://x.com/akashblsbrmnm" target="_blank" class="terminal-btn-icon expandable" aria-label="X">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/x.svg" class="social-icon-img" alt="X" />
+                            <span class="expandable-text">Twitter</span>
+                        </a>
+                        <a href="https://medium.com/@akashblsbrmnm" target="_blank" class="terminal-btn-icon expandable" aria-label="Medium">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/medium.svg" class="social-icon-img" alt="Medium" />
+                            <span class="expandable-text">Medium</span>
                         </a>
                     </div>
                 </div>
@@ -338,7 +359,7 @@ function App() {
 
             <section id="about" class="reveal">
                 <h2 class="section-title">About Me</h2>
-                <div class="glass-card about-card">
+                <div class="about-card">
                     <div style="text-align: center; margin-bottom: 24px;">
                         <img src="./assets/profile-small.webp" alt="Akash" class="about-avatar" width="120" height="120" fetchpriority="high" />
                     </div>
@@ -349,6 +370,14 @@ function App() {
                         <p class="font-sans about-text">
                             Building on four years of industry experience, my background includes extensive work developing and integrating networking and middleware components for RDK-B based broadband gateways. I am highly proficient with C/C++, Yocto, Linux, and protocols such as TCP/IP, DHCP, TR-069, USP, and WebPA. I enjoy tackling complex engineering challenges, optimizing system performance, and building software that powers millions of connected devices.
                         </p>
+                        <div style="margin-top: 24px; display: flex; gap: 16px; flex-wrap: wrap;">
+                            <a href="mailto:hello@akashblsbrmnm.in" class="terminal-btn active">
+                                <${LucideIcon} name="mail" /> hello@akashblsbrmnm.in
+                            </a>
+                            <a href="https://www.linkedin.com/in/akashblsbrmnm/" target="_blank" class="terminal-btn active">
+                                <${SolidLinkedInIcon} /> LinkedIn
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -444,7 +473,7 @@ function App() {
                             <a href="https://medium.com/@akashblsbrmnm" class="footer-social-btn" aria-label="Medium">
                                 <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/medium.svg" class="social-icon-img" alt="Medium" />
                             </a>
-                            <a href="mailto:akashblsbrmnm@gmail.com" class="footer-social-btn" aria-label="Email">
+                            <a href="mailto:hello@akashblsbrmnm.in" class="footer-social-btn" aria-label="Email">
                                 <${LucideIcon} name="mail" />
                             </a>
                         </div>

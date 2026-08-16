@@ -305,7 +305,7 @@ a:hover {
   background: var(--surface-color);
   color: var(--text-secondary);
   transition: all 0.2s ease;
-  font-family: var(--font-headings);
+  font-family: var(--font-sans);
   font-size: 1.15rem;
 }
 
@@ -339,15 +339,39 @@ a:hover {
 }
 
 .terminal-btn.active {
+  position: relative;
+  overflow: hidden;
   background-color: var(--text-primary);
   color: var(--bg-color);
   border-color: var(--text-primary);
 }
 
+.terminal-btn.active > * {
+  position: relative;
+  z-index: 1;
+}
+
+.terminal-btn.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: rgba(128, 128, 128, 0.4);
+  transition: width 0s ease;
+  z-index: 0;
+}
+
+.terminal-btn.active:hover::before {
+  width: 100%;
+  transition: width 1.5s ease-in-out;
+}
+
 .terminal-btn.active:hover {
   background-color: var(--text-primary);
   color: var(--bg-color);
-  opacity: 0.9;
+  opacity: 1;
 }
 
 /* Skill Icons (Shared between Pill and Terminal designs) */
@@ -449,6 +473,7 @@ a:hover {
   height: 14px;
   opacity: 0.8;
   display: inline-block;
+  color: var(--text-primary);
 }
 
 .terminal-btn .social-icon-img {
@@ -877,4 +902,33 @@ textarea.form-control {
   transform: translateY(0);
 }
 
-
+.terminal-btn-icon.expandable {
+  width: auto;
+  min-width: 42px;
+  overflow: hidden;
+  justify-content: flex-start;
+  padding-right: 0;
+  transition: padding-right 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+.terminal-btn-icon.expandable:hover {
+  padding-right: 16px;
+}
+.expandable .social-icon-img {
+  margin-left: 12px;
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+.expandable-text {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  transition: max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+}
+.terminal-btn-icon.expandable:hover .expandable-text {
+  max-width: 100px;
+  opacity: 1;
+  transition-delay: 0.05s;
+}

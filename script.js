@@ -210,14 +210,15 @@ function App() {
             });
         }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
+        const toActivate = [];
         document.querySelectorAll('.reveal').forEach(el => {
             observer.observe(el);
             // Immediately reveal if in viewport on load
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight) {
-                el.classList.add('active');
+            if (el.getBoundingClientRect().top < window.innerHeight) {
+                toActivate.push(el);
             }
         });
+        toActivate.forEach(el => el.classList.add('active'));
 
         return () => observer.disconnect();
     }, []);

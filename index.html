@@ -12,18 +12,21 @@
     
     <link rel="stylesheet" href="styles.css">
     
+    <!-- Preload LCP Image -->
+    <link rel="preload" as="image" href="./assets/profile-small.webp">
+
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="https://unpkg.com/lucide@0.440.0"></script>
     <!-- Lenis Smooth Scroll -->
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script defer src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     
     <!-- Preact & HTM (UMD builds for file:// protocol support) -->
-    <script src="https://unpkg.com/preact@10.19.2/dist/preact.umd.js"></script>
-    <script src="https://unpkg.com/preact@10.19.2/hooks/dist/hooks.umd.js"></script>
-    <script src="https://unpkg.com/htm@3.1.1/dist/htm.umd.js"></script>
+    <script defer src="https://unpkg.com/preact@10.19.2/dist/preact.umd.js"></script>
+    <script defer src="https://unpkg.com/preact@10.19.2/hooks/dist/hooks.umd.js"></script>
+    <script defer src="https://unpkg.com/htm@3.1.1/dist/htm.umd.js"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
     <div id="app"></div>
-    <script src="script.js"></script>
 </body>
 </html>

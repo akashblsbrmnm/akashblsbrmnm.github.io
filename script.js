@@ -307,7 +307,7 @@ function App() {
                 <div class="terminal-block">
                     <div class="terminal-comment">
                         <span>Senior Engineer at</span>
-                        <a href="https://in.linkedin.com/company/tataelxsi" target="_blank" class="tata-link"><img src="./assets/tata-elxsi.svg" alt="Tata Elxsi" class="tata-logo" /></a>
+                        <a href="https://in.linkedin.com/company/tataelxsi" target="_blank" class="tata-link"><img src="./assets/tata-elxsi.svg" alt="Tata Elxsi" class="tata-logo" width="103" height="18" /></a>
                     </div>
                     <p class="terminal-text">C/C++, prplMesh, RDK-B, Wi-Fi, Routers & Gateways, Linux</p>
                 </div>
@@ -339,7 +339,7 @@ function App() {
                 <h2 class="section-title">About Me</h2>
                 <div class="glass-card about-card">
                     <div style="text-align: center; margin-bottom: 24px;">
-                        <img src="./assets/profile.jpg" alt="Akash" class="about-avatar" />
+                        <img src="./assets/profile-small.webp" alt="Akash" class="about-avatar" width="120" height="120" fetchpriority="high" />
                     </div>
                     <div class="about-content">
                         <p class="font-sans about-text" style="margin-bottom: 12px;">
@@ -406,7 +406,7 @@ function App() {
             <div class="footer-container">
                 <div class="footer-left">
                     <div class="footer-profile">
-                        <img src="./assets/profile.jpg" alt="Akash" class="footer-avatar" />
+                        <img src="./assets/profile-small.webp" alt="Akash" class="footer-avatar" width="48" height="48" loading="lazy" />
                         <div class="footer-profile-text">
                             <div class="footer-name">Akash.</div>
                             <div class="footer-subtitle">Embedded Linux Developer</div>

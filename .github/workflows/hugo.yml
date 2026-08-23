@@ -3,7 +3,7 @@ name: Deploy Hugo site to Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["feature/swiss"]
   workflow_dispatch:
 
 permissions:

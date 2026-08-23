@@ -1,0 +1,137 @@
+.contact__head {
+  max-width: 36rem;
+  margin-bottom: 1.25rem;
+}
+
+.contact__title {
+  margin-top: 0.75rem;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: var(--text-2xl);
+  letter-spacing: -0.02em;
+}
+
+.contact__desc {
+  margin-top: 0.75rem;
+  color: var(--text-2);
+  line-height: var(--lh-body);
+}
+
+.contact__limit {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-3);
+}
+
+.contact__meta {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.contact__count {
+  font-size: var(--text-xs);
+  color: var(--text-3);
+}
+
+.contact__status:empty {
+  display: none;
+}
+
+.contact__status:not(:empty) {
+  margin-bottom: 0.75rem;
+  font-size: var(--text-sm);
+  color: var(--text-2);
+}
+
+.contact__status.is-success {
+  color: var(--accent-hover);
+}
+
+.contact__status.is-error {
+  color: #9a4318;
+}
+
+.contact__form {
+  display: grid;
+  gap: 1rem;
+  max-width: 36rem;
+}
+
+.contact__form.is-disabled {
+  opacity: 0.72;
+}
+
+.contact__botcheck {
+  display: none;
+}
+
+.contact__field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.contact__label {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text);
+}
+
+.contact__required {
+  color: var(--accent);
+}
+
+.contact__input {
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: var(--text-sm);
+}
+
+.contact__input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.contact__input.is-invalid {
+  border-color: #9a4318;
+  outline-color: #9a4318;
+}
+
+.contact__input--area {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.contact__submit {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.65rem 1.35rem;
+  border: 0;
+  background: var(--bg-deep);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.contact__submit:not(:disabled) {
+  @include accent-hover-pill;
+}
+
+.contact__submit .bi {
+  font-size: 0.95rem;
+}
+
+.contact__submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}

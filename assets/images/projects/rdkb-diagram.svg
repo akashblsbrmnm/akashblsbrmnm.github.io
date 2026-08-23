@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-labelledby="t d">
+  <title id="t">RDK-B middleware stack</title>
+  <desc id="d">Layers of an RDK-B gateway: cloud/ACS, WebPA/RBUS, CCSP components, and Linux.</desc>
+  <rect width="960" height="540" fill="#f0efe9"/>
+  <rect x="24" y="24" width="912" height="492" fill="none" stroke="#d4d2c8" stroke-width="1"/>
+  <text x="48" y="64" font-family="Geist Mono, ui-monospace, monospace" font-size="12" letter-spacing="0.14em" fill="#6b6a62">02 / STACK</text>
+  <text x="48" y="96" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="600" fill="#141413">RDK-B middleware</text>
+  <text x="48" y="124" font-family="Geist Mono, ui-monospace, monospace" font-size="13" fill="#6b6a62">provisioning · IPC · data model · Yocto</text>
+
+  <!-- Cloud -->
+  <rect x="280" y="150" width="400" height="56" fill="#fff" stroke="#141413" stroke-width="1.5"/>
+  <text x="300" y="184" font-family="Geist Mono, ui-monospace, monospace" font-size="13" fill="#141413">ACS / Cloud  ·  TR-069 · USP</text>
+
+  <line x1="480" y1="206" x2="480" y2="230" stroke="#c45c26" stroke-width="1.5"/>
+
+  <!-- WebPA / RBUS -->
+  <rect x="180" y="230" width="600" height="64" fill="#141413"/>
+  <text x="204" y="258" font-family="Geist Mono, ui-monospace, monospace" font-size="11" letter-spacing="0.12em" fill="#c45c26">BUS</text>
+  <text x="204" y="280" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#f0efe9">WebPA  ·  RBUS RPC  ·  remote sync</text>
+
+  <line x1="300" y1="294" x2="300" y2="318" stroke="#d4d2c8" stroke-width="1"/>
+  <line x1="480" y1="294" x2="480" y2="318" stroke="#d4d2c8" stroke-width="1"/>
+  <line x1="660" y1="294" x2="660" y2="318" stroke="#d4d2c8" stroke-width="1"/>
+
+  <!-- CCSP boxes -->
+  <rect x="120" y="318" width="220" height="80" fill="#fff" stroke="#141413" stroke-width="1.5"/>
+  <rect x="120" y="318" width="6" height="80" fill="#c45c26"/>
+  <text x="144" y="352" font-family="Geist Mono, ui-monospace, monospace" font-size="11" fill="#6b6a62">CCSP</text>
+  <text x="144" y="376" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#141413">PandM / Wi-Fi</text>
+
+  <rect x="370" y="318" width="220" height="80" fill="#fff" stroke="#141413" stroke-width="1.5"/>
+  <text x="394" y="352" font-family="Geist Mono, ui-monospace, monospace" font-size="11" fill="#6b6a62">DATA MODEL</text>
+  <text x="394" y="376" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#141413">TR-181 objects</text>
+
+  <rect x="620" y="318" width="220" height="80" fill="#fff" stroke="#141413" stroke-width="1.5"/>
+  <text x="644" y="352" font-family="Geist Mono, ui-monospace, monospace" font-size="11" fill="#6b6a62">BUILD</text>
+  <text x="644" y="376" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#141413">Yocto · BitBake</text>
+
+  <rect x="120" y="430" width="720" height="48" fill="none" stroke="#d4d2c8" stroke-width="1"/>
+  <text x="144" y="460" font-family="Geist Mono, ui-monospace, monospace" font-size="13" fill="#6b6a62">Linux kernel · networking · long-lived userspace</text>
+</svg>

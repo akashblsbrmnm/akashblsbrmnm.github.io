@@ -1,0 +1,55 @@
+{{ $g := hugo.Data.github }}
+{{ if not $g }}{{ $g = dict "commits" 0 "repos" 0 "stars" 0 "topLanguage" "—" "prs" 0 "followers" 0 }}{{ end }}
+{{ $dash := "—" }}
+<section class="section section--ink gh" id="github" aria-labelledby="github-heading">
+  <div class="wrap">
+    <div class="gh__head">
+      <p class="section__label">04 / GitHub</p>
+      <h2 id="github-heading" class="gh__title">Public activity</h2>
+    </div>
+    <div class="gh__layout">
+      <div class="gh__dominant">
+        <div>
+          <div class="gh__dominant-value">{{ partial "github-value.html" (dict "value" $g.repos "dash" $dash) }}</div>
+          <p class="gh__dominant-label">Public repositories</p>
+        </div>
+        <p class="gh__dominant-note">
+          {{ with $g.fetchedAt }}Fetched {{ . }}{{ else }}Fallback data — run scripts/fetch-github-stats.sh{{ end }}
+        </p>
+      </div>
+      <div class="gh__side">
+        <div class="gh__stat">
+          <div class="gh__stat-value gh__stat-value--accent">{{ partial "github-value.html" (dict "value" $g.topLanguage "dash" $dash) }}</div>
+          <div class="gh__stat-label">Top language</div>
+        </div>
+        <div class="gh__stat">
+          <div class="gh__stat-value">{{ partial "github-value.html" (dict "value" $g.followers "dash" $dash) }}</div>
+          <div class="gh__stat-label">Followers</div>
+        </div>
+        <div class="gh__stat">
+          <div class="gh__stat-value">{{ partial "github-value.html" (dict "value" $g.stars "dash" $dash) }}</div>
+          <div class="gh__stat-label">Stars</div>
+        </div>
+        <div class="gh__stat">
+          <div class="gh__stat-value">{{ partial "github-value.html" (dict "value" $g.commits "dash" $dash) }}</div>
+          <div class="gh__stat-label">Contributions (yr)</div>
+        </div>
+        <div class="gh__stat">
+          <div class="gh__stat-value">{{ partial "github-value.html" (dict "value" $g.prs "dash" $dash) }}</div>
+          <div class="gh__stat-label">PRs merged</div>
+        </div>
+        <div class="gh__stat">
+          {{ $profile := $g.profileUrl | default (printf "https://github.com/%s" ($g.username | default "akashblsbrmnm")) }}
+          <div class="gh__stat-value">
+            {{ with $g.username }}
+              <a class="gh__handle" href="{{ $profile }}" rel="me noopener">@{{ . }}</a>
+            {{ else }}
+              {{ $dash }}
+            {{ end }}
+          </div>
+          <div class="gh__stat-label">Handle</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

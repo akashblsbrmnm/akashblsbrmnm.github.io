@@ -1,0 +1,45 @@
+{{ $skills := hugo.Data.skills }}
+{{ if $skills }}
+<section class="section skills-block" id="skills" aria-labelledby="skills-heading">
+  <div class="wrap">
+    <div class="skills-block__head">
+      <p class="skills-block__label section__label">03 / Skills</p>
+      <h2 id="skills-heading" class="skills-block__title">Technical Skills</h2>
+    </div>
+    {{ $cats := slice }}
+    {{ range $skills }}
+      {{ with .category }}
+        {{ if not (in $cats .) }}
+          {{ $cats = $cats | append . }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    <div class="skills">
+      {{ $n := 0 }}
+      {{ range $cats }}
+        {{ $cat := . }}
+        {{ $items := where $skills "category" $cat }}
+        {{ if gt (len $items) 0 }}
+          {{ $n = add $n 1 }}
+          <div class="skill-group">
+            <div class="skill-group__head">
+              <h3 class="skill-group__title">{{ $cat }}</h3>
+              <span class="skill-group__idx">{{ printf "%02d" $n }}</span>
+            </div>
+            <ul class="skill-list">
+              {{ range $items }}
+              <li class="{{ if .accent }}is-accent{{ end }}">
+                {{ with .icon }}
+                  <iconify-icon icon="{{ . }}" width="16" height="16" aria-hidden="true"></iconify-icon>
+                {{ end }}
+                <span>{{ .name }}</span>
+              </li>
+              {{ end }}
+            </ul>
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-labelledby="t d">
+  <title id="t">prplMesh agent and controller topology</title>
+  <desc id="d">Technical diagram of prplMesh agent, controller, and hostapd on an Embedded Linux gateway.</desc>
+  <rect width="960" height="540" fill="#f0efe9"/>
+  <rect x="24" y="24" width="912" height="492" fill="none" stroke="#d4d2c8" stroke-width="1"/>
+  <text x="48" y="64" font-family="Geist Mono, ui-monospace, monospace" font-size="12" letter-spacing="0.14em" fill="#6b6a62">01 / TOPOLOGY</text>
+  <text x="48" y="96" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="600" fill="#141413">prplMesh on gateway</text>
+  <text x="48" y="124" font-family="Geist Mono, ui-monospace, monospace" font-size="13" fill="#6b6a62">agent · controller · hostapd · Linux</text>
+
+  <!-- Controller -->
+  <rect x="80" y="180" width="240" height="120" fill="#fff" stroke="#141413" stroke-width="1.5"/>
+  <rect x="80" y="180" width="6" height="120" fill="#c45c26"/>
+  <text x="104" y="220" font-family="Geist Mono, ui-monospace, monospace" font-size="11" letter-spacing="0.1em" fill="#c45c26">CONTROLLER</text>
+  <text x="104" y="250" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#141413">Multi-AP</text>
+  <text x="104" y="274" font-family="Geist Mono, ui-monospace, monospace" font-size="12" fill="#6b6a62">orchestration</text>
+
+  <!-- Agent -->
+  <rect x="400" y="180" width="240" height="120" fill="#fff" stroke="#141413" stroke-width="1.5"/>
+  <rect x="400" y="180" width="6" height="120" fill="#141413"/>
+  <text x="424" y="220" font-family="Geist Mono, ui-monospace, monospace" font-size="11" letter-spacing="0.1em" fill="#6b6a62">AGENT</text>
+  <text x="424" y="250" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#141413">Radio node</text>
+  <text x="424" y="274" font-family="Geist Mono, ui-monospace, monospace" font-size="12" fill="#6b6a62">IEEE 1905.1</text>
+
+  <!-- hostapd -->
+  <rect x="720" y="180" width="180" height="120" fill="#fff" stroke="#141413" stroke-width="1.5"/>
+  <text x="744" y="220" font-family="Geist Mono, ui-monospace, monospace" font-size="11" letter-spacing="0.1em" fill="#6b6a62">HOSTAPD</text>
+  <text x="744" y="250" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#141413">AP stack</text>
+  <text x="744" y="274" font-family="Geist Mono, ui-monospace, monospace" font-size="12" fill="#6b6a62">802.11</text>
+
+  <!-- Links -->
+  <line x1="320" y1="240" x2="400" y2="240" stroke="#c45c26" stroke-width="1.5"/>
+  <polygon points="396,236 408,240 396,244" fill="#c45c26"/>
+  <line x1="640" y1="240" x2="720" y2="240" stroke="#141413" stroke-width="1.5"/>
+  <polygon points="716,236 728,240 716,244" fill="#141413"/>
+
+  <!-- Kernel bar -->
+  <rect x="80" y="360" width="820" height="72" fill="#141413"/>
+  <text x="104" y="392" font-family="Geist Mono, ui-monospace, monospace" font-size="11" letter-spacing="0.12em" fill="#c45c26">EMBEDDED LINUX</text>
+  <text x="104" y="416" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#f0efe9">userspace · netlink · wireless drivers</text>
+  <line x1="200" y1="300" x2="200" y2="360" stroke="#d4d2c8" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="520" y1="300" x2="520" y2="360" stroke="#d4d2c8" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="810" y1="300" x2="810" y2="360" stroke="#d4d2c8" stroke-width="1" stroke-dasharray="4 4"/>
+</svg>

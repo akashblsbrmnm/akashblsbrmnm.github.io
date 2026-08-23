@@ -1,0 +1,48 @@
+{{ $s := hugo.Data.site }}
+{{ with $s.experience }}
+<section class="section section--loose experience" id="experience" aria-labelledby="experience-heading">
+  <div class="wrap">
+    <div class="experience__layout">
+      <p class="experience__label section__label section__label--accent">02 / Experience</p>
+      <h2 id="experience-heading" class="experience__title">Experience</h2>
+      <ol class="experience-list">
+        {{ range . }}
+        {{ $company := .company }}
+        <li class="experience-item">
+          <div class="experience-item__track">
+            <div class="experience-item__icon{{ if .logo }} experience-item__icon--logo{{ end }}"{{ if not .logo }} style="background-color: {{ .iconBg | default "#c45c26" }};"{{ end }}>
+              {{ if .logo }}
+                {{ with resources.Get .logo }}
+                  <img src="{{ .RelPermalink }}" width="48" height="48" alt="{{ $company }} logo" loading="lazy">
+                {{ else }}
+                  <img src="{{ .logo | relURL }}" width="48" height="48" alt="{{ $company }} logo" loading="lazy">
+                {{ end }}
+              {{ else }}
+                <span>{{ .icon }}</span>
+              {{ end }}
+            </div>
+          </div>
+          <div class="experience-item__body">
+            <div class="experience-item__head">
+              <h3 class="experience-item__role">{{ .role }}</h3>
+              <p class="experience-item__dates">
+                {{ .start }}{{ if .end }} – {{ .end }}{{ end }}
+              </p>
+            </div>
+            <p class="experience-item__company">
+              {{ .company }}{{ with .focus }} · {{ . }}{{ end }}{{ with .type }} · {{ . }}{{ end }}
+            </p>
+            {{ with .desc }}<p class="experience-item__desc">{{ . }}</p>{{ end }}
+            {{ with .bullets }}
+            <ul class="experience-item__bullets">
+              {{ range . }}<li>{{ . }}</li>{{ end }}
+            </ul>
+            {{ end }}
+          </div>
+        </li>
+        {{ end }}
+      </ol>
+    </div>
+  </div>
+</section>
+{{ end }}

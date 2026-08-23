@@ -1,0 +1,84 @@
+{{ $s := hugo.Data.site }}
+
+<div class="profile">
+  <div class="profile__avatar">
+    {{ with $s.avatar }}
+      {{ with resources.Get . }}
+        <img src="{{ .RelPermalink }}" width="144" height="144" alt="{{ $s.fullName | default $s.name }}">
+      {{ else }}
+        <span aria-hidden="true">{{ substr $s.firstName 0 1 }}</span>
+      {{ end }}
+    {{ else }}
+      <span aria-hidden="true">{{ substr $s.firstName 0 1 }}</span>
+    {{ end }}
+  </div>
+  <h1 class="profile__name">
+    <span class="profile__name-line">{{ $s.firstName }}</span>
+    <span class="profile__name-line profile__name-line--surname">{{ $s.lastName | default "Balasubramaniyam" }}</span>
+  </h1>
+  <p class="profile__role">
+    {{ $s.role }}{{ with $s.roleSerif }} · <span class="profile__role-serif">{{ . }}</span>{{ end }}
+  </p>
+
+  <ul class="profile__contact">
+    {{ with $s.location }}
+      <li class="profile__contact-item">
+        <i class="bi bi-geo-alt" aria-hidden="true"></i>
+        <span>{{ . }}</span>
+      </li>
+    {{ end }}
+    {{ with $s.email }}
+      <li class="profile__contact-item">
+        <i class="bi bi-envelope" aria-hidden="true"></i>
+        <a href="mailto:{{ . }}">{{ . }}</a>
+      </li>
+    {{ end }}
+    {{ with $s.phone }}
+      <li class="profile__contact-item">
+        <i class="bi bi-telephone" aria-hidden="true"></i>
+        <a href="tel:{{ replaceRE "[^0-9+]" "" . }}">{{ . }}</a>
+      </li>
+    {{ end }}
+  </ul>
+
+  <p class="profile__desc">{{ $s.intro }}</p>
+
+  <div class="profile__bottom">
+    <div class="profile__social">
+      {{ with $s.github }}
+        <a class="profile__social-link" href="{{ . }}" rel="me noopener" aria-label="GitHub">
+          <i class="bi bi-github" aria-hidden="true"></i>
+        </a>
+      {{ end }}
+      {{ with $s.gitlab }}
+        <a class="profile__social-link" href="{{ . }}" rel="me noopener" aria-label="GitLab">
+          <i class="bi bi-gitlab" aria-hidden="true"></i>
+        </a>
+      {{ end }}
+      {{ with $s.linkedin }}
+        <a class="profile__social-link" href="{{ . }}" rel="me noopener" aria-label="LinkedIn">
+          <i class="bi bi-linkedin" aria-hidden="true"></i>
+        </a>
+      {{ end }}
+      {{ with $s.x }}
+        <a class="profile__social-link" href="{{ . }}" rel="me noopener" aria-label="X">
+          <i class="bi bi-twitter-x" aria-hidden="true"></i>
+        </a>
+      {{ end }}
+    </div>
+
+    <div class="profile__actions">
+      {{ with $s.resume }}
+        <a class="profile__cv" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+          <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
+          Download Resume
+        </a>
+      {{ end }}
+      {{ with $s.email }}
+        <a class="profile__mail" href="mailto:{{ . }}" aria-label="Email">
+          <i class="bi bi-envelope" aria-hidden="true"></i>
+        </a>
+      {{ end }}
+    </div>
+  </div>
+</div>

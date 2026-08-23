@@ -1,0 +1,59 @@
+name: Akash
+fullName: Akash Balasubramaniyam
+firstName: Akash
+lastName: Balasubramaniyam
+role: Senior Engineer
+roleSerif: Embedded Systems
+tagline: RDK-B, prplMesh, C/C++, Linux, Yocto — carrier-grade broadband gateways.
+intro: I build systems software for broadband gateways — RDK-B middleware, Wi-Fi stack integration, and the Linux userspace that keeps carrier devices stable in the field.
+email: hello@akashblsbrmnm.in
+github: https://github.com/akashblsbrmnm
+github_username: akashblsbrmnm
+gitlab: https://gitlab.com/akashblsbrmnm
+linkedin: https://www.linkedin.com/in/akashblsbrmnm/
+x: https://x.com/akashblsbrmnm
+resume: https://drive.google.com/file/d/1WMK23RWA-sSLJ6pu8h7EdwePOA19Tk5m/view?usp=sharing
+location: Thiruvananthapuram, Kerala
+phone: +91-9072597884
+avatar: images/profile/avatar.webp
+web3formsKey: c32b4dd4-8a76-4c3b-a55b-b8ce15f7cfaf
+contact:
+  title: Let's Connect
+  desc: "I'm always open to discussing system architecture challenges, open-source collaborations, and innovative networking projects. Feel free to drop a message!"
+about:
+  - "I'm a Senior Engineer passionate about embedded Linux, networking, and broadband technologies. Currently, I work on prplOS and prplMesh, developing Wi-Fi 7 features, Device Provisioning Protocol (DPP) onboarding, and next-generation connectivity solutions for carrier-grade broadband gateways."
+  - "My work focuses on building reliable, high-performance networking software in C/C++ on Linux, with an emphasis on system-level development and wireless technologies."
+experience:
+  - role: Senior Engineer
+    company: Tata Elxsi
+    type: Full-Time
+    start: Apr 2026
+    end: Present
+    logo: images/experience/tata-elxsi.webp
+    icon: TE
+    iconBg: "#c45c26"
+    desc: Working on prplMesh and its features for carrier-grade broadband gateways — C/C++ on Linux, focusing on mesh networking, Wi-Fi stack integration, and production gateway firmware on prplOS platforms.
+    bullets:
+      - prplMesh feature development, Wi-Fi 7 capabilities, and Device Provisioning Protocol (DPP) onboarding
+      - System-level development on embedded Linux with debugging and integration on production CPE targets
+  - role: Technology Analyst
+    company: Infosys
+    type: Full-Time
+    focus: RDK-B
+    start: Oct 2022
+    end: March 2026
+    logo: images/experience/infosys.webp
+    icon: IN
+    iconBg: "#4a4944"
+    desc: Software Engineer with experience developing, enhancing, and maintaining low-level C/C++ middleware applications for RDK-B based cable modems and routers on Linux. Worked on production broadband gateway firmware using the RDK-B SDK, focusing on networking features, remote device management and provisioning.
+    bullets:
+      - Contributed to feature development and maintenance of WebPA and parodus2ccsp agents, which support device-to-cloud communication and configuration management in the RDK-B ecosystem. Worked on persistent client-server communication flows over WebSockets, TCP/IP, and TLS, along with upstream/downstream sync message handling.
+      - Also worked on Yocto layers, BitBake recipes, GTest unit testing for CCSP components, middleware builds using CMake/AutoMake, debugging with GDB and Valgrind, and Docker-based build/CI automation.
+  - role: Computer Science Tutor
+    company: Self Employed
+    type: Part-Time
+    start: "2020"
+    end: "2022"
+    icon: CS
+    iconBg: "#8a887e"
+    desc: Provided tutoring in Computer Science to college juniors and higher secondary students. Helped them strengthen their understanding of core topics including C, Java, algorithms, data structures, flowcharts, and basic networking.

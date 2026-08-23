@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img">
+  <rect width="640" height="360" fill="#ebe9e1"/>
+  <rect x="24" y="24" width="592" height="312" fill="none" stroke="#d4d2c8"/>
+  <text x="48" y="72" font-family="Geist Mono, ui-monospace, monospace" font-size="14" letter-spacing="0.12em" fill="#c45c26">STATIC</text>
+  <text x="48" y="130" font-family="Inter, system-ui, sans-serif" font-size="36" font-weight="600" fill="#141413">HTML first</text>
+  <rect x="48" y="170" width="200" height="8" fill="#141413"/>
+  <rect x="48" y="198" width="320" height="6" fill="#d4d2c8"/>
+  <rect x="48" y="220" width="260" height="6" fill="#d4d2c8"/>
+  <rect x="400" y="160" width="180" height="120" fill="#fff" stroke="#141413"/>
+  <text x="420" y="210" font-family="Geist Mono, ui-monospace, monospace" font-size="13" fill="#55554f">hugo --minify</text>
+  <text x="420" y="240" font-family="Geist Mono, ui-monospace, monospace" font-size="13" fill="#c45c26">0 client JS*</text>
+</svg>

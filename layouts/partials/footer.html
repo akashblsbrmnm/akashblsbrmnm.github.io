@@ -1,0 +1,22 @@
+{{ $s := hugo.Data.site }}
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <p class="footer__brand">{{ $s.name }}</p>
+        <p class="footer__role">{{ $s.role }}{{ with $s.roleSerif }} · {{ . }}{{ end }}</p>
+      </div>
+      <div class="footer__links">
+        {{ with $s.github }}<a href="{{ . }}" rel="me noopener">GitHub</a>{{ end }}
+        {{ with $s.gitlab }}<a href="{{ . }}" rel="me noopener">GitLab</a>{{ end }}
+        {{ with $s.linkedin }}<a href="{{ . }}" rel="me noopener">LinkedIn</a>{{ end }}
+        {{ with $s.x }}<a href="{{ . }}" rel="me noopener">X</a>{{ end }}
+        {{ with $s.email }}<a href="mailto:{{ . }}">Email</a>{{ end }}
+        {{ with $s.resume }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer">Resume</a>{{ end }}
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© {{ now.Year }} {{ $s.name }}</span>
+    </div>
+  </div>
+</footer>

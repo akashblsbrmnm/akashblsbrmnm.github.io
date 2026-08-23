@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="home-shell">
+  <div class="home-top">
+    {{ partial "nav.html" . }}
+  </div>
+
+  <aside class="resume-sidebar" aria-label="Profile">
+    {{ partial "sidebar-profile.html" . }}
+  </aside>
+
+  <div class="resume-main__sections">
+    {{ partial "about.html" . }}
+    {{ partial "experience.html" . }}
+    {{ partial "skills.html" . }}
+    {{ partial "github-stats.html" . }}
+    {{ partial "projects.html" . }}
+    {{ partial "blog-preview.html" . }}
+    {{ partial "contact.html" . }}
+  </div>
+</div>
+{{ end }}

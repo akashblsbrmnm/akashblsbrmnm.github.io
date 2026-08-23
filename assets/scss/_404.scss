@@ -1,0 +1,21 @@
+.page-404 {
+  min-height: calc(100vh - var(--nav-h) - 8rem);
+  display: grid;
+  place-content: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 3rem 1.25rem;
+}
+
+.page-404 .code {
+  font-size: var(--text-hero);
+  font-family: var(--font-mono);
+  color: var(--text-3);
+  line-height: 1;
+}
+
+.page-404 a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}

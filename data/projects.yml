@@ -1,0 +1,20 @@
+- name: prplMesh / Wi-Fi stack
+  desc: "Wi-Fi stack development and integration for next-generation platforms — prplOS, prplMesh, and hostapd paths that ship on real gateways."
+  stack: [C, prplMesh, Linux, Wi-Fi]
+  links:
+    live: ""
+    github: https://gitlab.com/prpl-foundation/prplmesh/prplMesh/-/commits/master?author=Akash%20Balasubramaniyam
+  image: images/projects/prplmesh-diagram.svg
+  featured: true
+  status: MAINTAINED
+  year: "2024"
+- name: RDK-B middleware & provisioning
+  desc: "Networking and remote provisioning on RDK-B carrier gateways — rbus IPC, TR-181 data model work, Yocto/BitBake recipes, and CI with Docker."
+  stack: [C/C++, RDK-B, Yocto, RBUS]
+  links:
+    live: ""
+    github: https://github.com/xmidt-org/parodus2ccsp
+  image: images/projects/rdkb-diagram.svg
+  featured: true
+  status: RELEASED
+  year: "2023"

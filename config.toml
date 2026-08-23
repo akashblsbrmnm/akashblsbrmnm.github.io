@@ -1,0 +1,63 @@
+baseURL = "https://akashblsbrmnm.in/"
+title = "Akash"
+defaultContentLanguage = "en"
+
+[languages]
+  [languages.en]
+    label = "English"
+    locale = "en-US"
+    title = "Akash"
+# Turn on after the first git commit so .Lastmod can come from git history.
+enableGitInfo = false
+enableRobotsTXT = false
+summaryLength = 24
+rssLimit = 50
+
+[pagination]
+  pagerSize = 20
+
+[params]
+  description = "Senior Engineer — RDK-B, prplMesh, C/C++, Embedded Linux, Yocto."
+
+[taxonomies]
+  tag = "tags"
+  category = "category"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    noClasses = false
+    style = "monokailight"
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = true
+
+  [[related.indices]]
+    name = "tags"
+    weight = 100
+
+  [[related.indices]]
+    name = "category"
+    weight = 80
+
+[sitemap]
+  changeFreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[minify]
+  minifyOutput = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]

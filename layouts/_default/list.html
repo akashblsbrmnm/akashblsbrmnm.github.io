@@ -1,0 +1,48 @@
+{{ define "main" }}
+{{ $isBlog := and (eq .Kind "section") (eq .Section "blog") }}
+{{ $heading := cond $isBlog "Blogs" .Title }}
+{{ if eq .Kind "term" }}{{ $heading = printf "Blogs · %s" .Title }}{{ end }}
+{{ if eq .Kind "taxonomy" }}{{ $heading = .Title }}{{ end }}
+<div class="wrap blog-archive">
+  <p class="blog-back">
+    <a href="{{ "/" | relURL }}">← Back to portfolio</a>
+  </p>
+  <header class="ed-head ed-head--blog">
+    <p class="ed-head__label">{{ if $isBlog }}06 / Blogs{{ else }}Index{{ end }}</p>
+    <div class="ed-head__copy">
+      <h1 class="ed-head__title blog-archive__title">{{ $heading }}</h1>
+      {{ with .Content }}<div class="ed-head__desc blog-archive__intro">{{ . }}</div>{{ end }}
+    </div>
+  </header>
+  {{ if or (eq .Kind "section") (eq .Kind "taxonomy") (eq .Kind "term") }}
+    {{ $tags := site.Taxonomies.tags }}
+    {{ if $tags }}
+    <nav class="tag-nav" aria-label="Tags">
+      <a href="{{ "/blog/" | relURL }}" class="{{ if eq .Kind "section" }}is-active{{ end }}">All</a>
+      {{ range $name, $taxonomy := $tags }}
+        <a href="{{ $taxonomy.Page.RelPermalink }}" class="{{ if and (eq $.Kind "term") (eq $.Data.Term $name) }}is-active{{ end }}">{{ $name }}</a>
+      {{ end }}
+    </nav>
+    {{ end }}
+  {{ end }}
+  <div class="writing-index">
+  {{ range .Pages }}
+    <a class="writing-item" href="{{ .RelPermalink }}">
+      <div class="writing-item__thumb">
+        {{ partial "blog-thumb.html" . }}
+      </div>
+      <div class="writing-item__body">
+        <div class="writing-item__top">
+          <h2 class="writing-item__title">{{ .Title }}</h2>
+          <span class="writing-item__meta">{{ .ReadingTime }} min · {{ .Date.Format "2006" }}</span>
+        </div>
+        {{ with .Params.excerpt }}<p class="writing-item__excerpt">{{ . }}</p>{{ end }}
+        {{ with index .Params.tags 0 }}
+        <p class="writing-item__tag">{{ . | upper }}</p>
+        {{ end }}
+      </div>
+    </a>
+  {{ end }}
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,13 @@
+{{- /* Resolve post cover from assets/ or static/ */ -}}
+{{- $cover := .Params.cover -}}
+{{- if $cover -}}
+  {{- with resources.Get $cover -}}
+    <img src="{{ .RelPermalink }}" width="160" height="90" alt="" loading="lazy">
+  {{- else -}}
+    <img src="{{ $cover | relURL }}" width="160" height="90" alt="" loading="lazy">
+  {{- end -}}
+{{- else -}}
+  <span class="writing-item__ph">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan" }}<br>{{ .Date.Format "02" }}</time>
+  </span>
+{{- end -}}

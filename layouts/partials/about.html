@@ -1,0 +1,21 @@
+{{ $s := hugo.Data.site }}
+<section class="section about" id="about" aria-labelledby="about-heading">
+  <div class="wrap">
+    <div class="about__layout">
+      <p class="about__label section__label section__label--accent">01 / About</p>
+      <h2 id="about-heading" class="about__heading">Background</h2>
+      <div class="about__copy">
+        {{ range $s.about }}
+        <p>{{ . }}</p>
+        {{ end }}
+        <div class="about__actions">
+          <a class="about__btn" href="mailto:{{ $s.email }}">{{ $s.email }}</a>
+          <a class="about__btn" href="{{ $s.linkedin }}" rel="noopener">
+            <i class="bi bi-linkedin" aria-hidden="true"></i>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

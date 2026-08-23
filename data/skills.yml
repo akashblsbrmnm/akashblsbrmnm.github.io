@@ -1,0 +1,72 @@
+- name: C
+  category: Languages
+  icon: devicon:c
+  accent: true
+- name: C++
+  category: Languages
+  icon: devicon:cplusplus
+  accent: true
+- name: Python
+  category: Languages
+  icon: devicon:python
+  accent: false
+- name: Shell
+  category: Languages
+  icon: mdi:bash
+  accent: false
+- name: RDK-B
+  category: Systems / Embedded
+  icon: mdi:chip
+  accent: true
+- name: Embedded Linux
+  category: Systems / Embedded
+  icon: devicon:linux
+  accent: true
+- name: prplMesh
+  category: Systems / Embedded
+  icon: mdi:wifi
+  accent: true
+- name: Yocto / BitBake
+  category: Systems / Embedded
+  icon: mdi:hammer-wrench
+  accent: false
+- name: Networking
+  category: Systems / Embedded
+  icon: mdi:lan
+  accent: false
+- name: Git / Gerrit
+  category: Dev Tools
+  icon: devicon:git
+  accent: false
+- name: Docker
+  category: Dev Tools
+  icon: devicon:docker
+  accent: false
+- name: CMake / Autotools
+  category: Dev Tools
+  icon: devicon:cmake
+  accent: false
+- name: GDB
+  category: Dev Tools
+  icon: mdi:bug
+  accent: false
+- name: GTest
+  category: Testing
+  icon: mdi:test-tube
+  accent: false
+- name: Valgrind
+  category: Testing
+  icon: mdi:memory
+  accent: false
+- name: TR-069 / TR-181
+  category: Protocols
+  icon: mdi:protocol
+  accent: true
+- name: RBUS / WebPA
+  category: Protocols
+  icon: mdi:cloud-sync-outline
+  accent: false
+- name: IEEE 802.11
+  category: Protocols
+  icon: mdi:wifi
+  accent: false

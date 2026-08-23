@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-labelledby="t">
+  <title id="t">Board bring-up diagram</title>
+  <rect width="800" height="450" fill="#efefec"/>
+  <line x1="80" y1="80" x2="80" y2="370" stroke="#ddddd8"/>
+  <line x1="80" y1="80" x2="720" y2="80" stroke="#ddddd8"/>
+  <rect x="120" y="120" width="160" height="48" fill="none" stroke="#111"/>
+  <rect x="320" y="200" width="160" height="48" fill="none" stroke="#111"/>
+  <rect x="520" y="280" width="160" height="48" fill="none" stroke="#1d4ed8"/>
+  <text x="132" y="150" font-family="ui-monospace, monospace" font-size="14" fill="#55554f">power</text>
+  <text x="332" y="230" font-family="ui-monospace, monospace" font-size="14" fill="#55554f">serial</text>
+  <text x="532" y="310" font-family="ui-monospace, monospace" font-size="14" fill="#1d4ed8">kernel</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-labelledby="t">
+  <title id="t">Project diagram</title>
+  <rect width="800" height="450" fill="#efefec"/>
+  <rect x="40" y="40" width="720" height="1" fill="#ddddd8"/>
+  <rect x="40" y="40" width="1" height="370" fill="#ddddd8"/>
+  <rect x="80" y="90" width="280" height="240" fill="none" stroke="#111111" stroke-width="1"/>
+  <rect x="400" y="140" width="320" height="140" fill="none" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="96" y="130" font-family="ui-monospace, monospace" font-size="16" fill="#55554f">agent</text>
+  <text x="416" y="180" font-family="ui-monospace, monospace" font-size="16" fill="#1d4ed8">controller</text>
+</svg>

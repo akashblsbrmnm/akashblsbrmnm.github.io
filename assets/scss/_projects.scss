@@ -1,0 +1,124 @@
+.proj-index {
+  border-top: 1px solid var(--border);
+}
+
+.proj-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.proj-item__link {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 1.15rem 1.35rem;
+  align-items: start;
+  padding-block: 1.15rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.proj-item__thumb {
+  width: 160px;
+  height: 90px;
+  flex: 0 0 160px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-deep);
+}
+
+.proj-item__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+  display: block;
+}
+
+.proj-item__ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+
+.proj-item__body {
+  min-width: 0;
+}
+
+.proj-item__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.proj-item__name {
+  margin: 0;
+  font-size: #{"clamp(1.1rem, 1.6vw, 1.35rem)"};
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  transition: color var(--dur) var(--ease);
+}
+
+.proj-item__status {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.proj-item__desc {
+  margin: 0.45rem 0 0;
+  color: var(--text-2);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  max-width: 62ch;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.proj-item__stack {
+  margin: 0.55rem 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+}
+
+.proj-item__link:hover .proj-item__name {
+  color: var(--accent);
+}
+
+@media (max-width: 599px) {
+  .proj-item__link {
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 0.85rem;
+  }
+
+  .proj-item__thumb {
+    width: 120px;
+    height: 68px;
+  }
+}
+
+@media (max-width: 379px) {
+  .proj-item__link {
+    grid-template-columns: 1fr;
+  }
+
+  .proj-item__thumb {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}

@@ -1,0 +1,86 @@
+/* Editorial shared (projects + writing) — reuse site copper accent */
+.projects,
+.blog-home,
+.blog-archive {
+  --ed-accent: var(--accent);
+  --ed-accent-hover: var(--accent-hover);
+}
+
+.ed-head {
+  display: grid;
+  grid-template-columns: minmax(7rem, 10rem) minmax(0, 1fr);
+  gap: 1.25rem 2rem;
+  margin-bottom: #{"clamp(2rem, 5vw, 3.25rem)"};
+  align-items: start;
+}
+
+.ed-head__label {
+  margin: 0;
+  padding-top: 0.45rem;
+  font-family: var(--font-label);
+  font-size: var(--text-xs);
+  font-weight: var(--font-label-weight);
+  letter-spacing: var(--font-label-track);
+  text-transform: var(--font-label-transform);
+  color: var(--ed-accent);
+}
+
+.ed-head__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: #{"clamp(2rem, 4.5vw, 3.25rem)"};
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  max-width: 18ch;
+  color: var(--text);
+}
+
+.ed-head__desc {
+  margin: 0.85rem 0 0;
+  max-width: 48ch;
+  color: var(--text-2);
+  font-size: var(--text-base);
+  line-height: var(--lh-body);
+}
+
+.ed-head__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-top: 0.85rem;
+}
+
+.ed-head__row .ed-head__desc {
+  margin-top: 0;
+}
+
+.ed-head__more {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ed-accent);
+  white-space: nowrap;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.ed-head__more:hover {
+  color: var(--ed-accent-hover);
+}
+
+@media (max-width: 767px) {
+  .ed-head {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .ed-head__title {
+    max-width: none;
+  }
+}

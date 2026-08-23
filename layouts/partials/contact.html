@@ -1,0 +1,51 @@
+{{ $s := hugo.Data.site }}
+{{ $c := $s.contact }}
+<section class="section contact" id="contact" aria-labelledby="contact-heading">
+  <div class="wrap">
+    <header class="contact__head">
+      <p class="section__label section__label--accent">07 / Contact</p>
+      <h2 id="contact-heading" class="contact__title">{{ $c.title | default "Let's Connect" }}</h2>
+      <p class="contact__desc">{{ $c.desc }}</p>
+    </header>
+
+    <p class="contact__status" id="contact-status" role="status" aria-live="polite"></p>
+
+    <form
+      id="contact-form"
+      class="contact__form"
+      data-access-key="{{ $s.web3formsKey }}"
+      data-subject="Portfolio message from {{ $s.fullName | default $s.name }}"
+    >
+      <input type="checkbox" name="botcheck" class="contact__botcheck" tabindex="-1" autocomplete="off">
+
+      <label class="contact__field">
+        <span class="contact__label">Full name <span class="contact__required" aria-hidden="true">*</span></span>
+        <input class="contact__input" type="text" name="name" autocomplete="name" maxlength="100" required aria-required="true">
+      </label>
+      <label class="contact__field">
+        <span class="contact__label">Email <span class="contact__required" aria-hidden="true">*</span></span>
+        <input class="contact__input" type="email" name="email" autocomplete="email" maxlength="254" required aria-required="true">
+      </label>
+      <label class="contact__field">
+        <span class="contact__label">Message <span class="contact__required" aria-hidden="true">*</span></span>
+        <textarea
+          class="contact__input contact__input--area"
+          name="message"
+          rows="5"
+          maxlength="2500"
+          required
+          aria-required="true"
+          aria-describedby="contact-message-count contact-limit"
+        ></textarea>
+        <div class="contact__meta">
+          <span class="contact__count" id="contact-message-count">Up to 2,500 characters</span>
+          <span class="contact__limit" id="contact-limit" aria-live="polite"></span>
+        </div>
+      </label>
+      <button class="contact__submit" type="submit">
+        <span class="contact__submit-text">Submit</span>
+        <i class="bi bi-send" aria-hidden="true"></i>
+      </button>
+    </form>
+  </div>
+</section>

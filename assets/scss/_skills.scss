@@ -1,0 +1,127 @@
+.skills-block__head {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  align-items: end;
+}
+
+.skills-block__label {
+  grid-column: 1 / span 2;
+}
+
+.skills-block__title {
+  grid-column: 3 / span 5;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: var(--text-2xl);
+  letter-spacing: -0.02em;
+}
+
+.skills-block__note {
+  grid-column: 9 / span 4;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-3);
+  line-height: 1.5;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+.skill-group {
+  padding: 1.75rem 1.5rem 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.skill-group:nth-child(odd) {
+  padding-right: 1.75rem;
+  border-right: 1px solid var(--border);
+}
+
+.skill-group:nth-child(even) {
+  padding-left: 1.75rem;
+}
+
+.skill-group__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.15rem;
+}
+
+.skill-group__idx {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+
+.skill-group__title {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 500;
+}
+
+.skill-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem 1rem;
+}
+
+.skill-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0;
+  font-size: var(--text-sm);
+}
+
+.skill-list li.is-accent span {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.skill-list iconify-icon {
+  flex: 0 0 16px;
+  color: var(--text-3);
+  vertical-align: middle;
+}
+
+.skill-list li.is-accent iconify-icon {
+  color: var(--accent);
+}
+
+@media (max-width: 899px) {
+  .skills-block__label,
+  .skills-block__title,
+  .skills-block__note {
+    grid-column: 1 / -1;
+  }
+
+  .skills {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-group:nth-child(odd),
+  .skill-group:nth-child(even) {
+    border-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 479px) {
+  .skill-list {
+    grid-template-columns: 1fr;
+  }
+}

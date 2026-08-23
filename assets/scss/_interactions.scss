@@ -1,0 +1,105 @@
+@keyframes breathe {
+  0%,
+  100% {
+    filter: brightness(1);
+    box-shadow: 0 0 0 0 rgba(196, 92, 38, 0);
+  }
+
+  50% {
+    filter: brightness(1.1);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+}
+
+@mixin interactive-pill {
+  border-radius: 0;
+  transition:
+    background var(--dur) var(--ease),
+    color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    filter var(--dur) var(--ease);
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:hover,
+    &:focus-visible {
+      animation: breathe var(--breathe-dur) ease-in-out infinite;
+    }
+  }
+}
+
+@mixin accent-hover-pill {
+  @include interactive-pill;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--accent);
+    color: var(--text-invert);
+  }
+}
+
+@mixin accent-filled {
+  @include interactive-pill;
+  background: var(--accent);
+  color: var(--text-invert);
+
+  &:hover,
+  &:focus-visible {
+    background: var(--accent-hover);
+    color: var(--text-invert);
+  }
+}
+
+@keyframes contact-ring {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(196, 92, 38, 0.28);
+  }
+
+  50% {
+    box-shadow: 0 0 0 7px rgba(196, 92, 38, 0);
+  }
+}
+
+@keyframes contact-vibrate {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  20% {
+    transform: translate3d(-0.4px, 0.2px, 0) rotate(-0.6deg);
+  }
+
+  40% {
+    transform: translate3d(0.4px, -0.2px, 0) rotate(0.6deg);
+  }
+
+  60% {
+    transform: translate3d(-0.25px, -0.15px, 0) rotate(-0.35deg);
+  }
+
+  80% {
+    transform: translate3d(0.25px, 0.15px, 0) rotate(0.35deg);
+  }
+}
+
+@mixin contact-icon {
+  background: transparent;
+  color: var(--accent) !important;
+  transition: color var(--dur) var(--ease);
+
+  &:hover,
+  &:focus-visible {
+    background: transparent;
+    color: var(--accent-hover) !important;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: contact-ring 3.2s var(--ease) infinite;
+
+    .bi {
+      animation: contact-vibrate 3.2s ease-in-out infinite;
+      will-change: transform;
+    }
+  }
+}

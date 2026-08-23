@@ -1,0 +1,64 @@
+{{ $s := hugo.Data.site }}
+{{ $isHome := .IsHome }}
+{{ $roleFull := $s.role }}
+{{ with $s.roleSerif }}{{ $roleFull = printf "%s · %s" $s.role . }}{{ end }}
+{{ $title := cond $isHome (printf "%s — %s" $s.name $roleFull) (printf "%s · %s" .Title $s.name) }}
+{{ $desc := .Params.excerpt | default .Summary | default $s.intro | default site.Params.description | plainify | truncate 160 }}
+{{ $canonical := .Permalink }}
+{{ $og := "/og-default.png" | absURL }}
+{{ with .Params.cover }}
+  {{ $og = . | absURL }}
+{{ end }}
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+<link rel="canonical" href="{{ $canonical }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ $canonical }}">
+<meta property="og:image" content="{{ $og }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $og }}">
+{{ if $isHome }}
+{{ $person := dict
+  "@type" "Person"
+  "name" $s.name
+  "jobTitle" $roleFull
+  "url" site.BaseURL
+  "email" (printf "mailto:%s" $s.email)
+  "sameAs" (slice $s.github $s.linkedin)
+}}
+{{ $website := dict
+  "@type" "WebSite"
+  "name" $s.name
+  "url" site.BaseURL
+  "description" $desc
+}}
+{{ $graph := dict "@context" "https://schema.org" "@graph" (slice $website $person) }}
+<script type="application/ld+json">{{ $graph | jsonify | safeJS }}</script>
+{{ else if and .IsPage (eq .Section "blog") }}
+{{ $post := dict
+  "@context" "https://schema.org"
+  "@type" "BlogPosting"
+  "headline" .Title
+  "datePublished" (.Date.Format "2006-01-02")
+  "dateModified" (.Lastmod.Format "2006-01-02")
+  "author" (dict "@type" "Person" "name" (.Params.author | default $s.name))
+  "description" $desc
+  "mainEntityOfPage" .Permalink
+  "image" $og
+}}
+{{ $crumbs := dict
+  "@context" "https://schema.org"
+  "@type" "BreadcrumbList"
+  "itemListElement" (slice
+    (dict "@type" "ListItem" "position" 1 "name" "Home" "item" site.BaseURL)
+    (dict "@type" "ListItem" "position" 2 "name" "Blogs" "item" ("blog/" | absURL))
+    (dict "@type" "ListItem" "position" 3 "name" .Title "item" .Permalink)
+  )
+}}
+<script type="application/ld+json">{{ $post | jsonify | safeJS }}</script>
+<script type="application/ld+json">{{ $crumbs | jsonify | safeJS }}</script>
+{{ end }}

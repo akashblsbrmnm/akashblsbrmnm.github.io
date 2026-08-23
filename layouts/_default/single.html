@@ -1,0 +1,54 @@
+{{ define "main" }}
+<article class="wrap article">
+  <header>
+    <p class="blog-back">
+      <a href="{{ "/blog/" | relURL }}">← Back to blogs</a>
+      <span aria-hidden="true"> · </span>
+      <a href="{{ "/" | relURL }}">Portfolio</a>
+    </p>
+    <h1>{{ .Title }}</h1>
+    <p class="article__meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
+      {{ if ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02") }}
+        · Updated {{ .Lastmod.Format "2 Jan 2006" }}
+      {{ end }}
+      · {{ .ReadingTime }} min read
+    </p>
+    {{ with .Params.tags }}
+    <p class="article__tags">
+      {{ range . }}
+        <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+      {{ end }}
+    </p>
+    {{ end }}
+  </header>
+  <div class="prose">
+    {{ .Content }}
+  </div>
+  <nav class="pager" aria-label="Post navigation">
+    <div>
+      {{ with .PrevInSection }}
+        <span>← Previous</span>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{ end }}
+    </div>
+    <div class="pager__next">
+      {{ with .NextInSection }}
+        <span>Next →</span>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{ end }}
+    </div>
+  </nav>
+  {{ $related := site.RegularPages.Related . | first 3 }}
+  {{ if ge (len $related) 1 }}
+  <aside class="related">
+    <h2>Related</h2>
+    <ul>
+      {{ range $related }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+  </aside>
+  {{ end }}
+</article>
+{{ end }}

@@ -1,0 +1,66 @@
+{{ $site := hugo.Data.site }}
+{{ $isHome := .IsHome }}
+{{ $isBlogActive := or (eq .Section "blog") (eq .Type "tags") (eq .Type "category") }}
+<header class="site-header{{ if $isHome }} site-header--home{{ end }}">
+  <div class="wrap nav nav--home">
+    <div class="nav__cluster">
+      <a class="nav__logo" href="{{ "/" | relURL }}" aria-label="{{ $site.fullName | default $site.name }}">
+        <span class="nav__logo-name">{{ $site.fullName | default "Akash Balasubramaniyam" }}</span>
+      </a>
+      <ul class="nav__links nav__links--desktop">
+        <li>
+          <a href="{{ if $isHome }}#about{{ else }}{{ "/#about" | relURL }}{{ end }}">Background</a>
+        </li>
+        <li>
+          <a href="{{ if $isHome }}#experience{{ else }}{{ "/#experience" | relURL }}{{ end }}">Experience</a>
+        </li>
+        <li>
+          <a href="{{ if $isHome }}#skills{{ else }}{{ "/#skills" | relURL }}{{ end }}">Skills</a>
+        </li>
+        <li>
+          <a href="{{ if $isHome }}#github{{ else }}{{ "/#github" | relURL }}{{ end }}">GitHub</a>
+        </li>
+        <li>
+          <a href="{{ "/blog/" | relURL }}" class="{{ if $isBlogActive }}is-active{{ end }}">Blogs</a>
+        </li>
+        <li>
+          <a
+            class="nav__contact nav__contact--icon"
+            href="{{ if $isHome }}#contact{{ else }}{{ "/#contact" | relURL }}{{ end }}"
+            aria-label="Message"
+          >
+            <i class="bi bi-chat" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <button
+      class="nav__toggle"
+      id="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="nav-drawer"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+  </div>
+</header>
+<div class="nav-overlay" id="nav-overlay" hidden></div>
+<nav class="nav-drawer" id="nav-drawer" aria-modal="true" role="dialog" aria-label="Menu" hidden>
+  <a href="{{ if $isHome }}#about{{ else }}{{ "/#about" | relURL }}{{ end }}">Background</a>
+  <a href="{{ if $isHome }}#experience{{ else }}{{ "/#experience" | relURL }}{{ end }}">Experience</a>
+  <a href="{{ if $isHome }}#skills{{ else }}{{ "/#skills" | relURL }}{{ end }}">Skills</a>
+  <a href="{{ if $isHome }}#github{{ else }}{{ "/#github" | relURL }}{{ end }}">GitHub</a>
+  <a href="{{ "/blog/" | relURL }}" class="{{ if $isBlogActive }}is-active{{ end }}">Blogs</a>
+  <a
+    class="nav__contact nav__contact--drawer nav__contact--icon"
+    href="{{ if $isHome }}#contact{{ else }}{{ "/#contact" | relURL }}{{ end }}"
+    aria-label="Message"
+  >
+    <i class="bi bi-chat" aria-hidden="true"></i>
+  </a>
+</nav>

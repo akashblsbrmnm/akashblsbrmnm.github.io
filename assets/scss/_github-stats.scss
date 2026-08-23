@@ -1,0 +1,165 @@
+.gh {
+  color: var(--text-invert);
+}
+
+.gh__head {
+  margin-bottom: 2.5rem;
+}
+
+.gh__title {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: var(--text-2xl);
+  letter-spacing: -0.02em;
+  max-width: 14ch;
+}
+
+.gh__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 0;
+  align-items: stretch;
+  min-width: 0;
+  border: 1px solid rgba(244, 243, 238, 0.18);
+}
+
+.gh__dominant {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--text-invert);
+  color: var(--text);
+  padding: #{"clamp(1.75rem, 4vw, 2.75rem)"};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+  border: 0;
+  border-right: 1px solid rgba(244, 243, 238, 0.18);
+  z-index: 0;
+}
+
+.gh__dominant::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.55s var(--ease);
+  z-index: -1;
+}
+
+.gh__dominant > * {
+  position: relative;
+  z-index: 1;
+  transition: color var(--dur) var(--ease);
+}
+
+.gh__dominant:hover::before {
+  transform: scaleX(1);
+}
+
+.gh__dominant:hover,
+.gh__dominant:hover .gh__dominant-value,
+.gh__dominant:hover .gh__dominant-label,
+.gh__dominant:hover .gh__dominant-note {
+  color: var(--text-invert);
+}
+
+.gh__dominant-value {
+  font-size: #{"clamp(4rem, 10vw, 7rem)"};
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.gh__dominant-label {
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.gh__dominant-note {
+  margin-top: auto;
+  padding-top: 2rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-3);
+}
+
+.gh__side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(244, 243, 238, 0.18);
+  border: 0;
+  min-width: 0;
+}
+
+.gh__stat {
+  background: var(--surface-ink);
+  padding: 1.35rem 1.25rem;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.gh__stat-value {
+  font-size: var(--text-xl);
+  font-weight: 650;
+  letter-spacing: -0.03em;
+}
+
+.gh__stat-value--accent {
+  color: var(--accent);
+}
+
+.gh__handle {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gh__handle:hover {
+  color: var(--accent);
+}
+
+.gh__stat-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 899px) {
+  .gh__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .gh__dominant {
+    min-height: 220px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(244, 243, 238, 0.18);
+  }
+}
+
+@media (max-width: 479px) {
+  .gh__side {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gh__dominant::before {
+    transition: none;
+  }
+
+  .gh__dominant:hover::before {
+    transform: scaleX(1);
+  }
+}

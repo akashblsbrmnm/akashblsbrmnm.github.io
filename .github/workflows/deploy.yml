@@ -1,4 +1,6 @@
-name: Deploy
+# Optional Cloudflare deploy (only if CF_PAGES_PROJECT is set).
+# GitHub Pages is published by hugo.yml.
+name: Deploy Cloudflare (optional)
 
 on:
   push:
@@ -10,6 +12,7 @@ permissions:
 
 jobs:
   build:
+    if: ${{ vars.CF_PAGES_PROJECT != '' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -31,7 +34,6 @@ jobs:
         run: hugo --minify
 
       - name: Deploy to Cloudflare Pages
-        if: ${{ vars.CF_PAGES_PROJECT != '' }}
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

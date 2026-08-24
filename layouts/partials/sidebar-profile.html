@@ -23,19 +23,19 @@
   <ul class="profile__contact">
     {{ with $s.location }}
       <li class="profile__contact-item">
-        <i class="bi bi-geo-alt" aria-hidden="true"></i>
+        {{ partial "icon.html" "geo-alt" }}
         <span>{{ . }}</span>
       </li>
     {{ end }}
     {{ with $s.email }}
       <li class="profile__contact-item">
-        <i class="bi bi-envelope" aria-hidden="true"></i>
+        {{ partial "icon.html" "envelope" }}
         <a href="mailto:{{ . }}">{{ . }}</a>
       </li>
     {{ end }}
     {{ with $s.phone }}
       <li class="profile__contact-item">
-        <i class="bi bi-telephone" aria-hidden="true"></i>
+        {{ partial "icon.html" "telephone" }}
         <a href="tel:{{ replaceRE "[^0-9+]" "" . }}">{{ . }}</a>
       </li>
     {{ end }}
@@ -47,22 +47,22 @@
     <div class="profile__social">
       {{ with $s.github }}
         <a class="profile__social-link" href="{{ . }}" rel="me noopener" aria-label="GitHub">
-          <i class="bi bi-github" aria-hidden="true"></i>
+          {{ partial "icon.html" "github" }}
         </a>
       {{ end }}
       {{ with $s.gitlab }}
         <a class="profile__social-link" href="{{ . }}" rel="me noopener" aria-label="GitLab">
-          <i class="bi bi-gitlab" aria-hidden="true"></i>
+          {{ partial "icon.html" "gitlab" }}
         </a>
       {{ end }}
       {{ with $s.linkedin }}
         <a class="profile__social-link" href="{{ . }}" rel="me noopener" aria-label="LinkedIn">
-          <i class="bi bi-linkedin" aria-hidden="true"></i>
+          {{ partial "icon.html" "linkedin" }}
         </a>
       {{ end }}
       {{ with $s.x }}
         <a class="profile__social-link" href="{{ . }}" rel="me noopener" aria-label="X">
-          <i class="bi bi-twitter-x" aria-hidden="true"></i>
+          {{ partial "icon.html" "twitter-x" }}
         </a>
       {{ end }}
     </div>
@@ -70,13 +70,13 @@
     <div class="profile__actions">
       {{ with $s.resume }}
         <a class="profile__cv" href="{{ . }}" target="_blank" rel="noopener noreferrer">
-          <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
+          {{ partial "icon.html" "file-earmark-text" }}
           Download Resume
         </a>
       {{ end }}
       {{ with $s.email }}
         <a class="profile__mail" href="mailto:{{ . }}" aria-label="Email">
-          <i class="bi bi-envelope" aria-hidden="true"></i>
+          {{ partial "icon.html" "envelope" }}
         </a>
       {{ end }}
     </div>

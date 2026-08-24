@@ -30,7 +30,7 @@
               {{ range $items }}
               <li class="{{ if .accent }}is-accent{{ end }}">
                 {{ with .icon }}
-                  <iconify-icon icon="{{ . }}" width="16" height="16" aria-hidden="true"></iconify-icon>
+                  {{ printf `<iconify-icon icon="%s" width="16" height="16" aria-hidden="true"></iconify-icon>` . | safeHTML }}
                 {{ end }}
                 <span>{{ .name }}</span>
               </li>

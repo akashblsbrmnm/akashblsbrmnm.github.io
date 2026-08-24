@@ -11,7 +11,7 @@
         <div class="about__actions">
           <a class="about__btn" href="mailto:{{ $s.email }}">{{ $s.email }}</a>
           <a class="about__btn" href="{{ $s.linkedin }}" rel="noopener">
-            <i class="bi bi-linkedin" aria-hidden="true"></i>
+            {{ partial "icon.html" "linkedin" }}
             LinkedIn
           </a>
         </div>

@@ -97,7 +97,7 @@
   @media (prefers-reduced-motion: no-preference) {
     animation: contact-ring 3.2s var(--ease) infinite;
 
-    .bi {
+    .icon {
       animation: contact-vibrate 3.2s ease-in-out infinite;
       will-change: transform;
     }

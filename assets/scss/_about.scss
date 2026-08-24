@@ -66,6 +66,10 @@
   @include accent-hover-pill;
 }
 
+.about__btn .icon {
+  font-size: 1rem;
+}
+
 @media (max-width: 1023px) {
   .about__label {
     grid-column: 1 / -1;

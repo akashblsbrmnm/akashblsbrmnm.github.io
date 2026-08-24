@@ -131,7 +131,7 @@
 .profile__role-serif {
   font-family: var(--font-serif);
   font-style: italic;
-  color: var(--accent);
+  color: var(--accent-hover);
 }
 
 .profile__contact {
@@ -151,7 +151,7 @@
   color: var(--text-2);
 }
 
-.profile__contact-item .bi {
+.profile__contact-item .icon {
   flex-shrink: 0;
   margin-top: 0.1rem;
   font-size: 0.95rem;
@@ -230,7 +230,7 @@
   @include accent-hover-pill;
 }
 
-.profile__cv .bi {
+.profile__cv .icon {
   font-size: 1rem;
 }
 

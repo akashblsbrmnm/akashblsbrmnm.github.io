@@ -48,6 +48,63 @@ a:hover .arrow,
   height: 1em;
   flex-shrink: 0;
   vertical-align: -0.125em;
+  background-color: currentColor;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+
+.icon--chat {
+  mask-image: url("/icons/chat.svg");
+  -webkit-mask-image: url("/icons/chat.svg");
+}
+
+.icon--linkedin {
+  mask-image: url("/icons/linkedin.svg");
+  -webkit-mask-image: url("/icons/linkedin.svg");
+}
+
+.icon--geo-alt {
+  mask-image: url("/icons/geo-alt.svg");
+  -webkit-mask-image: url("/icons/geo-alt.svg");
+}
+
+.icon--envelope {
+  mask-image: url("/icons/envelope.svg");
+  -webkit-mask-image: url("/icons/envelope.svg");
+}
+
+.icon--telephone {
+  mask-image: url("/icons/telephone.svg");
+  -webkit-mask-image: url("/icons/telephone.svg");
+}
+
+.icon--github {
+  mask-image: url("/icons/github.svg");
+  -webkit-mask-image: url("/icons/github.svg");
+}
+
+.icon--gitlab {
+  mask-image: url("/icons/gitlab.svg");
+  -webkit-mask-image: url("/icons/gitlab.svg");
+}
+
+.icon--twitter-x {
+  mask-image: url("/icons/twitter-x.svg");
+  -webkit-mask-image: url("/icons/twitter-x.svg");
+}
+
+.icon--file-earmark-text {
+  mask-image: url("/icons/file-earmark-text.svg");
+  -webkit-mask-image: url("/icons/file-earmark-text.svg");
+}
+
+.icon--send {
+  mask-image: url("/icons/send.svg");
+  -webkit-mask-image: url("/icons/send.svg");
 }
 
 .reveal {

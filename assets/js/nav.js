@@ -72,6 +72,4 @@
       first.focus();
     }
   });
-
-  setNavOffset();
 })();

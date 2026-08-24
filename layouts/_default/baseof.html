@@ -6,7 +6,6 @@
   {{ partial "seo.html" . }}
   <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
   <link rel="preload" href="{{ "fonts/inter-latin-700.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
-  <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" defer></script>
   {{ $opts := dict "targetPath" "css/main.css" "outputStyle" "compressed" }}
   {{ with resources.Get "scss/main.scss" }}
     {{ $css := . | css.Sass $opts | minify | fingerprint }}

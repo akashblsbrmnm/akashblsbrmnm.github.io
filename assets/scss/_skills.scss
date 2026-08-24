@@ -86,19 +86,21 @@
   font-size: var(--text-sm);
 }
 
+.skill-list li::before {
+  content: "";
+  width: 0.35rem;
+  height: 0.35rem;
+  flex: 0 0 0.35rem;
+  background: var(--text-3);
+}
+
+.skill-list li.is-accent::before {
+  background: var(--accent);
+}
+
 .skill-list li.is-accent span {
   color: var(--text);
   font-weight: 600;
-}
-
-.skill-list iconify-icon {
-  flex: 0 0 16px;
-  color: var(--text-3);
-  vertical-align: middle;
-}
-
-.skill-list li.is-accent iconify-icon {
-  color: var(--accent);
 }
 
 @media (max-width: 899px) {

@@ -71,12 +71,13 @@
       {{ with $s.resume }}
         <a class="profile__cv" href="{{ . }}" target="_blank" rel="noopener noreferrer">
           {{ partial "icon.html" "file-earmark-text" }}
-          Download Resume
+          <span class="profile__cv-label">Download Resume</span>
         </a>
       {{ end }}
       {{ with $s.email }}
-        <a class="profile__mail" href="mailto:{{ . }}" aria-label="Email">
+        <a class="profile__mail" href="mailto:{{ . }}" aria-label="Email Me">
           {{ partial "icon.html" "envelope" }}
+          <span class="profile__mail-label">Email Me</span>
         </a>
       {{ end }}
     </div>

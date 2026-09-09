@@ -305,5 +305,17 @@
     flex: 1;
   }
 
+  .nav__logo-name {
+    background: transparent;
+    color: var(--text);
+
+    &:hover,
+    &:focus-visible {
+      background: transparent;
+      color: var(--accent);
+      animation: none;
+    }
+  }
+
   @include nav-drawer-open;
 }

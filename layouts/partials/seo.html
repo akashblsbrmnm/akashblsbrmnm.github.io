@@ -3,14 +3,17 @@
 {{ $roleFull := $s.role }}
 {{ with $s.roleSerif }}{{ $roleFull = printf "%s · %s" $s.role . }}{{ end }}
 {{ $title := cond $isHome (printf "%s — %s" $s.name $roleFull) (printf "%s · %s" .Title $s.name) }}
+{{ $tab := "$aka.sh" }}
+{{ if not $isHome }}{{ $tab = printf "%s · $aka.sh" .Title }}{{ end }}
 {{ $desc := .Params.excerpt | default .Summary | default $s.intro | default site.Params.description | plainify | truncate 160 }}
 {{ $canonical := .Permalink }}
 {{ $og := "/og-default.png" | absURL }}
 {{ with .Params.cover }}
   {{ $og = . | absURL }}
 {{ end }}
-<title>{{ $title }}</title>
+<title>{{ $tab }}</title>
 <meta name="description" content="{{ $desc }}">
+<meta name="theme-color" content="#f4f3ee">
 <link rel="canonical" href="{{ $canonical }}">
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $desc }}">

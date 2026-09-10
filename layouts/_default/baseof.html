@@ -4,12 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {{ partial "seo.html" . }}
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("theme");
+        var theme =
+          stored === "light" || stored === "dark"
+            ? stored
+            : window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {}
+    })();
+  </script>
   <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
   <link rel="preload" href="{{ "fonts/inter-latin-700.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
   {{ $opts := dict "targetPath" "css/main.css" "outputStyle" "compressed" }}
   {{ with resources.Get "scss/main.scss" }}
     {{ $css := . | css.Sass $opts | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+  {{ end }}
+  {{ with resources.Get "js/theme.js" }}
+    {{ $themeJs := . | minify | fingerprint }}
+    <script src="{{ $themeJs.RelPermalink }}" defer integrity="{{ $themeJs.Data.Integrity }}" crossorigin="anonymous"></script>
   {{ end }}
   {{ with resources.Get "js/nav.js" }}
     {{ $js := . | minify | fingerprint }}
@@ -20,14 +38,22 @@
       {{ $contactJs := . | minify | fingerprint }}
       <script src="{{ $contactJs.RelPermalink }}" defer integrity="{{ $contactJs.Data.Integrity }}" crossorigin="anonymous"></script>
     {{ end }}
+    {{ with resources.Get "js/dock.js" }}
+      {{ $dockJs := . | minify | fingerprint }}
+      <script src="{{ $dockJs.RelPermalink }}" defer integrity="{{ $dockJs.Data.Integrity }}" crossorigin="anonymous"></script>
+    {{ end }}
   {{ end }}
 </head>
 <body class="{{ if .IsHome }}is-home{{ end }}">
   <a class="skip" href="#main">Skip to content</a>
   {{ if not .IsHome }}{{ partial "nav.html" . }}{{ end }}
-  <main id="main">
+  {{ if .IsHome }}
     {{ block "main" . }}{{ end }}
-  </main>
+  {{ else }}
+    <main id="main" tabindex="-1">
+      {{ block "main" . }}{{ end }}
+    </main>
+  {{ end }}
   {{ partial "footer.html" . }}
 </body>
 </html>

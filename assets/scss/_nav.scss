@@ -84,13 +84,13 @@
 
   &:hover,
   &:focus-visible {
-    background: var(--accent);
+    background: var(--accent-fill);
     color: var(--text-invert);
   }
 }
 
 .nav__links a.is-active {
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .nav__resume {
@@ -100,8 +100,8 @@
 
   &:hover,
   &:focus-visible {
-    background: var(--accent);
-    border-color: var(--accent);
+    background: var(--accent-fill);
+    border-color: var(--accent-fill);
     color: var(--text-invert);
   }
 }
@@ -135,13 +135,60 @@
   font-size: 1.05rem;
 }
 
+.nav__theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  width: var(--nav-h);
+  min-width: var(--nav-h);
+  min-height: var(--nav-h);
+  color: var(--text-2);
+  cursor: pointer;
+}
+
+.nav__theme:hover,
+.nav__theme:focus-visible {
+  color: var(--accent-text);
+}
+
+.nav__theme .icon {
+  font-size: 1.05rem;
+}
+
+.nav__theme .icon--sun {
+  display: none;
+}
+
+html[data-theme="dark"] .nav__theme .icon--sun {
+  display: inline-block;
+}
+
+html[data-theme="dark"] .nav__theme .icon--moon {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .nav__theme .icon--sun {
+    display: inline-block;
+  }
+
+  html:not([data-theme="light"]) .nav__theme .icon--moon {
+    display: none;
+  }
+}
+
+.nav__theme--mobile {
+  display: none;
+}
+
 .nav-drawer > a:not(.nav__contact) {
   @include interactive-pill;
   padding-inline: 0.65rem;
 
   &:hover,
   &:focus-visible {
-    background: var(--accent);
+    background: var(--accent-fill);
     color: var(--text-invert);
   }
 }
@@ -222,7 +269,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(20, 20, 19, 0.28);
+    background: var(--overlay);
     z-index: 45;
   }
 
@@ -265,11 +312,26 @@
     gap: 0.45rem;
   }
 
+  .nav-drawer__tools {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin: 0.65rem 0 0;
+    padding-inline: var(--gutter);
+  }
+
+  .nav__theme--drawer {
+    width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    margin: 0;
+  }
+
   .nav__contact--drawer.nav__contact--icon {
     width: 44px;
     min-width: 44px;
-    align-self: flex-start;
-    margin-inline: var(--gutter);
+    align-self: center;
+    margin: 0;
   }
 
   body.nav-open {
@@ -301,6 +363,11 @@
     display: inline-flex;
   }
 
+  .nav__theme--mobile {
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+
   .nav__logo {
     flex: 1;
   }
@@ -312,7 +379,7 @@
     &:hover,
     &:focus-visible {
       background: transparent;
-      color: var(--accent);
+      color: var(--accent-text);
       animation: none;
     }
   }

@@ -3,8 +3,7 @@
 <section class="section contact" id="contact" aria-labelledby="contact-heading">
   <div class="wrap">
     <header class="contact__head">
-      <p class="section__label section__label--accent">07 / Contact</p>
-      <h2 id="contact-heading" class="contact__title">{{ $c.title | default "Let's Connect" }}</h2>
+      <h2 id="contact-heading" class="contact__title">{{ $c.title | default "Contact" }}</h2>
       <p class="contact__desc">{{ $c.desc }}</p>
     </header>
 
@@ -13,30 +12,35 @@
     <form
       id="contact-form"
       class="contact__form"
+      novalidate
       data-access-key="{{ $s.web3formsKey }}"
       data-subject="Portfolio message from {{ $s.fullName | default $s.name }}"
     >
       <input type="checkbox" name="botcheck" class="contact__botcheck" tabindex="-1" autocomplete="off">
 
-      <label class="contact__field">
+      <label class="contact__field" for="contact-name">
         <span class="contact__label">Full name <span class="contact__required" aria-hidden="true">*</span></span>
-        <input class="contact__input" type="text" name="name" autocomplete="name" maxlength="100" required aria-required="true">
+        <input class="contact__input" id="contact-name" type="text" name="name" autocomplete="name" maxlength="100" required aria-required="true" aria-describedby="contact-name-error">
+        <span class="contact__error" id="contact-name-error"></span>
       </label>
-      <label class="contact__field">
+      <label class="contact__field" for="contact-email">
         <span class="contact__label">Email <span class="contact__required" aria-hidden="true">*</span></span>
-        <input class="contact__input" type="email" name="email" autocomplete="email" maxlength="254" required aria-required="true">
+        <input class="contact__input" id="contact-email" type="email" name="email" autocomplete="email" maxlength="254" required aria-required="true" aria-describedby="contact-email-error">
+        <span class="contact__error" id="contact-email-error"></span>
       </label>
-      <label class="contact__field">
+      <label class="contact__field" for="contact-message">
         <span class="contact__label">Message <span class="contact__required" aria-hidden="true">*</span></span>
         <textarea
           class="contact__input contact__input--area"
+          id="contact-message"
           name="message"
           rows="5"
           maxlength="2500"
           required
           aria-required="true"
-          aria-describedby="contact-message-count contact-limit"
+          aria-describedby="contact-message-error contact-message-count contact-limit"
         ></textarea>
+        <span class="contact__error" id="contact-message-error"></span>
         <div class="contact__meta">
           <span class="contact__count" id="contact-message-count">Up to 2,500 characters</span>
           <span class="contact__limit" id="contact-limit" aria-live="polite"></span>

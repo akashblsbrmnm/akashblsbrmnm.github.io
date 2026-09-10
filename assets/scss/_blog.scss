@@ -43,7 +43,7 @@
   font-size: var(--text-xs);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
   text-align: center;
   line-height: 1.35;
 }
@@ -98,8 +98,16 @@
   color: var(--text-3);
 }
 
+.blog-home .writing-item {
+  grid-template-columns: 1fr;
+}
+
+.blog-home .writing-item__thumb {
+  display: none;
+}
+
 .writing-item:hover .writing-item__title {
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .writing-more {
@@ -118,7 +126,7 @@
 }
 
 .blog-back a {
-  color: var(--accent);
+  color: var(--accent-text);
   text-decoration: none;
   font-weight: 500;
   min-height: 44px;

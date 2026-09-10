@@ -2,7 +2,7 @@
   0%,
   100% {
     filter: brightness(1);
-    box-shadow: 0 0 0 0 rgba(196, 92, 38, 0);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent);
   }
 
   50% {
@@ -32,14 +32,15 @@
 
   &:hover,
   &:focus-visible {
-    background: var(--accent);
+    background: var(--accent-fill);
     color: var(--text-invert);
+    border-color: var(--accent-fill);
   }
 }
 
 @mixin accent-filled {
   @include interactive-pill;
-  background: var(--accent);
+  background: var(--accent-fill);
   color: var(--text-invert);
 
   &:hover,
@@ -52,11 +53,11 @@
 @keyframes contact-ring {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(196, 92, 38, 0.28);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 28%, transparent);
   }
 
   50% {
-    box-shadow: 0 0 0 7px rgba(196, 92, 38, 0);
+    box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent) 0%, transparent);
   }
 }
 
@@ -85,7 +86,7 @@
 
 @mixin contact-icon {
   background: transparent;
-  color: var(--accent) !important;
+  color: var(--accent-text) !important;
   transition: color var(--dur) var(--ease);
 
   &:hover,
@@ -95,11 +96,14 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    animation: contact-ring 3.2s var(--ease) infinite;
+    &:hover,
+    &:focus-visible {
+      animation: contact-ring 3.2s var(--ease) infinite;
 
-    .icon {
-      animation: contact-vibrate 3.2s ease-in-out infinite;
-      will-change: transform;
+      .icon {
+        animation: contact-vibrate 3.2s ease-in-out infinite;
+        will-change: transform;
+      }
     }
   }
 }

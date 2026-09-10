@@ -41,7 +41,7 @@
   height: 100%;
   font-family: var(--font-mono);
   font-size: var(--text-sm);
-  color: var(--accent);
+  color: var(--accent-text);
   letter-spacing: 0.06em;
 }
 
@@ -71,7 +71,7 @@
   font-size: var(--text-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
   white-space: nowrap;
 }
 
@@ -96,7 +96,7 @@
 }
 
 .proj-item__link:hover .proj-item__name {
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 @media (max-width: 599px) {

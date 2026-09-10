@@ -4,13 +4,17 @@
   top: -100px;
   background: var(--bg);
   border: 1px solid var(--accent);
-  color: var(--accent);
+  color: var(--accent-text);
   padding: 0.5rem 0.75rem;
   z-index: 100;
 }
 
 .skip:focus {
   top: 0.75rem;
+}
+
+#main:focus {
+  outline: none;
 }
 
 .visually-hidden {
@@ -34,7 +38,7 @@ a:hover .arrow,
 .blog-row:hover .arrow,
 .blog-list-item:hover .arrow {
   transform: translateX(3px);
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 :focus-visible {
@@ -107,6 +111,16 @@ a:hover .arrow,
   -webkit-mask-image: url("/icons/send.svg");
 }
 
+.icon--sun {
+  mask-image: url("/icons/sun.svg");
+  -webkit-mask-image: url("/icons/sun.svg");
+}
+
+.icon--moon {
+  mask-image: url("/icons/moon.svg");
+  -webkit-mask-image: url("/icons/moon.svg");
+}
+
 .reveal {
   transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
@@ -119,8 +133,7 @@ a:hover .arrow,
   *,
   *::before,
   *::after {
-    transition-duration: 1ms !important;
-    animation-duration: 1ms !important;
+    animation: none !important;
   }
 
   .arrow {

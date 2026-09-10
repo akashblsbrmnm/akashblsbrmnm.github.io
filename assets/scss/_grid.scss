@@ -20,12 +20,12 @@
 
 .section--ink {
   background: var(--surface-ink);
-  color: var(--text-invert);
+  color: var(--ink-fg);
   border-top-color: transparent;
 }
 
 .section--ink .section__label {
-  color: #e8a57a;
+  color: var(--ink-label);
 }
 
 .section--surface {

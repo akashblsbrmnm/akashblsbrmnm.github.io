@@ -18,10 +18,10 @@
           <a href="{{ if $isHome }}#skills{{ else }}{{ "/#skills" | relURL }}{{ end }}">Skills</a>
         </li>
         <li>
-          <a href="{{ if $isHome }}#github{{ else }}{{ "/#github" | relURL }}{{ end }}">GitHub</a>
+          <a href="{{ "/blog/" | relURL }}" class="{{ if $isBlogActive }}is-active{{ end }}">Blogs</a>
         </li>
         <li>
-          <a href="{{ "/blog/" | relURL }}" class="{{ if $isBlogActive }}is-active{{ end }}">Blogs</a>
+          {{ partial "theme-toggle.html" "nav__theme--desktop" }}
         </li>
         <li>
           <a
@@ -35,6 +35,7 @@
       </ul>
     </div>
 
+    {{ partial "theme-toggle.html" "nav__theme--mobile" }}
     <button
       class="nav__toggle"
       id="nav-toggle"
@@ -54,13 +55,15 @@
   <a href="{{ if $isHome }}#about{{ else }}{{ "/#about" | relURL }}{{ end }}">Background</a>
   <a href="{{ if $isHome }}#experience{{ else }}{{ "/#experience" | relURL }}{{ end }}">Experience</a>
   <a href="{{ if $isHome }}#skills{{ else }}{{ "/#skills" | relURL }}{{ end }}">Skills</a>
-  <a href="{{ if $isHome }}#github{{ else }}{{ "/#github" | relURL }}{{ end }}">GitHub</a>
   <a href="{{ "/blog/" | relURL }}" class="{{ if $isBlogActive }}is-active{{ end }}">Blogs</a>
-  <a
-    class="nav__contact nav__contact--drawer nav__contact--icon"
-    href="{{ if $isHome }}#contact{{ else }}{{ "/#contact" | relURL }}{{ end }}"
-    aria-label="Message"
-  >
-    {{ partial "icon.html" "chat" }}
-  </a>
+  <div class="nav-drawer__tools">
+    {{ partial "theme-toggle.html" "nav__theme--drawer" }}
+    <a
+      class="nav__contact nav__contact--drawer nav__contact--icon"
+      href="{{ if $isHome }}#contact{{ else }}{{ "/#contact" | relURL }}{{ end }}"
+      aria-label="Message"
+    >
+      {{ partial "icon.html" "chat" }}
+    </a>
+  </div>
 </nav>

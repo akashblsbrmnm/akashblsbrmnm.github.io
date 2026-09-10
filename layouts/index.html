@@ -8,14 +8,13 @@
     {{ partial "sidebar-profile.html" . }}
   </aside>
 
-  <div class="resume-main__sections">
+  <main id="main" class="resume-main__sections" tabindex="-1">
     {{ partial "about.html" . }}
     {{ partial "experience.html" . }}
     {{ partial "skills.html" . }}
-    {{ partial "github-stats.html" . }}
     {{ partial "projects.html" . }}
     {{ partial "blog-preview.html" . }}
     {{ partial "contact.html" . }}
-  </div>
+  </main>
 </div>
 {{ end }}

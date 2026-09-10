@@ -56,30 +56,51 @@
         </a>
       {{ end }}
       {{ with $s.linkedin }}
-        <a class="profile__social-link" href="{{ . }}" rel="me noopener" aria-label="LinkedIn">
+        <a class="profile__social-link profile__social-link--docked" href="{{ . }}" rel="me noopener" aria-label="LinkedIn">
           {{ partial "icon.html" "linkedin" }}
         </a>
       {{ end }}
       {{ with $s.x }}
-        <a class="profile__social-link" href="{{ . }}" rel="me noopener" aria-label="X">
+        <a class="profile__social-link profile__social-link--docked" href="{{ . }}" rel="me noopener" aria-label="X">
           {{ partial "icon.html" "twitter-x" }}
         </a>
       {{ end }}
     </div>
 
-    <div class="profile__actions">
-      {{ with $s.resume }}
-        <a class="profile__cv" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+    <div class="profile__dock-spacer" aria-hidden="true"></div>
+    <div class="profile__dock" data-profile-dock>
+      <div class="profile__actions">
+        {{ with $s.resume }}
+        <a class="profile__action profile__cv" href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="Download Resume">
           {{ partial "icon.html" "file-earmark-text" }}
-          <span class="profile__cv-label">Download Resume</span>
+          <span class="profile__action-label profile__cv-label">
+            <span class="profile__action-label--full">Download Resume</span>
+            <span class="profile__action-label--short">Resume</span>
+          </span>
         </a>
-      {{ end }}
-      {{ with $s.email }}
-        <a class="profile__mail" href="mailto:{{ . }}" aria-label="Email Me">
+        {{ end }}
+        {{ with $s.email }}
+        <a class="profile__action profile__mail" href="mailto:{{ . }}" aria-label="Email Me">
           {{ partial "icon.html" "envelope" }}
-          <span class="profile__mail-label">Email Me</span>
+          <span class="profile__action-label profile__mail-label">
+            <span class="profile__action-label--full">Email Me</span>
+            <span class="profile__action-label--short">Email</span>
+          </span>
         </a>
-      {{ end }}
+        {{ end }}
+        {{ with $s.linkedin }}
+        <a class="profile__action profile__action--extra" href="{{ . }}" rel="me noopener" aria-label="LinkedIn">
+          {{ partial "icon.html" "linkedin" }}
+          <span class="profile__action-label">LinkedIn</span>
+        </a>
+        {{ end }}
+        {{ with $s.x }}
+        <a class="profile__action profile__action--extra" href="{{ . }}" rel="me noopener" aria-label="X">
+          {{ partial "icon.html" "twitter-x" }}
+          <span class="profile__action-label">X</span>
+        </a>
+        {{ end }}
+      </div>
     </div>
   </div>
 </div>

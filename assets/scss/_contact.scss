@@ -48,7 +48,7 @@
 }
 
 .contact__status.is-error {
-  color: #9a4318;
+  color: var(--accent-hover);
 }
 
 .contact__form {
@@ -78,7 +78,7 @@
 }
 
 .contact__required {
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .contact__input {
@@ -97,8 +97,18 @@
 }
 
 .contact__input.is-invalid {
-  border-color: #9a4318;
-  outline-color: #9a4318;
+  border-color: var(--accent-hover);
+  outline-color: var(--accent-hover);
+}
+
+.contact__error {
+  font-size: var(--text-xs);
+  line-height: var(--lh-body);
+  color: var(--accent-hover);
+}
+
+.contact__error:empty {
+  display: none;
 }
 
 .contact__input--area {
@@ -114,9 +124,9 @@
   gap: 0.5rem;
   min-height: 44px;
   padding: 0.65rem 1.35rem;
-  border: 0;
-  background: var(--bg-deep);
+  background: var(--btn-face);
   color: var(--text);
+  border: 0;
   font-family: var(--font-sans);
   font-size: var(--text-sm);
   font-weight: 600;

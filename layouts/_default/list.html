@@ -8,7 +8,6 @@
     <a href="{{ "/" | relURL }}">← Back to portfolio</a>
   </p>
   <header class="ed-head ed-head--blog">
-    <p class="ed-head__label">{{ if $isBlog }}06 / Blogs{{ else }}Index{{ end }}</p>
     <div class="ed-head__copy">
       <h1 class="ed-head__title blog-archive__title">{{ $heading }}</h1>
       {{ with .Content }}<div class="ed-head__desc blog-archive__intro">{{ . }}</div>{{ end }}

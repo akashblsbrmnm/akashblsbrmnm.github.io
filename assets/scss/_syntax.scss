@@ -74,3 +74,50 @@
 /* CommentPreprocFile */ .chroma .cpf { color:#75715e }
 /* GenericEmph */ .chroma .ge { font-style:italic }
 /* GenericStrong */ .chroma .gs { font-weight:bold }
+
+@mixin chroma-dark {
+  .bg,
+  .chroma {
+    color: #e8e6dc;
+    background-color: #1c1b19;
+  }
+
+  .chroma .n,
+  .chroma .ni,
+  .chroma .nl,
+  .chroma .nn,
+  .chroma .py,
+  .chroma .nb,
+  .chroma .bp,
+  .chroma .nv,
+  .chroma .vc,
+  .chroma .vg,
+  .chroma .vi,
+  .chroma .vm {
+    color: #e8e6dc;
+  }
+
+  .chroma .lnt,
+  .chroma .ln {
+    color: #8a887e;
+  }
+
+  .chroma .hl {
+    background-color: #2a2926;
+  }
+
+  .chroma .err {
+    color: #ff8aa0;
+    background-color: #3a1020;
+  }
+}
+
+html[data-theme="dark"] {
+  @include chroma-dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    @include chroma-dark;
+  }
+}

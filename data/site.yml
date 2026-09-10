@@ -4,8 +4,8 @@ firstName: Akash
 lastName: Balasubramaniyam
 role: Senior Engineer
 roleSerif: Embedded Systems
-tagline: RDK-B, prplMesh, C/C++, Linux, Yocto — carrier-grade broadband gateways.
-intro: I build systems software for broadband gateways — RDK-B middleware, Wi-Fi stack integration, and the Linux userspace that keeps carrier devices stable in the field.
+tagline: "RDK-B, prplMesh, C/C++, Linux, Yocto - carrier-grade broadband gateways."
+intro: "I build systems software for broadband gateways: RDK-B middleware, Wi-Fi stack integration, and the Linux userspace that keeps carrier devices stable in the field."
 email: hello@akashblsbrmnm.in
 github: https://github.com/akashblsbrmnm
 github_username: akashblsbrmnm
@@ -18,7 +18,7 @@ phone: +91-9072597884
 avatar: images/profile/avatar.webp
 web3formsKey: c32b4dd4-8a76-4c3b-a55b-b8ce15f7cfaf
 contact:
-  title: Let's Connect
+  title: Contact
   desc: "I'm always open to discussing system architecture challenges, open-source collaborations, and innovative networking projects. Feel free to drop a message!"
 about:
   - "I'm a Senior Engineer passionate about embedded Linux, networking, and broadband technologies. Currently, I work on prplOS and prplMesh, developing Wi-Fi 7 features, Device Provisioning Protocol (DPP) onboarding, and next-generation connectivity solutions for carrier-grade broadband gateways."
@@ -32,7 +32,7 @@ experience:
     logo: images/experience/tata-elxsi.webp
     icon: TE
     iconBg: "#c45c26"
-    desc: Working on prplMesh and its features for carrier-grade broadband gateways — C/C++ on Linux, focusing on mesh networking, Wi-Fi stack integration, and production gateway firmware on prplOS platforms.
+    desc: Working on prplMesh and its features for carrier-grade broadband gateways. C/C++ on Linux, focusing on mesh networking, Wi-Fi stack integration, and production gateway firmware on prplOS platforms.
     bullets:
       - prplMesh feature development, Wi-Fi 7 capabilities, and Device Provisioning Protocol (DPP) onboarding
       - System-level development on embedded Linux with debugging and integration on production CPE targets

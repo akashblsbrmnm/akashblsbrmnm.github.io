@@ -55,14 +55,34 @@
 
   const validateEmail = (email) => EMAIL_RE.test(email);
 
+  const fieldErrorEl = (field) => document.getElementById(`contact-${field.name}-error`);
+
+  const fieldErrorMessage = (field) => {
+    const value = field.value.trim();
+    if (!value) return "";
+    if (field === nameField) return "Use 100 characters or fewer.";
+    if (field === emailField) return "Enter an email like name@company.com.";
+    if (field === messageField) return "Use 2,500 characters or fewer.";
+    return "Check this field.";
+  };
+
   const clearFieldError = (field) => {
     field.classList.remove("is-invalid");
     field.removeAttribute("aria-invalid");
+    const errorEl = fieldErrorEl(field);
+    if (errorEl) errorEl.textContent = "";
   };
 
   const setFieldError = (field) => {
+    const message = fieldErrorMessage(field);
+    if (!message) {
+      clearFieldError(field);
+      return;
+    }
     field.classList.add("is-invalid");
     field.setAttribute("aria-invalid", "true");
+    const errorEl = fieldErrorEl(field);
+    if (errorEl) errorEl.textContent = message;
   };
 
   const validateName = (value) => {
@@ -132,22 +152,16 @@
     const messageValid = touchField(messageField);
 
     if (!nameValid) {
-      setStatus("Full name is required.", "error");
       nameField.focus();
       return;
     }
 
     if (!emailValid) {
-      setStatus(
-        emailField.value.trim() ? "Please enter a valid email address." : "Email is required.",
-        "error"
-      );
       emailField.focus();
       return;
     }
 
     if (!messageValid) {
-      setStatus("Message is required.", "error");
       messageField.focus();
       return;
     }

@@ -4,7 +4,7 @@ slug = "prplmesh-dpp-onboarding"
 date = "2026-03-15"
 lastmod = "2026-03-15"
 author = "Akash"
-excerpt = "How Device Provisioning Protocol fits into prplMesh bring-up — from QR/bootstrap material to a mesh agent that actually joins the network."
+excerpt = "How Device Provisioning Protocol fits into prplMesh bring-up, from QR/bootstrap material to a mesh agent that actually joins the network."
 tags = ["prplmesh", "wifi", "embedded", "networking"]
 category = "systems"
 draft = false
@@ -14,20 +14,20 @@ Device Provisioning Protocol (DPP) is one of those features that looks straightf
 
 ## What DPP is doing in the stack
 
-DPP replaces the worst parts of manual WPA configuration for mesh nodes. Instead of typing PSKs on a controller UI, you bootstrap credentials out-of-band — typically a URI, QR code, or NFC payload — and let the supplicant and agent negotiate the rest.
+DPP replaces the worst parts of manual WPA configuration for mesh nodes. Instead of typing PSKs on a controller UI, you bootstrap credentials out-of-band - typically a URI, QR code, or NFC payload - and let the supplicant and agent negotiate the rest.
 
 In a prplMesh deployment, the interesting work sits at the boundary between:
 
-- **Host-side Wi-Fi** — wpa_supplicant / hostapd DPP state machines
-- **Mesh control plane** — Beerocks agent and controller messaging
-- **Platform integration** — UCI or vendor HAL hooks, persistent storage, and factory reset behaviour
+- **Host-side Wi-Fi** - wpa_supplicant / hostapd DPP state machines
+- **Mesh control plane** - Beerocks agent and controller messaging
+- **Platform integration** - UCI or vendor HAL hooks, persistent storage, and factory reset behaviour
 
 If any one of those layers treats DPP as “just another join method,” you get agents that provision locally but never show up in the controller topology.
 
 ## A practical onboarding sequence
 
 1. **Generate bootstrap material** on the controller or a provisioning tool. Store the public components where the agent can read them during manufacturing or first boot.
-2. **Listen for DPP authentication** on the agent radio. On embedded targets this often means confirming the correct interface is up before the state machine starts — starting DPP on the wrong VIF is a common bring-up mistake.
+2. **Listen for DPP authentication** on the agent radio. On embedded targets this often means confirming the correct interface is up before the state machine starts - starting DPP on the wrong VIF is a common bring-up mistake.
 3. **Exchange Config Objects** and translate the resulting credentials into what prplMesh expects for backhaul and fronthaul roles.
 4. **Confirm agent registration** with the controller. Provisioning success in wpa_supplicant logs is necessary but not sufficient; verify the agent appears in the topology map.
 5. **Persist and survive reboot.** Factory reset must wipe DPP state cleanly; a partial wipe leaves “zombie” credentials that fail silently on the next onboarding attempt.
@@ -47,4 +47,4 @@ wpa_cli -i wlan0 status | grep -E 'wpa_state|ssid|key_mgmt'
 
 ## What “done” looks like
 
-A solid DPP onboarding path on prplMesh is boring in the best way: scan a QR code, wait under a minute, see the node in the controller, reboot the CPE, and it comes back without manual intervention. That is the bar for carrier-grade mesh — not just association, but repeatable provisioning under real factory and field constraints.
+A solid DPP onboarding path on prplMesh is boring in the best way: scan a QR code, wait under a minute, see the node in the controller, reboot the CPE, and it comes back without manual intervention. That is the bar for carrier-grade mesh - not just association, but repeatable provisioning under real factory and field constraints.

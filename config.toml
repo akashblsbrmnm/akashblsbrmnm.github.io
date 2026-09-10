@@ -17,7 +17,7 @@ rssLimit = 50
   pagerSize = 20
 
 [params]
-  description = "Senior Engineer — RDK-B, prplMesh, C/C++, Embedded Linux, Yocto."
+  description = "Senior Engineer, RDK-B, prplMesh, C/C++, Embedded Linux, Yocto."
 
 [taxonomies]
   tag = "tags"

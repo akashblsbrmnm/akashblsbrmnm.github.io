@@ -1,0 +1,10 @@
+<button
+  type="button"
+  class="nav__theme{{ with . }} {{ . }}{{ end }}"
+  data-theme-toggle
+  aria-label="Switch theme"
+  aria-pressed="false"
+>
+  {{ partial "icon.html" "moon" }}
+  {{ partial "icon.html" "sun" }}
+</button>

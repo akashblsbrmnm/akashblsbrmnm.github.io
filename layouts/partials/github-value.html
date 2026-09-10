@@ -1,5 +1,5 @@
 {{ $v := .value }}
-{{ $dash := .dash | default "—" }}
+{{ $dash := .dash | default "Unavailable" }}
 {{- if or (eq $v nil) (eq $v 0) (eq $v 0.0) (eq (printf "%v" $v) "") (eq $v $dash) -}}
 {{- $dash -}}
 {{- else -}}

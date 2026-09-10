@@ -4,7 +4,7 @@ slug = "why-is-your-linked-list-a-potato"
 date = "2025-12-22"
 lastmod = "2025-12-22"
 author = "Akash"
-excerpt = "Understanding the hidden cost of traversal in singly linked lists — and why a tail pointer turns O(n) appends into O(1)."
+excerpt = "Understanding the hidden cost of traversal in singly linked lists, and why a tail pointer turns O(n) appends into O(1)."
 tags = ["embedded", "c", "data-structures", "systems"]
 category = "systems"
 draft = false
@@ -16,7 +16,7 @@ While implementing a parameter-processing pipeline recently, I hit a wall. I had
 
 In low-power and resource-constrained systems, this became a measurable latency bottleneck. At 10 nodes, it is instant. At 1,000 nodes or more, you are performing thousands of steps for a single append. That is O(n) per append, and as your queue grows, your performance lags behind.
 
-Most beginners start with only a head pointer. Sounds fine — until you realize that every time you insert at the end, you must traverse the entire list.
+Most beginners start with only a head pointer. Sounds fine - until you realize that every time you insert at the end, you must traverse the entire list.
 
 ```c
 typedef struct Node {
@@ -105,16 +105,16 @@ In embedded environments:
 - Cache and memory sizes are tiny
 - Every loop iteration costs time, energy, and wake cycles
 
-Walking a linked list is not just slow — it is wasted power.
+Walking a linked list is not just slow - it is wasted power.
 
 ## The catch (do not miss this)
 
-Before you swap all your code to use tail pointers, remember: power comes with responsibility. Every time you modify the list — deleting a node or clearing the list — you must update the `tail` pointer correctly. If your `tail` accidentally points to a node that was deleted, your program will crash.
+Before you swap all your code to use tail pointers, remember: power comes with responsibility. Every time you modify the list - deleting a node or clearing the list - you must update the `tail` pointer correctly. If your `tail` accidentally points to a node that was deleted, your program will crash.
 
 A tail pointer is like a bookmark. It is incredibly helpful for finding the end of the book, but if you rip out the last page, you better move your bookmark.
 
 ## Final takeaway
 
-If your application involves frequent append operations — like a printer queue, a music playlist, or an undo history — the tail pointer is your best friend. You trade a few bytes of memory for a massive boost in speed.
+If your application involves frequent append operations - like a printer queue, a music playlist, or an undo history - the tail pointer is your best friend. You trade a few bytes of memory for a massive boost in speed.
 
 *Originally published on [Akash's Substack](https://akashblsbrmnm.substack.com/p/why-is-your-linked-list-a-potato).*

@@ -1,4 +1,4 @@
-.site-header {
+﻿.site-header {
   position: sticky;
   top: 0;
   z-index: 41;
@@ -136,6 +136,7 @@
 }
 
 .nav__theme {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -153,28 +154,57 @@
 }
 
 .nav__theme .icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
   font-size: 1.05rem;
+  opacity: 1;
+  rotate: 0deg;
+  scale: 1;
+  transition:
+    opacity 0.3s var(--ease),
+    rotate 0.55s var(--ease),
+    scale 0.55s var(--ease);
 }
 
 .nav__theme .icon--sun {
-  display: none;
+  opacity: 0;
+  rotate: -90deg;
+  scale: 0.4;
 }
 
 html[data-theme="dark"] .nav__theme .icon--sun {
-  display: inline-block;
+  opacity: 1;
+  rotate: 0deg;
+  scale: 1;
 }
 
 html[data-theme="dark"] .nav__theme .icon--moon {
-  display: none;
+  opacity: 0;
+  rotate: -90deg;
+  scale: 0.4;
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) .nav__theme .icon--sun {
-    display: inline-block;
+    opacity: 1;
+    rotate: 0deg;
+    scale: 1;
   }
 
   html:not([data-theme="light"]) .nav__theme .icon--moon {
-    display: none;
+    opacity: 0;
+    rotate: -90deg;
+    scale: 0.4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__theme .icon {
+    transition:
+      opacity 0.12s linear,
+      rotate 0.12s linear,
+      scale 0.12s linear;
   }
 }
 

@@ -610,7 +610,9 @@
     box-shadow: none;
     transform: translateZ(0) scale(1);
     transform-origin: center bottom;
-    transition: transform 0.42s var(--ease);
+    transition:
+      transform 0.42s var(--ease),
+      max-width 0.42s var(--ease);
   }
 
   .profile__action--extra {
@@ -618,6 +620,7 @@
   }
 
   .profile__action {
+    position: relative;
     flex: 1 1 0;
     min-width: 0;
     min-height: var(--profile-action-sq);
@@ -646,18 +649,28 @@
   .profile__cv-label,
   .profile__mail-label,
   .profile__action-label {
-    max-width: 8rem;
-    opacity: 1;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: max-content;
+    max-width: 100%;
+    height: max-content;
+    text-align: center;
     font-size: 0.8125rem;
-    transition: max-width 0.32s var(--ease), opacity 0.22s var(--ease);
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.24s var(--ease), transform 0.36s var(--ease);
   }
 
   .profile__action .icon {
+    position: absolute;
+    inset: 0;
+    margin: auto;
     font-size: 1.05rem;
-  }
-
-  .profile__dock:not(.is-compact) .profile__action .icon {
-    display: none;
+    opacity: 0;
+    transform: scale(0.72);
+    transition: opacity 0.24s var(--ease), transform 0.36s var(--ease);
+    pointer-events: none;
   }
 
   .profile__dock.is-compact .profile__actions {
@@ -666,12 +679,13 @@
   }
 
   .profile__dock.is-compact .profile__action-label {
-    max-width: 0;
     opacity: 0;
+    transform: scale(0.94);
   }
 
-  .profile__dock.is-compact .profile__action {
-    padding: 0.45rem 0;
+  .profile__dock.is-compact .profile__action .icon {
+    opacity: 1;
+    transform: none;
   }
 
   body.nav-open .profile__dock {
@@ -686,6 +700,7 @@
   @media (prefers-reduced-motion: reduce) {
     .profile__actions,
     .profile__action-label,
+    .profile__action .icon,
     .profile__cv-label,
     .profile__mail-label {
       transition: background var(--dur) var(--ease), color var(--dur) var(--ease);

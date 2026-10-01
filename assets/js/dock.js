@@ -3,7 +3,8 @@
   if (!dock) return;
 
   const mq = window.matchMedia("(max-width: 899px)");
-  const TOP = 56;
+  const COMPACT_AT = 56;
+  const EXPAND_AT = 32;
   let compact = false;
   let ticking = false;
 
@@ -20,7 +21,7 @@
       apply(false);
       return;
     }
-    apply(window.scrollY > TOP);
+    apply(window.scrollY > (compact ? EXPAND_AT : COMPACT_AT));
   };
 
   const onScroll = () => {
